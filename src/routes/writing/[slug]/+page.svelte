@@ -13,12 +13,16 @@ import { onMount } from 'svelte';
 </script>
 
 
-<main class="min-h-screen">
+<main class="min-h-screen w-full flex justify-center">
 {#if ready}
-<p in:fly={{ y: 50, duration: 400, delay: 0 }} class="text-sm text-light/60">{metadata.pubDate}</p>
-<article class="prose prose-invert">
-    <h1 in:fly={{ y: 50, duration: 400, delay: 0 }}>{metadata.title}</h1>
-    <div in:fly={{ y: 50, duration: 400, delay: 200 }}>
+
+<article class="prose-sm prose md:prose-base prose-invert">
+    <div in:fly={{ y: 50, duration: 400, delay: 0 }} class="flex flex-col">
+
+        <p class="text-sm text-light/60">{metadata.pubDate}</p>
+        <h1>{metadata.title}</h1>
+    </div>
+        <div in:fly={{ y: 50, duration: 400, delay: 200 }}>
 
         <Post />
             </div>

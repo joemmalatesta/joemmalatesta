@@ -33,10 +33,10 @@
 			</div>
 		</div>
 
-		<div class="flex flex-col gap-6" in:fly={{ y: 50, duration: 400, delay: 200 }}>
+		<div class="flex flex-col" in:fly={{ y: 50, duration: 400, delay: 200 }}>
 			{#each sortedPosts as post, index}
 				<a
-					class="flex justify-between items-center w-full border-b py-1.5 opacity-70 md:opacity-50 md:hover:opacity-100 transition-all"
+					class="flex justify-between items-center w-full border-b border-light/40 py-2 xl:py-3 opacity-70 md:opacity-50 md:hover:opacity-100 transition-all"
 					href={`/writing/${post.slug}/`}
 				>
 					<h4 class="text-2xl">{post.title}</h4>

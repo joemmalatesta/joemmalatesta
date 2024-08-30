@@ -4,22 +4,21 @@
 	import { fade, fly, slide } from 'svelte/transition';
 	export let update: TimelineItem;
     export let index: number;
+    export let isLast: boolean;
 
-
-    let ready = false;
-    onMount(() => {
-        ready = true;
-    })
+	let ready = false;
+	onMount(() => {
+		ready = true;
+	})
 </script>
 
 {#if ready}
 <div class="relative pl-8 py-2 group">
 	<!-- Vertical line (::before) ~ Date ~ Title ~ Circle marker (::after) -->
 	<div
-	in:slide={{ axis: 'y', duration: 600, delay: index * 100 + 300 }}
 		class="flex flex-col items-start mb-1 group-last:before:hidden before:absolute before:left-2 before:h-full before:px-px before:bg-light/40 before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 after:w-[.25rem] after:h-[.25rem] after:bg-light/60 after:border-[3px] after:box-content after:border-light/60 after:rounded-full after:-translate-x-1/2 after:translate-y-2"
 	>
-		<div in:fly={{ x: 100, duration: 300, delay: index * 150 + 300 }}>
+		<div in:fly={{ x: 50, duration: 300, delay: index * 150 + 300 }}>
 			<time
 				class="text-xs mb-2 text-light opacity-60 font-semibold"
 			>{update.date}</time>
@@ -27,7 +26,16 @@
                 <!-- Content -->
                  <p class="text-sm opacity-60">{update.content}</p>
         </div>
+		{#if isLast}
+    <div 
+        class="absolute left-[.45rem] bottom-0 w-[2px] h-24 bg-gradient-to-b from-light/40 via-light/20 to-transparent" 
+        in:fade={{ duration: 300, delay: (index + 1) * 150 + 300 }}
+    ></div>
+{/if}
     </div>
+	
 </div>
+
+
 {/if}
 

@@ -9,8 +9,8 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif']
-      }
-    }
+      },
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),
