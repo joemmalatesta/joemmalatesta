@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-dark text-light w-11/12 sm:w-2/3 lg:w-3/5 xl:w-1/2 mx-auto
+}
