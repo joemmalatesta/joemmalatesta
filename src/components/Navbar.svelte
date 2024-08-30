@@ -20,21 +20,22 @@ $: {
 </script>
 
 <nav class="flex justify-between items-center py-6">
-	<a href="/" class="text-xl">Joe Malatesta</a>
+	<a href="/" class="hidden sm:block text-xl">Joe Malatesta</a>
+    <a href="/" class="sm:hidden text-xl">JMM</a>
 	<div class="flex gap-4">
-		<a href="/about" class="relative group text-lg">
+		<a href="/about" class="relative group sm:text-lg text-sm">
 			About
 			<span
 				class="absolute left-1/2 right-1/2 -bottom-0.5 h-0.5 bg-light transform -translate-x-1/2 transition-all duration-300 {activeTab == 'about' ? 'w-full' : 'group-hover:w-full w-0'}"
 			></span>
 		</a>
-		<a href="/projects" class="relative group text-lg">
+		<a href="/projects" class="relative group sm:text-lg text-sm">
 			Projects
 			<span
 				class=" absolute left-1/2 right-1/2 -bottom-0.5 h-0.5 bg-light transform -translate-x-1/2 transition-all duration-300 {activeTab == 'projects' ? 'w-full' : 'group-hover:w-full w-0'}"
 			></span>
 		</a>
-		<a href="/writing" class="relative group text-lg">
+		<a href="/writing" class="relative group sm:text-lg text-sm">
 			Writing
 			<span
 				class=" absolute left-1/2 right-1/2 -bottom-0.5 h-0.5 bg-light transform -translate-x-1/2 transition-all duration-300 {activeTab == 'writing' ? 'w-full' : 'group-hover:w-full w-0'}"

@@ -15,5 +15,5 @@ Like Anthony left and right bits, but hover effect from my site
 - Direct link to my Cal.com
 - Or still a contact form
 
-
-- Nav has blog, about me, projects (with all projects)
+# Blog
+- https://www.npmjs.com/package/mdsvex
