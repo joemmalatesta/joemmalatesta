@@ -11,8 +11,8 @@ let ready = false;
 <main class="min-h-screen">
     {#if ready}
     <section transition:fly={{ y: 50, duration: 400, delay: 0 }}>
-    <h1 class="text-6xl font-semibold">It's me, Joe!</h1>
-    <p>This shall get more personal</p>    
+    <h1 class="text-6xl font-semibold">About</h1>
+    <p class="opacity-70">A closer look at who I am and aspire to be</p>    
     </section>
     
     
