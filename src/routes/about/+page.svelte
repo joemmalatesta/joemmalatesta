@@ -1,10 +1,14 @@
 <script lang="ts">
+  import PhotoBook from '../../components/PhotoBook.svelte';
+
 import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 let ready = false;
 	onMount(() => {
 		ready = true;
 	});
+
+    let activePicture = 0;
 </script>
 
 
@@ -16,25 +20,10 @@ let ready = false;
     </section>
     
     
-    <section transition:fly={{ y: 50, duration: 400, delay: 200 }} class="flex w-full gap-5 py-10">
-        <div class="flex flex-col gap-0.5 items-center w-2/5">
-
-            <img src="/me.webp" class="rounded-lg " alt="Joe Malatesta">
-            <div class="flex items-center justify-center gap-2 opacity-60 w-full">
-                <img src="icons/map-pin.svg" class="w-4 h-4" alt="location">
-                <p class="text-sm">North Beach, San Francisco</p>
-            </div>
+    <section transition:fly={{ y: 50, duration: 400, delay: 200 }} class="flex justify-between relative w-full gap-5 py-20">
+        <div class="w-4/6 z-50 absolute right-0">
+            <PhotoBook bind:activePicture />
         </div>
-        <div class="w-3/5 flex flex-col justify-between p-1">
-            <p class="">
-            Hi there! I'm Joe, a passionate developer and tech enthusiast. I love creating innovative projects and exploring new technologies. When I'm not coding, you can find me hiking, reading, or experimenting with new recipes in the kitchen.
-        </p>
-        <p class="">
-            I'm a full stack developer with a passion for creating web and mobile applications. I'm currently working on a project that combines my love for technology and cooking.
-        </p>
-        <p class="">
-            I'm a full stack developer with a passion for creating web and mobile applications. I'm currently working on a project that combines my love for technology and cooking.
-        </p>
     </section>
     {/if}
 

@@ -1,16 +1,24 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
+	import { navigating } from '$app/stores';
 	import Timeline from '../components/Timeline.svelte';
 	import { projects } from '$lib/projects';
 	import ProjectCard from '../components/ProjectCard.svelte';
 	import { updates } from '../lib/timeline';
 	import type { PageData } from './$types';
 	let ready: boolean = false;
+	let isNavigatingFrom: boolean = false;
+
 	onMount(() => {
 		ready = true;
 	});
 
+	// See if this is initial page load or not. If not, we want it to be snappier and will change delays accordingly
+	$: isNavigatingFrom = $navigating?.from?.url.pathname !== undefined;
+
+
+	// Get all posts from /lib/posts
 	export let data: PageData;
     const { allPostInfo } = data as { allPostInfo: any[] };
 	
@@ -35,7 +43,7 @@
 		</section>
 
 		<!-- Updates timeline -->
-		<section id="updates" transition:fly={{ y: 50, duration: 400, delay: 250 }} class="py-5">
+		<section id="updates" transition:fly={{ y: 50, duration: 400, delay: 250 }} class="py-10">
 			<h2
 				class="text-3xl font-light py-2 group flex gap-1 items-center border-b-2 border-light/10 relative"
 			>
@@ -52,7 +60,7 @@
 		</section>
 
 		<!-- Projects section -->
-		<section transition:fly={{ y: 50, duration: 400, delay: 1000 }} class="py-5">
+		<section transition:fly={{ y: 50, duration: 400, delay: isNavigatingFrom ? 200 : 1000 }} class="py-10">
 			<a
 				href="/projects"
 				class="text-3xl py-2 group flex gap-1 items-center border-b-2 border-light/10"
@@ -72,7 +80,7 @@
 		</section>
 
 		<!-- Writing section -->
-		<section id="writing" transition:fly={{ y: 50, duration: 400, delay: 1200 }} class="py-5">
+		<section id="writing" transition:fly={{ y: 50, duration: 400, delay: 200 }} class="py-5">
 			<a
 				href="/writing"
 				class="relative text-3xl font-light font-serif py-2 group flex gap-1 items-center border-b-2 border-light/10"
@@ -111,7 +119,7 @@
 
 
 		<!-- Contact section -->
-		<section id="contact" transition:fly={{ y: 50, duration: 400, delay: 1500 }} class="py-5">
+		<section id="contact" transition:fly={{ y: 50, duration: 400, delay: 400 }} class="py-5">
 			<a
 				href="#contact"
 				class="relative text-3xl font-light py-2 group flex gap-1 items-center border-b-2 border-light/10"

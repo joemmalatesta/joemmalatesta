@@ -20,8 +20,8 @@
 	{#if ready}
 		<div in:fly={{ y: 50, duration: 400, delay: 0 }} class="flex flex-col mb-5 gap-2">
 			<h1 class="text-6xl font-semibold">Writing</h1>
-			<div class="flex flex-col gap-.05">
-				<p class="opacity-70">Infrequent recounts of times I got better at coding</p>
+			<div class="flex flex-col gap-.05 sm:text-base text-sm">
+				<p class="opacity-70 ">Infrequent recounts of times I got better at coding</p>
 				<p class="opacity-70">
 					I write personal stuff at <a
 						href="https://ifnotnow.tw"
@@ -39,8 +39,8 @@
 					class="flex justify-between items-center w-full border-b border-light/40 py-2 xl:py-3 opacity-70 md:opacity-50 md:hover:opacity-100 transition-all"
 					href={`/writing/${post.slug}/`}
 				>
-					<h4 class="text-2xl">{post.title}</h4>
-					<div class="text-sm opacity-70">
+					<h4 class="md:text-2xl sm:text-lg text-ellipsis overflow-hidden whitespace-nowrap">{post.title}</h4>
+					<div class="sm:text-sm text-xs opacity-70 min-w-fit">
 						{new Date(post.pubDate).toLocaleDateString('en-US', {
 							year: 'numeric',
 							month: 'short',

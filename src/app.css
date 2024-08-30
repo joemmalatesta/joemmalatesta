@@ -5,5 +5,5 @@
 @tailwind utilities;
 
 body {
-    @apply bg-dark text-light w-11/12 lg:w-3/5 xl:w-1/2 mx-auto 2xl:w-2/5 selection:bg-light selection:text-dark
+    @apply bg-dark text-light w-11/12 lg:w-3/5 xl:w-1/2 mx-auto 2xl:w-2/5 selection:bg-light selection:text-dark overflow-x-hidden;
 }
