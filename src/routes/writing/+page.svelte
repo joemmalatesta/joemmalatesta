@@ -35,19 +35,37 @@
 
 		<div class="flex flex-col" in:fly={{ y: 50, duration: 400, delay: 200 }}>
 			{#each sortedPosts as post, index}
-				<a
-					class="flex justify-between items-center w-full border-b border-light/40 py-2 xl:py-3 opacity-70 md:opacity-50 md:hover:opacity-100 transition-all"
-					href={`/writing/${post.slug}/`}
-				>
-					<h4 class="md:text-2xl sm:text-lg text-ellipsis overflow-hidden whitespace-nowrap">{post.title}</h4>
-					<div class="sm:text-sm text-xs opacity-70 min-w-fit">
-						{new Date(post.pubDate).toLocaleDateString('en-US', {
-							year: 'numeric',
-							month: 'short',
-							day: 'numeric'
-						})}
-					</div>
-				</a>
+			<a
+			class="flex justify-between items-center w-full border-b border-light/40 py-2 xl:py-3 opacity-70 md:opacity-50 md:hover:opacity-100 transition-all"
+			target={post.external ? "_blank" : ""}
+			href={post.external ? post.url : `/writing/${post.slug}/`}
+		>
+		<div class="flex gap-2 items-center w-5/6">
+			<h4 class="text-base md:text-xl truncate">{post.title}</h4>
+			{#if post.external}
+				<img src="icons/outlink.svg" class="w-4 lg:w-5 h-4 lg:h-5" alt="external link" />
+			{/if}
+		</div>
+			
+			<div class="sm:text-sm text-xs flex gap-2 items-center">
+				<p class="hidden sm:block">
+					{new Date(post.pubDate).toLocaleDateString('en-US', {
+						year: 'numeric',
+						month: 'short',
+						day: 'numeric'
+					})}
+				</p>
+				<p class="sm:hidden">
+					{new Date(post.pubDate).toLocaleDateString('en-US', {
+						year: '2-digit',
+						month: '2-digit',
+						day: '2-digit'
+					})}
+				</p>
+				<!-- <img src="icons/arrow-right.svg" class="w-6 h-6 group-hover:translate-x-2 transition-all duration-300" alt="arrow right" /> -->
+			</div>
+			
+		</a>
 			{/each}
 		</div>
 	{/if}

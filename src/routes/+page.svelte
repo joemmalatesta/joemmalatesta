@@ -55,7 +55,7 @@
 				>
 			</h2>
 			{#each updates as update, index}
-				<Timeline {update} {index} isLast={index === updates.length - 1} />
+				<Timeline initialLoad={!isNavigatingFrom} {update} {index} isLast={index === updates.length - 1} />
 			{/each}
 		</section>
 
@@ -100,16 +100,31 @@
 			{#each allPostInfo as post, index}
 				<a
 					class="flex justify-between items-center w-full py-2 xl:py-3 opacity-70 md:opacity-50 md:hover:opacity-100 transition-all"
-					href={`/writing/${post.slug}/`}
+					target={post.external ? "_blank" : ""}
+					href={post.external ? post.url : `/writing/${post.slug}/`}
 				>
-					<h4 class="text-2xl">{post.title}</h4>
-					<div class="text-sm flex gap-2 items-center">
-						<p>
-						{new Date(post.pubDate).toLocaleDateString('en-US', {
-							year: 'numeric',
-							month: 'short',
-							day: 'numeric'
-						})}</p>
+				<div class="flex gap-2 items-center w-5/6">
+					<h4 class="text-base md:text-xl truncate">{post.title}</h4>
+					{#if post.external}
+						<img src="icons/outlink.svg" class="w-4 lg:w-5 h-4 lg:h-5" alt="external link" />
+					{/if}
+				</div>
+					
+					<div class="sm:text-sm text-xs flex gap-2 items-center">
+						<p class="hidden sm:block">
+							{new Date(post.pubDate).toLocaleDateString('en-US', {
+								year: 'numeric',
+								month: 'short',
+								day: 'numeric'
+							})}
+						</p>
+						<p class="sm:hidden">
+							{new Date(post.pubDate).toLocaleDateString('en-US', {
+								year: '2-digit',
+								month: '2-digit',
+								day: '2-digit'
+							})}
+						</p>
 						<!-- <img src="icons/arrow-right.svg" class="w-6 h-6 group-hover:translate-x-2 transition-all duration-300" alt="arrow right" /> -->
 					</div>
 					
