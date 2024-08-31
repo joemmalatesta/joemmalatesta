@@ -20,8 +20,8 @@ let ready = false;
     </section>
     
     
-    <section transition:fly={{ y: 50, duration: 400, delay: 200 }} class="flex justify-between relative w-full gap-5 py-20">
-        <div class="w-4/6 z-50 absolute right-0">
+    <section transition:fly={{ y: 50, duration: 400, delay: 200 }} class="flex justify-between relative w-full gap-5 py-40">
+        <div class="w-full z-50 mx-auto flex justify-center items-center">
             <PhotoBook bind:activePicture />
         </div>
     </section>
