@@ -16,7 +16,7 @@ import { onMount } from 'svelte';
 <main class="min-h-screen w-full flex justify-center">
 {#if ready}
 
-<article class="prose-sm prose md:prose-base prose-invert">
+<article class="prose-sm prose md:prose-base lg:prose-lg prose-invert">
     <div in:fly={{ y: 50, duration: 400, delay: 0 }} class="flex flex-col">
 
         <p class="text-sm text-light/60">{metadata.pubDate}</p>

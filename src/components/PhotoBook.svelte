@@ -51,25 +51,25 @@
 <div class="relative w-72 h-96">
 	<!-- Main picture. stays centered -->
 	<button
-		class="cursor-default absolute inset-0 rounded-lg z-50"
+		class="cursor-default absolute inset-0 rounded-lg z-50 drop-shadow-lg"
 		on:mouseenter={() => (hover = true)}
 		on:mouseleave={() => (hover = false)}
 	>
-		<img src={locations[0].img} class="rounded-lg absolute inset-0 w-full h-full object-cover" alt={locations[0].location} />
+		<img src={locations[0].img} class="rounded-lg drop-shadow-lg absolute inset-0 w-full h-full object-cover" alt={locations[0].location} />
 	</button>
 	<!-- Pictures 1 moves out to the right -->
 	<button
     class="absolute inset-0 rounded-lg {switchAnimation
     ? 'rotate-0 translate-x-0 translate-y-0'
     : hover
-        ? 'rotate-[40deg] translate-x-32 translate-y-5'
-        : ' rotate-[24deg] translate-x-16 -translate-y-3'} -z-10 transition-all duration-300"
+        ? 'rotate-[40deg] translate-x-32 translate-y-5 hover:rotate-[42deg] scale-95  hover:scale-100'
+        : ' rotate-[24deg] translate-x-16 -translate-y-3 '}  -z-10 transition-all duration-300 group"
 		on:click={() => switchPicture(1)}
 		on:mouseenter={() => (hover = true)}
 		on:mouseleave={() => (hover = false)}
 	>
 		<img src={locations[1].img} class="rounded-lg absolute inset-0 w-full h-full object-cover" alt={locations[1].location} />
-        <div class="absolute inset-0 bg-dark/20" />
+        <div class="absolute inset-0 bg-dark/30 group-hover:opacity-20" />
 
 	</button>
 	<!-- Picture 2 moves up -->
@@ -77,31 +77,31 @@
     class="absolute inset-0 rounded-lg {switchAnimation
     ? 'rotate-0 translate-x-0 translate-y-0'
     : hover
-        ? 'rotate-6 -translate-y-32'
-        : ' -translate-y-10 rotate-3'} -z-10 transition-all duration-300"
+        ? 'rotate-6 -translate-y-32 hover:rotate-[10deg] scale-95  hover:scale-100'
+        : ' -translate-y-10 rotate-3'}  -z-10 transition-all duration-300 group"
 		on:click={() => switchPicture(2)}
 		on:mouseenter={() => (hover = true)}
 		on:mouseleave={() => (hover = false)}
 	>
 		<img src={locations[2].img} class="rounded-lg absolute inset-0 w-full h-full object-cover" alt={locations[2].location} />
-        <div class="absolute inset-0 bg-dark/20" />
+        <div class="absolute inset-0 bg-dark/20 group-hover:opacity-0" />
 
 	</button>
 	<!-- Picture 3 moves out to the left -->
 	<button
-		class="absolute inset-0 rounded-lg {switchAnimation
+		class="absolute inset-0 rounded-lg group {switchAnimation
 			? 'rotate-0 translate-x-0 translate-y-0'
 			: hover
-				? '-rotate-[40deg] -translate-x-32 -translate-y-5'
-				: ' -rotate-[24deg] -translate-x-12 -translate-y-7'} -z-10 transition-all duration-300"
+				? '-rotate-[40deg] -translate-x-32 -translate-y-5 hover:-rotate-[42deg] scale-95  hover:scale-100'
+				: ' -rotate-[24deg] -translate-x-12 -translate-y-7 '}  -z-10 transition-all duration-300"
 		on:click={() => switchPicture(3)}
 		on:mouseenter={() => (hover = true)}
 		on:mouseleave={() => (hover = false)}
 	>
 		<img src={locations[3].img} class="rounded-lg absolute inset-0 w-full h-full object-cover" alt={locations[3].location} />
-        <div class="absolute inset-0 bg-dark/20" />
+        <div class="absolute inset-0 bg-dark/20 group-hover:opacity-0" />
 	</button>
-    <p class="text-center opacity-75 absolute -bottom-10 left-1/2 transform -translate-x-1/2 text-sm"><img src="icons/map-pin.svg" alt="location" class="w-4 h-4 inline-block"> {locations[0].location}</p>
+    <p class=" w-full text-center opacity-75 absolute -bottom-10 left-1/2 transform -translate-x-1/2"><img src="icons/map-pin.svg" alt="location" class="w-4 h-4 inline-block"> {locations[0].location}</p>
 </div>
 
 <!-- 
