@@ -8,7 +8,7 @@ export let updates: TimelineItem[] = [
     {
         title: "GrizzHacks 7",
         date: "Feb 2024",
-        content: ""
+        content: "Stepped down to Vice President"
     },
     {
         title: "Joined Sentry.io",
