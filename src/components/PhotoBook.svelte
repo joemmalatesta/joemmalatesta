@@ -11,7 +11,7 @@
 		if (innerWidth < 640) {
 			smallScreen = true;
 		}
-		await sleep(400);
+		await sleep(600);
 		hover = smallScreen;
 	});
 
