@@ -19,7 +19,7 @@
 	<div
 		class="flex flex-col items-start mb-1 group-last:before:hidden before:absolute before:left-2 before:h-full before:px-px before:bg-[#717171] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 after:w-[.25rem] after:h-[.25rem] after:bg-light/60 after:border-[4px] after:border-light/60 after:rounded-full after:-translate-x-1/2 after:translate-y-2"
 	>
-		<div in:fly={{ x: 50, duration: initialLoad ? 300 : 200, delay: initialLoad ? index * 150 + 300 : index * 100 + 200 }}>
+		<div in:fly={{ x: 50, duration: initialLoad ? 300 : 200, delay: initialLoad ? (index + 1)* 150 + 300 : index * 100 + 200 }}>
 			<time
 				class="text-xs mb-2 text-light opacity-60 font-semibold"
 			>{update.date}</time>
