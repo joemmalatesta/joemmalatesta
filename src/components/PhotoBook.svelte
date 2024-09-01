@@ -2,8 +2,17 @@
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	let ready = false;
-	onMount(() => {
+	let innerWidth: number;
+	let smallScreen: boolean = false;
+	let hover: boolean = false;
+	
+	onMount(async () => {
 		ready = true;
+		if (innerWidth < 640) {
+			smallScreen = true;
+		}
+		await sleep(400);
+		hover = smallScreen;
 	});
 
 	const locations: {
@@ -30,7 +39,6 @@
 	];
 
     export let activePicture = 0;
-	let hover: boolean = false;
 	let switchAnimation: boolean = false;
     async function switchPicture(index: number) {
         activePicture = index;
@@ -46,9 +54,17 @@
 	async function sleep(ms: number): Promise<void> {
 		return new Promise(resolve => setTimeout(resolve, ms));
 	}
+
+
 </script>
 
-<div class="relative w-72 h-96">
+
+
+<svelte:window bind:innerWidth />
+
+
+
+<div class="relative w-48 h-64 sm:w-72 sm:h-96">
 	<!-- Main picture. stays centered -->
 	<button
 		class="cursor-default absolute inset-0 rounded-lg z-50 drop-shadow-lg"
@@ -62,7 +78,7 @@
     class="absolute inset-0 rounded-lg {switchAnimation
     ? 'rotate-0 translate-x-0 translate-y-0'
     : hover
-        ? 'rotate-[40deg] translate-x-32 translate-y-5 hover:rotate-[42deg] scale-95  hover:scale-100'
+        ? `rotate-[40deg] ${smallScreen ? 'translate-x-24' : 'translate-x-32'} translate-y-5 hover:rotate-[42deg] scale-95  hover:scale-100`
         : ' rotate-[24deg] translate-x-16 -translate-y-3 '}  -z-10 transition-all duration-300 group"
 		on:click={() => switchPicture(1)}
 		on:mouseenter={() => (hover = true)}
@@ -77,7 +93,7 @@
     class="absolute inset-0 rounded-lg {switchAnimation
     ? 'rotate-0 translate-x-0 translate-y-0'
     : hover
-        ? 'rotate-6 -translate-y-32 hover:rotate-[10deg] scale-95  hover:scale-100'
+        ? `rotate-6 hover:rotate-[10deg] scale-95  hover:scale-100 ${smallScreen ? '-translate-y-24' : '-translate-y-32'}`
         : ' -translate-y-10 rotate-3'}  -z-10 transition-all duration-300 group"
 		on:click={() => switchPicture(2)}
 		on:mouseenter={() => (hover = true)}
@@ -92,7 +108,7 @@
 		class="absolute inset-0 rounded-lg group {switchAnimation
 			? 'rotate-0 translate-x-0 translate-y-0'
 			: hover
-				? '-rotate-[40deg] -translate-x-32 -translate-y-5 hover:-rotate-[42deg] scale-95  hover:scale-100'
+				? `-rotate-[40deg] ${smallScreen ? '-translate-x-24' : '-translate-x-32'} -translate-y-5 hover:-rotate-[42deg] scale-95  hover:scale-100`
 				: ' -rotate-[24deg] -translate-x-12 -translate-y-7 '}  -z-10 transition-all duration-300"
 		on:click={() => switchPicture(3)}
 		on:mouseenter={() => (hover = true)}
@@ -101,7 +117,7 @@
 		<img src={locations[3].img} class="rounded-lg absolute inset-0 w-full h-full object-cover" alt={locations[3].location} />
         <div class="absolute inset-0 bg-dark/20 group-hover:opacity-0" />
 	</button>
-    <p class=" w-full text-center opacity-75 absolute -bottom-10 left-1/2 transform -translate-x-1/2"><img src="icons/map-pin.svg" alt="location" class="w-4 h-4 inline-block"> {locations[0].location}</p>
+    <p class="sm:text-base text-sm w-full text-center opacity-75 absolute -bottom-10 left-1/2 transform -translate-x-1/2"><img src="icons/map-pin.svg" alt="location" class="w-4 h-4 inline-block"> {locations[0].location}</p>
 </div>
 
 <!-- 

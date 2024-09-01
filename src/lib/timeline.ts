@@ -6,23 +6,33 @@ export type TimelineItem = {
 
 export let updates: TimelineItem[] = [
     {
-        title: "GrizzHacks",
+        title: "GrizzHacks 7",
         date: "Feb 2024",
-        content: "Pretium lectus quam id leo. Urna et pharetra pharetra massa massa. Adipiscing enim eu neque aliquam vestibulum morbi blandit cursus risus."
+        content: ""
+    },
+    {
+        title: "Joined Sentry.io",
+        date: "May 2024",
+        content: "I moved out to San Francisco for the summer to join Sentry as a DevRel intern. "
     },
     {
         title: "GrizzHacks 6",
         date: "March 2023",
-        content: "Pretium lectus quam id leo. Urna et pharetra pharetra massa massa. Adipiscing enim eu neque aliquam vestibulum morbi blandit cursus risus."
+        content: "I rebooted GrizzHacks "
     },
     {
-        title: "I joined Sentry as a DevRel Intern",
-        date: "May 2024",
-        content: "Pretium lectus quam id leo. Urna et pharetra pharetra massa massa. Adipiscing enim eu neque aliquam vestibulum morbi blandit cursus risus."
+        title: "Joined Mercedes-Benz Financial",
+        date: "May 2023",
+        content: ""
     },
     {
-        title: "Mercedes-Benz Financial",
-        date: "May, 2023",
-        content: "Pretium lectus quam id leo. Urna et pharetra pharetra massa massa. Adipiscing enim eu neque aliquam vestibulum morbi blandit cursus risus."
+        title: "Graduated High School",
+        date: "April 2020",
+        content: "Rochester"
+    },
+    {
+        title: "Born",
+        date: "July 2002",
+        content: ""
     }
 ];

@@ -20,14 +20,20 @@ let ready = false;
     </section>
     
     
-    <section transition:fly={{ y: 50, duration: 400, delay: 200 }} class="flex justify-between relative w-full gap-5 py-40">
+    <section transition:fly={{ y: 50, duration: 400, delay: 200 }} class="flex justify-between relative w-full gap-5 py-32">
         <div class="w-full z-50 mx-auto flex justify-center items-center">
             <PhotoBook bind:activePicture />
         </div>
     </section>
+    
+    <!-- Tools, Design, Tech, Portfolio Inspiration -->
+    <section transition:fly={{ y: 50, duration: 400, delay: 400 }}>
+        <div class="gap-1">
+            <h3 class="text-4xl">Inspiration</h3>
+            <p class="opacity-70">What I wish I made and who I wish I was</p>
+        </div>
+        
+    </section>
     {/if}
-
-    <!-- Some inspirations here -->
-     <!-- Tools, Design Inspo, Tech Inspo, Portfolio inspo -->
 </main>
 

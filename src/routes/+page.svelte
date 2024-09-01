@@ -17,12 +17,9 @@
 	// See if this is initial page load or not. If not, we want it to be snappier and will change delays accordingly
 	$: isNavigatingFrom = $navigating?.from?.url.pathname !== undefined;
 
-
 	// Get all posts from /lib/posts
 	export let data: PageData;
-    const { allPostInfo } = data as { allPostInfo: any[] };
-	
-
+	const { allPostInfo } = data as { allPostInfo: any[] };
 </script>
 
 <main class="min-h-screen">
@@ -44,23 +41,27 @@
 
 		<!-- Updates timeline -->
 		<section id="updates" transition:fly={{ y: 50, duration: 400, delay: 250 }} class="py-10">
-			<h2
-				class="text-3xl font-light py-2 group flex gap-1 items-center border-b-2 border-light/10 relative"
+			<a
+				href="/updates"
+				class="text-3xl font-light py-2 group flex gap-1 items-center border-b-2 border-light/10 relative font-serif"
 			>
 				Updates
-				<a
-					href="#updates"
-					class="absolute -left-7 text-light/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-					>#</a
-				>
-			</h2>
-			{#each updates as update, index}
-				<Timeline initialLoad={!isNavigatingFrom} {update} {index} isLast={index === updates.length - 1} />
+				<img
+					src="icons/arrow-right.svg"
+					class="w-6 h-6 group-hover:translate-x-2 transition-all duration-300"
+					alt="arrow right"
+				/>
+			</a>
+			{#each updates.slice(0, 4) as update, index}
+				<Timeline initialLoad={!isNavigatingFrom} {update} {index} isLast={index === 3} />
 			{/each}
 		</section>
 
 		<!-- Projects section -->
-		<section transition:fly={{ y: 50, duration: 400, delay: isNavigatingFrom ? 200 : 1000 }} class="py-10">
+		<section
+			transition:fly={{ y: 50, duration: 400, delay: isNavigatingFrom ? 200 : 1000 }}
+			class="py-10"
+		>
 			<a
 				href="/projects"
 				class="text-3xl py-2 group flex gap-1 items-center border-b-2 border-light/10"
@@ -85,11 +86,6 @@
 				href="/writing"
 				class="relative text-3xl font-light font-serif py-2 group flex gap-1 items-center border-b-2 border-light/10"
 			>
-				<a
-					href="#writing"
-					class="absolute -left-7 text-light/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-					>#</a
-				>
 				<p>Writing</p>
 				<img
 					src="icons/arrow-right.svg"
@@ -100,16 +96,16 @@
 			{#each allPostInfo as post, index}
 				<a
 					class="flex justify-between items-center w-full py-2 xl:py-3 opacity-70 md:opacity-50 md:hover:opacity-100 transition-all"
-					target={post.external ? "_blank" : ""}
+					target={post.external ? '_blank' : ''}
 					href={post.external ? post.url : `/writing/${post.slug}/`}
 				>
-				<div class="flex gap-2 items-center w-5/6">
-					<h4 class="text-base md:text-xl truncate">{post.title}</h4>
-					{#if post.external}
-						<img src="icons/outlink.svg" class="w-4 lg:w-5 h-4 lg:h-5" alt="external link" />
-					{/if}
-				</div>
-					
+					<div class="flex gap-2 items-center w-5/6">
+						<h4 class="text-base md:text-xl truncate">{post.title}</h4>
+						{#if post.external}
+							<img src="icons/outlink.svg" class="w-4 lg:w-5 h-4 lg:h-5" alt="external link" />
+						{/if}
+					</div>
+
 					<div class="sm:text-sm text-xs flex gap-2 items-center">
 						<p class="hidden sm:block">
 							{new Date(post.pubDate).toLocaleDateString('en-US', {
@@ -127,25 +123,17 @@
 						</p>
 						<!-- <img src="icons/arrow-right.svg" class="w-6 h-6 group-hover:translate-x-2 transition-all duration-300" alt="arrow right" /> -->
 					</div>
-					
 				</a>
 			{/each}
 		</section>
 
-
 		<!-- Contact section -->
 		<section id="contact" transition:fly={{ y: 50, duration: 400, delay: 400 }} class="py-5">
-			<a
-				href="#contact"
-				class="relative text-3xl font-light py-2 group flex gap-1 items-center border-b-2 border-light/10"
+			<p
+				class="relative text-3xl font-light py-2 group flex gap-1 items-center border-b-2 border-light/10 font-serif"
 			>
-				<a
-					href="#contact"
-					class="absolute -left-7 text-light/30 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-					>#</a
-				>
-				<p>Contact</p>
-			</a>
+				Contact
+			</p>
 			<form class="mt-4 flex flex-col gap-4">
 				<div class="flex flex-col">
 					<label for="email" class="mb-1 text-sm opacity-70">Email</label>
@@ -174,7 +162,6 @@
 					Send Message
 				</button>
 			</form>
-			
 		</section>
-		{/if}
+	{/if}
 </main>
