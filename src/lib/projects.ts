@@ -11,7 +11,7 @@ export const projects: Project[] = [
     {
         title: 'Groople',
         dateRange: '2022 - Present',
-        description: 'Daily word game, 100s of users',
+        description: 'Word game peaking at 50 daily active users',
         image: 'groople.webp',
         logos: ["vercel.svg", "tailwind.png", "svelte.png", "openAI.png"],
         link: 'https://groople.xyz'
@@ -19,7 +19,7 @@ export const projects: Project[] = [
     {
         title: 'GrizzHacks',
         dateRange: 'Aug 2023 - Present',
-        description: '',
+        description: 'Initiated reboot, directed a team of 12, and handled all things development',
         image: 'grizzhacks7.webp',
         logos: ["vercel.svg", "tailwind.png", "svelte.png", "openAI.png"], 
         link: 'https://grizzhacks.org'
@@ -27,9 +27,10 @@ export const projects: Project[] = [
     {
         title: 'Scanbite',
         dateRange: '2022 - Present',
-        description: 'Scanbite is a tool for scanning and analyzing websites',
+        description: 'First place at Hack Dearborn',
         image: 'scanbite.webp',
         logos: ["vercel.svg", "tailwind.png", "svelte.png", "openAI.png"],
         link: 'https://scanbite.tech'
-    }
+    },
+
 ]

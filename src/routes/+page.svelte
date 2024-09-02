@@ -22,28 +22,34 @@
 	const { allPostInfo } = data as { allPostInfo: any[] };
 </script>
 
+<svelte:head>
+	<title>Joe Malatesta</title>
+	<meta name="description" content="Joe Malatesta's Portfolio" />
+</svelte:head>
+
 <main class="min-h-screen">
 	{#if ready}
-		<!-- About section -->
-		<section transition:fly={{ y: 50, duration: 400, delay: 0 }} class="py-5">
-			<h1 class="text-6xl font-semibold text-indigo-300 font-serif">Joe Malatesta</h1>
-
-			<div class="" transition:fly={{ y: 50, duration: 400, delay: 100 }}>
-				<p>
-					I'm a <span class="text-indigo-300">full stack developer</span> and
-					<span class="text-indigo-300">full time student</span> focused on constantly learning and improving
-					in all apsects of my life. Initally introduced by automation software in highschool, I've learned
-					many types of development languages and tools and continue to do so in work, school, and hobby
-					every single day.
-				</p>
+		<!-- Intro section -->
+		<section transition:fly={{ y: 50, duration: 600, delay: 0 }} class="py-10">
+			<!-- Silly phrase. change this at some point -->
+			<div class="pb-4">
+				<h1 class="text-5xl sm:text-7xl font-bold tracking-tight">Developing for fun. <span class="font-light">Thoroughly curious.</span></h1>
 			</div>
+			<p class="opacity-70 sm:text-base text-sm">
+				I'm a full stack developer and full time student focused on constant improvement in all aspects of my life. I've spent the last few summers teaching and building software, and the last few winters growing the next generation of engineers.
+				want to know even more <a
+					href="/about"
+					class="underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+					>about me?</a
+				>
+			</p>
 		</section>
 
 		<!-- Updates timeline -->
 		<section id="updates" transition:fly={{ y: 50, duration: 400, delay: 250 }} class="py-10">
 			<a
 				href="/updates"
-				class="text-3xl font-light py-2 group flex gap-1 items-center border-b-2 border-light/10 relative font-serif"
+				class="text-2xl sm:text-3xl font-extralight py-2 group flex gap-1 items-center border-b-2 border-light/10 relative"
 			>
 				Updates
 				<img
@@ -62,18 +68,18 @@
 			transition:fly={{ y: 50, duration: 400, delay: isNavigatingFrom ? 200 : 1000 }}
 			class="py-10"
 		>
-			<a
-				href="/projects"
-				class="text-3xl py-2 group flex gap-1 items-center border-b-2 border-light/10"
-			>
-				<p class="font-serif">Projects</p>
-				<img
-					src="icons/arrow-right.svg"
-					class="w-6 h-6 group-hover:translate-x-2 transition-all duration-300"
-					alt="arrow right"
-				/>
-			</a>
-			<div class="flex flex-col gap-6 pt-3">
+		<a
+		href="/projects"
+		class="text-2xl sm:text-3xl font-extralight py-2 group flex gap-1 items-center border-b-2 border-light/10 relative"
+	>
+		Projects
+		<img
+			src="icons/arrow-right.svg"
+			class="w-6 h-6 group-hover:translate-x-2 transition-all duration-300"
+			alt="arrow right"
+		/>
+	</a>
+			<div class="flex flex-col gap-6 sm:gap-2 pt-3">
 				{#each projects as project}
 					<ProjectCard {project} />
 				{/each}
@@ -81,10 +87,10 @@
 		</section>
 
 		<!-- Writing section -->
-		<section id="writing" transition:fly={{ y: 50, duration: 400, delay: 200 }} class="py-5">
+		<section id="writing" transition:fly={{ y: 50, duration: 400, delay: 200 }} class="py-10">
 			<a
 				href="/writing"
-				class="relative text-3xl font-light font-serif py-2 group flex gap-1 items-center border-b-2 border-light/10"
+				class="relative text-2xl sm:text-3xl font-extralight py-2 group flex gap-1 items-center border-b-2 border-light/10"
 			>
 				<p>Writing</p>
 				<img
@@ -128,40 +134,12 @@
 		</section>
 
 		<!-- Contact section -->
-		<section id="contact" transition:fly={{ y: 50, duration: 400, delay: 400 }} class="py-5">
-			<p
-				class="relative text-3xl font-light py-2 group flex gap-1 items-center border-b-2 border-light/10 font-serif"
-			>
-				Contact
+		<!-- <section id="contact" transition:fly={{ y: 50, duration: 400, delay: 400 }} class="py-10">
+			<h3 class="relative text-3xl font-extralight group flex items-center border-b-2 border-light/10 py-2">Let's chat</h3>
+			<p class="opacity-70 pt-1">
+				I wanna see what you're working on! Reach me at <a href="mailto:joemmalatesta@gmail.com" class="hover:opacity-100 transition-all duration-300">joemmalatesta@gmail.com</a> or <a href="https://twitter.com/_joemalatesta" class="hover:opacity-100 transition-all duration-300">_joemalatesta</a> on twitter.
+
 			</p>
-			<form class="mt-4 flex flex-col gap-4">
-				<div class="flex flex-col">
-					<label for="email" class="mb-1 text-sm opacity-70">Email</label>
-					<input
-						type="email"
-						id="email"
-						name="email"
-						required
-						class="bg-light/10 border border-light/30 rounded-md px-3 py-2 focus:outline-none focus:border-light/60 transition-colors"
-					/>
-				</div>
-				<div class="flex flex-col">
-					<label for="message" class="mb-1 text-sm opacity-70">Message</label>
-					<textarea
-						id="message"
-						name="message"
-						rows="4"
-						required
-						class="bg-light/10 border border-light/30 rounded-md px-3 py-2 focus:outline-none focus:border-light/60 transition-colors resize-none"
-					></textarea>
-				</div>
-				<button
-					type="submit"
-					class="bg-light text-dark font-semibold py-2 px-4 rounded-md hover:bg-light/90 transition-colors self-start"
-				>
-					Send Message
-				</button>
-			</form>
-		</section>
+		</section> -->
 	{/if}
 </main>

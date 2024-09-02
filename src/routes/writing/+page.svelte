@@ -16,10 +16,15 @@
 	);
 </script>
 
+<svelte:head>
+	<title>Writing - JMM</title>
+	<meta name="description" content="Infrequent recounts of times I got better at coding" />
+</svelte:head>
+
 <main class="min-h-screen">
 	{#if ready}
-		<div in:fly={{ y: 50, duration: 400, delay: 0 }} class="flex flex-col mb-5 gap-2">
-			<h1 class="text-6xl font-semibold">Writing</h1>
+		<div in:fly={{ y: 50, duration: 600, delay: 0 }} class="flex flex-col pt-10 mb-5 gap-2">
+			<h1 class="text-5xl sm:text-6xl font-semibold">Writing</h1>
 			<div class="flex flex-col gap-.05 sm:text-base text-sm">
 				<p class="opacity-70 ">Infrequent recounts of times I got better at coding</p>
 				<p class="opacity-70">

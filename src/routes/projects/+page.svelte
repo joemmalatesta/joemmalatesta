@@ -2,6 +2,7 @@
     import { projects } from '$lib/projects';
 	import { fly } from 'svelte/transition';
 	import ProjectCard from '../../components/ProjectCard.svelte';
+    import Header from '../../components/Heading.svelte';
     import { onMount } from 'svelte';
 let ready = false;
 	onMount(() => {
@@ -9,16 +10,18 @@ let ready = false;
 	});
 </script>
 
+<svelte:head>
+	<title>Projects - JMM</title>
+	<meta name="description" content="Blood, sweat, and carpal tunnel has led me to this" />
+</svelte:head>
 
 <main class="min-h-screen">
 {#if ready}
-<div class="flex flex-col gap-2 mb-5" in:fly={{ y: 50, duration: 400, delay: 0 }}>
-
-    <h1 class="text-6xl font-semibold">Projects</h1>
-    <p class="opacity-70">Blood, sweat, and carpal tunnel has led me to this</p>
+<div class="flex flex-col gap-2 mb-5" in:fly={{ y: 50, duration: 600, delay: 0 }}>
+    <Header title="Projects" description="Blood, sweat, and carpal tunnel has led me to this" />
 </div>
 
-<div class="flex flex-col gap-6" in:fly={{ y: 50, duration: 400, delay: 200 }}>
+<div class="flex flex-col gap-6 sm:gap-2" in:fly={{ y: 50, duration: 400, delay: 200 }}>
     {#each projects as project, index}
             <ProjectCard {project} />
     {/each}

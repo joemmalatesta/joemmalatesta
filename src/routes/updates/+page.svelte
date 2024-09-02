@@ -1,22 +1,24 @@
 <script lang="ts">
 	import { updates } from '$lib/timeline';
 	import Timeline from '../../components/Timeline.svelte';
-
+	import Header from '../../components/Heading.svelte';
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	let ready = false;
 	onMount(() => {
 		ready = true;
 	});
-
-	let activePicture = 0;
 </script>
+
+<svelte:head>
+	<title>Updates - JMM</title>
+	<meta name="description" content="Curious to see what I've been up to?" />
+</svelte:head>
 
 <main class="min-h-screen">
 	{#if ready}
-		<section transition:fly={{ y: 50, duration: 400, delay: 0 }}>
-			<h1 class="text-6xl font-semibold">Updates</h1>
-			<p class="opacity-70">Curious to see what I've been up to?</p>
+		<section transition:fly={{ y: 50, duration: 600, delay: 0 }}>
+			<Header title="Updates" description="Curious to see what I've been up to?" />
 		</section>
 
 		<section
@@ -25,7 +27,7 @@
 		>
 			<div class="w-full z-50 mx-auto justify-center items-center">
 				{#each updates as update, index}
-					<Timeline {update} {index} isLast={false} initialLoad={index === 0} />
+					<Timeline {update} {index} isLast={false} initialLoad={false} />
 				{/each}
 			</div>
 		</section>
