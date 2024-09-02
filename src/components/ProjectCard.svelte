@@ -12,9 +12,10 @@
 			<a href={project.link} target="_blank" class="gap-2 items-center text-xs opacity-40 transition-all sm:hidden flex">
 				<p class="">{project.dateRange}</p>
 				<p>/</p>
-				<p>{project.link.replace('https://', '')}</p>
-				<img src="/icons/outlink.svg" alt="External Link" class="w-4" />
-
+				<div class="flex gap-0.5 items-center">
+					<p>{project.link.replace('https://', '')}</p>
+					<img src="/icons/outlink.svg" alt="External Link" class="w-4" />
+				</div>
 			</a>
 
 		</div>
