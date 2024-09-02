@@ -80,7 +80,7 @@
 		/>
 	</a>
 			<div class="flex flex-col gap-6 sm:gap-2 pt-3">
-				{#each projects as project}
+				{#each projects.slice(0, 3) as project}
 					<ProjectCard {project} />
 				{/each}
 			</div>
