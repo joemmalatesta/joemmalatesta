@@ -3,7 +3,7 @@
 	export let project: Project;
 </script>
 
-<a href={project.link} target="_blank" class="group flex flex-col sm:flex-row w-full items-center hover:opacity-100 transition-all duration-300 sm:gap-8 sm:p-4 hover:bg-light/5 hover:ring-2 ring-light/10 rounded-lg">
+<a href={project.link} target="_blank" class="group flex flex-col sm:flex-row w-full items-center hover:opacity-100 transition-all duration-300 sm:gap-8 sm:p-4 sm:hover:bg-light/5 sm:hover:ring-2 ring-light/10 rounded-lg">
 	<!-- Details -->
 	<div class="w-full sm:w-1/2 flex flex-col gap-2 mb-4 sm:mb-0">
 		<p class="text-sm opacity-50 hidden sm:block">{project.dateRange}</p>
@@ -29,7 +29,7 @@
 
 	</div>
 	<!-- Image -->
-	<div class="relative transition-all duration-300 group w-full sm:w-1/2 group-hover:scale-105">
+	<div class="relative transition-all duration-300 group w-full sm:w-1/2 sm:group-hover:scale-105">
 		<img src="projects/{project.image}" alt={project.title} class="rounded-lg object-cover w-full" />
 		<!-- <img src="/logos/{project.logos[0]}" alt="" class="hidden sm:block group-hover:-translate-x-7 group-hover:translate-y-7 group-hover:opacity-100 group-hover:rotate-12 rotate-0 opacity-0 absolute w-8 md:w-10 transition-all duration-300" style="bottom: 0; left: 0">
 		<img src="/logos/{project.logos[1]}" alt="" class="hidden sm:block group-hover:translate-x-7 group-hover:translate-y-7 group-hover:opacity-100 group-hover:-rotate-12 rotate-0 opacity-0 absolute w-8 md:w-10 transition-all duration-300" style="bottom: 0; right: 0">
