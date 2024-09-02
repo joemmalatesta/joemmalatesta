@@ -35,5 +35,15 @@ export const inspirations: Inspiration[] = [
         type: "person",
         link: "https://x.com/rauchg"
     },
+    {
+        title: "Tailwind",
+        type: "tool",
+        link: "https://tailwindcss.com"
+    },
+    {
+        title: "SwellGarfo",
+        type: "website",
+        link: "https://gar.fo"
+    }
     
 ]

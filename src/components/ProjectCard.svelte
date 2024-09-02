@@ -20,7 +20,7 @@
 		</div>
 		<p class="text-sm md:text-base">{project.description}</p>
 
-			<a href={project.link} target="_blank" class="hidden sm:flex gap-1 items-center opacity-50 transition-all text-sm">
+			<a href={project.link} target="_blank" class="hidden sm:flex gap-0.5 items-center opacity-50 transition-all text-sm">
 				<p class="font-light">{project.link.replace('https://', '')}</p>
 				<img src="/icons/outlink.svg" alt="External Link" class="w-4" />
 

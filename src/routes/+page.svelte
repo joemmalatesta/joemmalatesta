@@ -105,7 +105,7 @@
 					target={post.external ? '_blank' : ''}
 					href={post.external ? post.url : `/writing/${post.slug}/`}
 				>
-					<div class="flex gap-2 items-center w-5/6">
+					<div class="flex gap-1 items-center w-5/6">
 						<h4 class="text-base md:text-xl truncate">{post.title}</h4>
 						{#if post.external}
 							<img src="icons/outlink.svg" class="w-4 lg:w-5 h-4 lg:h-5" alt="external link" />
