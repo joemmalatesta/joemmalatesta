@@ -26,7 +26,7 @@ export const projects: Project[] = [
 	},
 	{
 		title: 'Scanbite',
-		dateRange: 'Oct 2023: made in 24 hours',
+		dateRange: 'Oct 2023',
 		description: 'First place at Hack Dearborn and 225k views on TikTok',
 		image: 'scanbite.webp',
 		logos: ['vercel.svg', 'tailwind.png', 'svelte.png', 'openAI.png'],

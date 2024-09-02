@@ -21,7 +21,7 @@ let ready = false;
     <Header title="Projects" description="Blood, sweat, and carpal tunnel has led me to this" />
 </div>
 
-<div class="flex flex-col gap-6 sm:gap-2" in:fly={{ y: 50, duration: 400, delay: 200 }}>
+<div class="flex flex-col gap-10 sm:gap-2" in:fly={{ y: 50, duration: 400, delay: 200 }}>
     {#each projects as project, index}
             <ProjectCard {project} />
     {/each}
