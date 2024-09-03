@@ -21,8 +21,8 @@
 	>
 		<div in:fly={{ x: 50, duration: initialLoad ? 300 : 200, delay: initialLoad ? (index + 1)* 150 + 300 : (index+1) * 100 + 200 }}>
 			<time
-				class="text-xs mb-2 text-light opacity-60 font-medium"
-			>{update.date}</time>
+				class="text-xs mb-2 text-light opacity-60 font-medium flex items-center gap-1"
+			>{update.date} {#if update.upcoming} <img src="/icons/countdown.svg" alt="Upcoming" class="w-4 h-4 inline-block" />{/if}</time>
                 <div class="text-lg sm:text-xl font-semibold">{update.title}</div>
                 <!-- Content -->
                  <p class="text-sm opacity-60">{update.content}</p>
