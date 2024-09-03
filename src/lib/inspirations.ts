@@ -42,8 +42,13 @@ export const inspirations: Inspiration[] = [
     },
     {
         title: "SwellGarfo",
-        type: "website",
+        type: "Person",
         link: "https://gar.fo"
+    },
+    {
+        title: "Tree",
+        type: "website",
+        link: "https://tree.nathanfriend.io/"
     }
     
 ]

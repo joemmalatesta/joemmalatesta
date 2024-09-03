@@ -64,7 +64,7 @@
 
 
 
-<div class="relative w-48 h-64 sm:w-72 sm:h-96">
+<div class="relative w-44 h-60 lg:w-72 lg:h-96">
 	<!-- Main picture. stays centered -->
 	<button
 		class="cursor-default absolute inset-0 rounded-lg z-50 drop-shadow-lg"

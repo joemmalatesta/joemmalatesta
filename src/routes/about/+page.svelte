@@ -24,10 +24,15 @@
 
 		<section
 			transition:fly={{ y: 50, duration: 400, delay: 200 }}
-			class="flex justify-between relative w-full gap-5 py-32"
+			class="flex flex-col md:flex-row justify-between relative w-full md:gap-24 gap-12 py-24 md:py-32"
 		>
-			<div class="w-full z-50 mx-auto flex justify-center items-center">
+			<div class="z-50 mx-auto flex justify-center items-center lg:-translate-x-20">
 				<PhotoBook bind:activePicture />
+			</div>
+			<div class=" flex flex-col justify-around sm:w-1/2 w-full">
+				<p>Hey, I'm Joe. I build things that I find interesting </p>
+				<p>I got introduced to programming when I was botting shoe releases in highschool, but it wasn't until Sophomore year of college I really started enjoying building</p>
+				<p>meow</p>
 			</div>
 		</section>
 
