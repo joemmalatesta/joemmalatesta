@@ -16,29 +16,35 @@
 	});
 
 	const locations: {
+		index: number;
 		location: string;
 		img: string;
 	}[] = [
 		{
+			index: 0,
 			location: 'San Francisco, CA',
 			img: '/me.webp'
 		},
         {
+			index: 1,
 			location: 'Hawaii, HI',
 			img: '/hawaii.webp'
 		},
 		{
+			index: 2,
 			location: 'Rochester Hills, MI',
 			img: '/gh me.webp'
 		},
 		
 		{
+			index: 3,
 			location: 'Sedona, AZ',
 			img: '/arizona.webp'
 		}
 	];
 
     export let activePicture = 0;
+	$: activePicture = locations[0].index;
 	let switchAnimation: boolean = false;
     async function switchPicture(index: number) {
         activePicture = index;

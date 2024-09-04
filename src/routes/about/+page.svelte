@@ -2,13 +2,29 @@
 	import PhotoBook from '../../components/PhotoBook.svelte';
 	import Header from '../../components/Heading.svelte';
 	import { onMount } from 'svelte';
-	import { fly } from 'svelte/transition';
+	import {fade, fly, slide } from 'svelte/transition';
+	import { bookmarks } from '../../lib/bookmarks';
 	let ready = false;
 	onMount(() => {
 		ready = true;
 	});
 
 	let activePicture = 0;
+	let pictureText: string;
+	$: switch (activePicture) {
+		case 0:
+			pictureText = 'spent a summer exploring San Francisco.';
+			break;
+		case 1:
+			pictureText = 'have been practicing hand stands for the last 2 years.';
+			break;
+		case 2:
+			pictureText = 'rebooted and ran my schools hackathon from 2023-2025.';
+			break;
+		case 3:
+			pictureText = 'want to see all the world has to offer.';
+			break;
+	}
 </script>
 
 <svelte:head>
@@ -29,18 +45,34 @@
 			<div class="z-50 mx-auto flex justify-center items-center lg:-translate-x-20">
 				<PhotoBook bind:activePicture />
 			</div>
-			<div class=" flex flex-col justify-around sm:w-1/2 w-full">
-				<p>Hey, I'm Joe. I build things that I find interesting </p>
-				<p>I got introduced to programming when I was botting shoe releases in highschool, but it wasn't until Sophomore year of college I really started enjoying building</p>
-				<p>meow</p>
+			<div class="text-[.95rem] gap-4 sm:gap-6 pt-5 md:pt-0 flex flex-col sm:w-1/2 w-full ">
+				Hey, I'm Joe 😸
+				<p>I'm a passionate developer and aspiring designer interested in simplifying user interactions and building communities of engineers.
+				</p>
+				<p>
+					As much as I love rotting in front of a screen, my childhood was 100% outdoors and you'll still catch me traveling, surfing, and playing tennis any chance I get.
+				</p>
+				<p>
+					Oh yeah, I also {#key activePicture}<span out:fade={{ duration: 200}} in:fade={{delay: 300, duration: 300}} class=""
+							>{pictureText}</span
+						>{/key}
+				</p>
 			</div>
 		</section>
 
 		<!-- Tools, Design, Tech, Portfolio Inspiration -->
 		<section transition:fly={{ y: 50, duration: 400, delay: 400 }}>
 			<div class="gap-1">
-				<h3 class="text-4xl">Inspiration</h3>
-				<p class="opacity-70">What I wish I made and who I wish I was</p>
+				<h3 class="text-4xl">Bookmarks</h3>
+				<p class="opacity-70">Useful tools and inspiring people</p>
+				<div class="flex flex-col py-2">
+
+					{#each bookmarks as bookmark}
+					<a href={bookmark.link} target="_blank" class="hover:bg-light/5 px-3 py-2 rounded-lg items-center duration-300 flex justify-between">
+						{bookmark.title} <span class="opacity-50 text-sm">{bookmark.link?.replace(/^https?:\/\//, '')} <img src="icons/outlink.svg" alt="outlink" class="w-4 h-4 inline"></span>
+					</a>
+					{/each}
+				</div>
 			</div>
 		</section>
 	{/if}

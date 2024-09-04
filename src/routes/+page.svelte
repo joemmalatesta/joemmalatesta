@@ -134,12 +134,12 @@
 		</section>
 
 		<!-- Contact section -->
-		<!-- <section id="contact" transition:fly={{ y: 50, duration: 400, delay: 400 }} class="py-10">
+		<section id="contact" transition:fly={{ y: 50, duration: 400, delay: 400 }} class="py-10">
 			<h3 class="relative text-3xl font-extralight group flex items-center border-b-2 border-light/10 py-2">Let's chat</h3>
 			<p class="opacity-70 pt-1">
-				I wanna see what you're working on! Reach me at <a href="mailto:joemmalatesta@gmail.com" class="hover:opacity-100 transition-all duration-300">joemmalatesta@gmail.com</a> or <a href="https://twitter.com/_joemalatesta" class="hover:opacity-100 transition-all duration-300">_joemalatesta</a> on twitter.
+				I wanna see what you're working on! Reach me at <a href="mailto:joemmalatesta@gmail.com" class="underline underline-offset-2 hover:underline-offset-4 transition-all duration-300">joemmalatesta@gmail.com</a> or any of the socials below. P.S - I don't want your coffee... Let's go do something outdoors.
 
 			</p>
-		</section> -->
+		</section>
 	{/if}
 </main>

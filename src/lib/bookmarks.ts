@@ -1,10 +1,10 @@
-type Inspiration = {
+type Bookmark = {
     title: string; // Tool, website, design, person, quote
     type: string;
     link?: string;
 }
 
-export const inspirations: Inspiration[] = [
+export const bookmarks: Bookmark[] = [
     {
         title: "Rich Harris",
         type: "person",
