@@ -3,7 +3,7 @@
 	import { fly } from 'svelte/transition';
 	let ready = false;
 	let innerWidth: number;
-	let smallScreen: boolean = false;
+	export let smallScreen: boolean = false;
 	let hover: boolean = false;
 	
 	onMount(async () => {

@@ -4,7 +4,7 @@ export type TimelineItem = {
     content: string;
     upcoming?: boolean;
 };
-
+// TODO: Add GC in RL
 export let updates: TimelineItem[] = [
     {
         title: "GrizzHacks 7",
