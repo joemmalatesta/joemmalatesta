@@ -45,7 +45,7 @@
 			<div class="z-50 mx-auto flex justify-center items-center lg:-translate-x-20">
 				<PhotoBook bind:activePicture />
 			</div>
-			<div class="text-[.95rem] gap-4 sm:gap-6 pt-5 md:pt-0 flex flex-col sm:w-1/2 w-full ">
+			<div class="opacity-90 text-[.95rem] gap-4 sm:gap-6 pt-5 md:pt-0 flex flex-col sm:w-1/2 w-full ">
 				Hey, I'm Joe 😸
 				<p>I'm a passionate developer and aspiring designer interested in simplifying user interactions and building communities of engineers.
 				</p>
@@ -68,7 +68,7 @@
 				<div class="flex flex-col py-2">
 
 					{#each bookmarks as bookmark}
-					<a href={bookmark.link} target="_blank" class="hover:bg-light/5 px-3 py-2 rounded-lg items-center duration-300 flex justify-between">
+					<a href={bookmark.link} target="_blank" class="opacity-90 hover:opacity-100 hover:bg-light/5 px-3 py-2 rounded-lg items-center duration-300 flex justify-between">
 						{bookmark.title} <span class="opacity-50 text-sm">{bookmark.link?.replace(/^https?:\/\//, '')} <img src="icons/outlink.svg" alt="outlink" class="w-4 h-4 inline"></span>
 					</a>
 					{/each}
