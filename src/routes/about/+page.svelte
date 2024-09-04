@@ -53,7 +53,7 @@
 					As much as I love rotting in front of a screen, my childhood was 100% outdoors and you'll still catch me traveling, surfing, and playing tennis any chance I get.
 				</p>
 				<p>
-					Oh yeah, I also {#key activePicture}<span out:fade={{ duration: 200}} in:fade={{delay: 300, duration: 300}} class=""
+					Oh, and I also {#key activePicture}<span out:fade={{ duration: 200}} in:fade={{delay: 300, duration: 300}} class=""
 							>{pictureText}</span
 						>{/key}
 				</p>
