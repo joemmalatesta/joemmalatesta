@@ -62,7 +62,7 @@
 				<p>
 					Oh, and I also {#key activePicture}<span
 							out:fade={{ duration: 200 }}
-							in:fade={{ delay: smallScreen ? 500 : 300, duration: 300 }}
+							in:fade={{ delay: smallScreen ? 400 : 300, duration: 200 }}
 							class="">{pictureText}</span
 						>{/key}
 				</p>

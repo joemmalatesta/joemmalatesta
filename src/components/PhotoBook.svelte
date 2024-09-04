@@ -47,9 +47,10 @@
 	$: activePicture = locations[0].index;
 	let switchAnimation: boolean = false;
     async function switchPicture(index: number) {
-        activePicture = index;
         switchAnimation = true;
+		activePicture = index;
         await sleep(200);
+		
         let temp = locations[0];
         locations[0] = locations[index];
         locations[index] = temp;

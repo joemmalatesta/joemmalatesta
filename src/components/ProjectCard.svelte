@@ -29,7 +29,7 @@
 
 	</div>
 	<!-- Image -->
-	<div class="relative transition-all duration-300 group w-full sm:w-1/2 sm:group-hover:scale-105">
+	<div class="relative transition-all duration-300 group w-full sm:w-1/2">
 		<img src="projects/{project.image}" alt={project.title} class="rounded-lg object-cover w-full" />
 		<!-- <img src="/logos/{project.logos[0]}" alt="" class="hidden sm:block group-hover:-translate-x-7 group-hover:translate-y-7 group-hover:opacity-100 group-hover:rotate-12 rotate-0 opacity-0 absolute w-8 md:w-10 transition-all duration-300" style="bottom: 0; left: 0">
 		<img src="/logos/{project.logos[1]}" alt="" class="hidden sm:block group-hover:translate-x-7 group-hover:translate-y-7 group-hover:opacity-100 group-hover:-rotate-12 rotate-0 opacity-0 absolute w-8 md:w-10 transition-all duration-300" style="bottom: 0; right: 0">
