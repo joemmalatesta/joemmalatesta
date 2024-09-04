@@ -47,7 +47,7 @@
 			</div>
 			<div class="opacity-90 text-[.95rem] gap-4 sm:gap-6 pt-5 md:pt-0 flex flex-col sm:w-1/2 w-full ">
 				Hey, I'm Joe 😸
-				<p>I'm a passionate developer and aspiring designer interested in simplifying user interactions and building communities of engineers.
+				<p>I'm a developer and aspiring designer passionate in simplifying user interactions and building communities of engineers.
 				</p>
 				<p>
 					As much as I love rotting in front of a screen, my childhood was 100% outdoors and you'll still catch me traveling, surfing, and playing tennis any chance I get.
@@ -63,7 +63,7 @@
 		<!-- Tools, Design, Tech, Portfolio Inspiration -->
 		<section transition:fly={{ y: 50, duration: 400, delay: 400 }}>
 			<div class="gap-1">
-				<h3 class="text-4xl">Bookmarks</h3>
+				<h3 class="text-4xl font-semibold">Bookmarks</h3>
 				<p class="opacity-70">Useful tools and inspiring people</p>
 				<div class="flex flex-col py-2">
 
