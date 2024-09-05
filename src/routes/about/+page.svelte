@@ -29,6 +29,31 @@
 
 	// Bookmark section
 	let bookmarkType = 'people';
+
+
+	// Extras section
+	type Extras = {
+		title: string;
+		href: string;
+		image: string;
+	}
+	let extras: Extras[] = [
+		{
+			title: 'Film Gallery',
+			image: 'photography/camerastore.webp',
+			href: 'film'
+		},
+		// {
+		// 	title: 'Fitness',
+		// 	href: '/fitness',
+		// 	image: 'fitness'
+		// },
+		// {
+		// 	title: 'Design',
+		// 	href: '/design',
+		// 	image: 'design'
+		// }
+	]
 </script>
 
 <svelte:head>
@@ -121,16 +146,22 @@
 
 		<!-- SECTION FOR FILM PHOTOGRAPHY -->
 		 <!-- todo: update with new scans when done -->
+		
 		<section class="gap-1 py-10" transition:fly={{ y: 50, duration: 400, delay: 600 }}>
-			<h3 class="text-4xl font-semibold">Film Gallery</h3>
-			<p class="opacity-70">I've got a film camera. I take pictures when I remember it.</p>
-			<div class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full py-2">
-				{#each ['birthday', 'brown', 'camerastore', 'concert', 'dancy', 'fishpic', 'grossy', 'mother', 'summercamp'] as picture}
-					<img src="photography/{picture}.webp" alt="film" class="w-full h-40 object-cover rounded-lg ring-2 ring-light/10" />
+			<h3 class="text-4xl font-semibold">Extras</h3>
+			<p class="opacity-70">Check out these other things I do (more coming soon)</p>
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full py-2">
+				{#each extras as extra}
+					<a href={extra.href} class="rounded-lg flex realtive w-full relative sm:h-60 h-48 sm:ring-2 ring-light/10 group" >
+						<div class="absolute inset-0 overflow-hidden rounded-lg">
+							<img src={extra.image} alt={extra.title} class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110" />
+						</div>
+						<div class="w-full h-12 absolute bottom-0 bg-gradient-to-t from-dark via-dark/40 to-transparent rounded-b-lg flex items-center justify-center">
+							<h5 class="text-lg font-semibold">{extra.title}</h5>
+						</div>
+					</a>
 				{/each}
 			</div>
 		</section>
-		<!-- ADD SECTION FOR ANILIST -->
-		 <!-- HELL NAH DONT DO THAT -->
 	{/if}
 </main>
