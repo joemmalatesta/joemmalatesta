@@ -36,7 +36,7 @@
 	<meta name="description" content="A closer look at who I am and aspire to be" />
 </svelte:head>
 
-<main class="min-h-screen">
+<main class="min-h-screen overflow-x-hidden sm:overflow-visible	">
 	{#if ready}
 		<section transition:fly={{ y: 50, duration: 600, delay: 0 }}>
 			<Header title="About" description="A closer look at who I am and aspire to be" />
@@ -44,7 +44,7 @@
 
 		<section
 			transition:fly={{ y: 50, duration: 400, delay: 200 }}
-			class="flex flex-col md:flex-row justify-between relative w-full md:gap-24 gap-12 py-24 md:py-32"
+			class="flex flex-col md:flex-row justify-between relative w-full md:gap-24 gap-12 pt-24 md:pt-32 pb-10"
 		>
 			<div class="z-50 mx-auto flex justify-center items-center lg:-translate-x-20">
 				<PhotoBook bind:activePicture bind:smallScreen />
@@ -72,7 +72,7 @@
 		</section>
 
 		<!-- Tools, Design, Tech, Portfolio Inspiration -->
-		<section transition:fly={{ y: 50, duration: 400, delay: 400 }}>
+		<section class="py-10" transition:fly={{ y: 50, duration: 400, delay: 400 }}>
 			<div class="gap-1">
 				<h3 class="text-4xl font-semibold">Bookmarks</h3>
 				<p class="opacity-70">Useful tools and inspiring people</p>
@@ -119,11 +119,18 @@
 			</div>
 		</section>
 
-		<!-- ADD SECTION FOR FILM PHOTOGRAPHY -->
+		<!-- SECTION FOR FILM PHOTOGRAPHY -->
+		 <!-- todo: update with new scans when done -->
 		<section class="gap-1 py-10" transition:fly={{ y: 50, duration: 400, delay: 600 }}>
 			<h3 class="text-4xl font-semibold">Film Gallery</h3>
 			<p class="opacity-70">I've got a film camera. I take pictures when I remember it.</p>
+			<div class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full py-2">
+				{#each ['birthday', 'brown', 'camerastore', 'concert', 'dancy', 'fishpic', 'grossy', 'mother', 'summercamp'] as picture}
+					<img src="photography/{picture}.webp" alt="film" class="w-full h-40 object-cover rounded-lg ring-2 ring-light/10" />
+				{/each}
+			</div>
 		</section>
 		<!-- ADD SECTION FOR ANILIST -->
+		 <!-- HELL NAH DONT DO THAT -->
 	{/if}
 </main>
