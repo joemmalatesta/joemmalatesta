@@ -8,67 +8,73 @@ type Bookmark = {
 export const bookmarks: Bookmark[] = [
     {
         title: "Rich Harris",
-        type: "person",
+        type: "people",
         link: "https://x.com/Rich_Harris",
         image: "user.svg"
     },
     {
+        title: "Kennan Davison",
+        type: "people",
+        link: "https://x.com/kennandavison",
+        image: "user.svg"
+    },
+    {
         title: "Svelte",
-        type: "tool",
+        type: "tools",
         link: "https://svelte.dev",
         image: "svelte.png"
     },
     {
         title: "Anthony Teo",
-        type: "person",
+        type: "people",
         link: "https://anthonyteo.com",
         image: "anthonyteo.png"
     },
     {
         title: "Shots.so",
-        type: "website",
+        type: "tools",
         link: "https://shots.so",
         image: "shots.png"
     },
     {
         title: "Icons",
-        type: "tool",
+        type: "tools",
         link: "https://phosphoricons.com/",
         image: "phosphor.png"
     },
     {
         title: "Guillermo Rauch",
-        type: "person",
+        type: "people",
         link: "https://x.com/rauchg",
         image: "user.svg"
     },
     {
         title: "Tailwind",
-        type: "tool",
+        type: "tools",
         link: "https://tailwindcss.com",
         image: "tailwind.png"
     },
     {
         title: "SwellGarfo",
-        type: "person",
+        type: "people",
         link: "https://gar.fo",
         image: "user.svg"
     },
     {
         title: "Tree",
-        type: "tool",
+        type: "tools",
         link: "https://tree.nathanfriend.io/",
         image: "tree.png"
     },
     {
         title: "Screen Studio",
-        type: "tool",
+        type: "tools",
         link: "https://screen.studio",
         image: "screenstudio.png"
     },
     {
         title: "Notion",
-        type: "tool",
+        type: "tools",
         link: "https://notion.so",
         image: "notion.png"
     },

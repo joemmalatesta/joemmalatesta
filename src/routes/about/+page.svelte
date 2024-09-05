@@ -9,7 +9,6 @@
 		ready = true;
 	});
 
-
 	let smallScreen: boolean;
 	let activePicture = 0;
 	let pictureText: string;
@@ -27,6 +26,9 @@
 			pictureText = 'want to see all the world has to offer.';
 			break;
 	}
+
+	// Bookmark section
+	let bookmarkType = 'people';
 </script>
 
 <svelte:head>
@@ -74,29 +76,54 @@
 			<div class="gap-1">
 				<h3 class="text-4xl font-semibold">Bookmarks</h3>
 				<p class="opacity-70">Useful tools and inspiring people</p>
-				<div class="flex flex-col py-2">
-					{#each bookmarks as bookmark}
-						<a
-							href={bookmark.link}
-							target="_blank"
-							class="opacity-90 hover:opacity-100 hover:bg-light/5 px-3 py-2 rounded-lg items-center duration-300 flex justify-between"
+				<div class="gap-2 flex py-2">
+					{#each ['people', 'tools', 'websites'] as type}
+						<button
+							on:click={() => {
+								bookmarkType = type;
+							}}
+							class="text-sm opacity-50 hover:opacity-100 rounded p-1 px-3 bg-light/10 {bookmarkType === type ? 'opacity-100' : ''}"
+							>{type}</button
 						>
-							<div class="flex gap-1 items-center text-lg">
-								<img src="/bookmarks/{bookmark.image}" alt={bookmark.title} class="w-6 h-6 inline" />
-								{bookmark.title}
-							</div>
-							<div class="opacity-50 text-sm">
-								{bookmark.link?.replace(/^https?:\/\//, '')}
-								<img src="icons/outlink.svg" alt="outlink" class="w-4 h-4 inline" />
-							</div>
-						</a>
 					{/each}
 				</div>
+
+				{#key bookmarkType}
+					<div
+						class="flex flex-col py-2"
+					>
+						{#each bookmarks as bookmark}
+							{#if bookmark.type === bookmarkType}
+								<a
+									href={bookmark.link}
+									target="_blank"
+									class="opacity-90 hover:opacity-100 hover:bg-light/5 sm:px-3 py-2 rounded-lg items-center duration-300 flex justify-between"
+								>
+									<div class="flex gap-1 items-center text-base sm:text-lg">
+										<img
+											src="/bookmarks/{bookmark.image}"
+											alt={bookmark.title}
+											class="w-5 h-5 sm:w-6 sm:h-6 inline"
+										/>
+										{bookmark.title}
+									</div>
+									<div class="opacity-50 text-sm">
+										{bookmark.link?.replace(/^https?:\/\//, '')}
+										<img src="icons/outlink.svg" alt="outlink" class="w-4 h-4 inline" />
+									</div>
+								</a>
+							{/if}
+						{/each}
+					</div>
+				{/key}
 			</div>
 		</section>
 
 		<!-- ADD SECTION FOR FILM PHOTOGRAPHY -->
-		 <!-- ADD SECTION FOR ANILIST -->
-		  <!-- ADD SECTION FOR RANDOM STUFF (Rocket League) -->
+		<section class="gap-1 py-10" transition:fly={{ y: 50, duration: 400, delay: 600 }}>
+			<h3 class="text-4xl font-semibold">Film Gallery</h3>
+			<p class="opacity-70">I've got a film camera. I take pictures when I remember it.</p>
+		</section>
+		<!-- ADD SECTION FOR ANILIST -->
 	{/if}
 </main>

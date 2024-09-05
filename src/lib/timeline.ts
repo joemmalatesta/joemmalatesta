@@ -54,6 +54,11 @@ export let updates: TimelineItem[] = [
         content: "Teaching k-12 kids to code at my schools summer camp. Also my introduction to web development"
     },
     {
+        title: "Hit Grand Champ in Rocket League",
+        date: "April 2022",
+        content: "Keyboard player btw."
+    },
+    {
         title: "Started at Oakland University",
         date: "Sept 2020",
         content: "Shoulda been ME major took AP Physics too soon and transitioned to CS"
