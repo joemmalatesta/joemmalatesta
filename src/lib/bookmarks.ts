@@ -25,6 +25,12 @@ export const bookmarks: Bookmark[] = [
         image: "svelte.png"
     },
     {
+        title: "Hyperplexed",
+        type: "people",
+        link: "https://www.youtube.com/@Hyperplexed",
+        image: "hyperplexed.png"
+    },
+    {
         title: "Anthony Teo",
         type: "people",
         link: "https://anthonyteo.com",
