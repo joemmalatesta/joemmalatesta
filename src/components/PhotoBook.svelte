@@ -124,5 +124,9 @@
 		<img src={locations[3].img} class="rounded-lg absolute inset-0 w-full h-full object-cover" alt={locations[3].location} />
         <div class="absolute inset-0 bg-dark/20 group-hover:opacity-0" />
 	</button>
-    <p class="sm:text-base text-sm w-full text-center opacity-75 absolute -bottom-10 left-1/2 transform -translate-x-1/2"><img src="icons/map-pin.svg" alt="location" class="w-4 h-4 inline-block"> {locations[0].location}</p>
+	<div class="flex items-center justify-center gap-1 w-full text-center opacity-75 absolute -bottom-10 left-1/2 transform -translate-x-1/2">
+		<img src="icons/map-pin.svg" alt="location" class="w-4 h-4 inline-block">
+		<p class="sm:text-base text-sm ">{locations[0].location}</p>
+	</div>
+    
 </div>
