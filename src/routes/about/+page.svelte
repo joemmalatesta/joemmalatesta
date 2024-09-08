@@ -102,12 +102,12 @@
 				<h3 class="text-4xl font-semibold">Bookmarks</h3>
 				<p class="opacity-70">Useful tools and inspiring people</p>
 				<div class="gap-2 flex py-2">
-					{#each ['people', 'tools', 'websites'] as type}
+					{#each ['people', 'tools'] as type}
 						<button
 							on:click={() => {
 								bookmarkType = type;
 							}}
-							class="text-sm opacity-50 hover:opacity-100 rounded p-1 px-3 bg-light/10 {bookmarkType === type ? 'opacity-100' : ''}"
+							class="text-sm hover:opacity-100 rounded p-1 px-3 bg-light/10 {bookmarkType === type ? 'opacity-100' : ' opacity-60'}"
 							>{type}</button
 						>
 					{/each}
@@ -124,17 +124,19 @@
 									target="_blank"
 									class="opacity-90 hover:opacity-100 hover:bg-light/5 sm:px-3 py-2 rounded-lg items-center duration-300 flex justify-between"
 								>
-									<div class="flex gap-1 items-center text-base sm:text-lg">
+									<div class="w-2/3 flex gap-1 items-center text-base sm:text-lg">
 										<img
 											src="/bookmarks/{bookmark.image}"
 											alt={bookmark.title}
-											class="w-5 h-5 sm:w-6 sm:h-6 inline"
+											class="w-5 h-5 sm:w-6 sm:h-6 inline rounded-full"
 										/>
 										{bookmark.title}
 									</div>
-									<div class="opacity-50 text-sm">
-										{bookmark.link?.replace(/^https?:\/\//, '')}
-										<img src="icons/outlink.svg" alt="outlink" class="w-4 h-4 inline" />
+									<div class="w-1/3 opacity-50 text-sm flex justify-end">
+										<div class="truncate">
+											{bookmark.link?.replace(/^https?:\/\//, '')}
+											<img src="icons/outlink.svg" alt="outlink" class="w-4 h-4 inline" />
+										</div>
 									</div>
 								</a>
 							{/if}

@@ -10,13 +10,13 @@ export const bookmarks: Bookmark[] = [
         title: "Rich Harris",
         type: "people",
         link: "https://x.com/Rich_Harris",
-        image: "user.svg"
+        image: "richharris.webp"
     },
     {
         title: "Kennan Davison",
         type: "people",
         link: "https://x.com/kennandavison",
-        image: "user.svg"
+        image: "kennandavison.webp"
     },
     {
         title: "Svelte",
@@ -27,8 +27,8 @@ export const bookmarks: Bookmark[] = [
     {
         title: "Hyperplexed",
         type: "people",
-        link: "https://www.youtube.com/@Hyperplexed",
-        image: "user.svg"
+        link: "https://youtube.com/@Hyperplexed",
+        image: "hyperplexed.webp"
     },
     {
         title: "Anthony Teo",
@@ -52,7 +52,7 @@ export const bookmarks: Bookmark[] = [
         title: "Guillermo Rauch",
         type: "people",
         link: "https://x.com/rauchg",
-        image: "user.svg"
+        image: "rauchg.webp"
     },
     {
         title: "Tailwind",
