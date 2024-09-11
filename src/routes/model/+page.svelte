@@ -47,6 +47,7 @@
 	function clearCanvas() {
 		ctx.fillStyle = '#2a2a2a';
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
+		hasDrawn = false;
 	}
 
 	async function getImageData(): Promise<string> {
