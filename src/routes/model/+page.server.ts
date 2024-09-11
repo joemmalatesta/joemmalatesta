@@ -73,7 +73,6 @@ async function fetchVotableData(cookies: Cookies): Promise<trainingData[]> {
 		const votedImages = cookies.getAll()
 			.filter((cookie) => cookie.name.startsWith('voted_'))
 			.map((cookie) => cookie.name.replace('voted_', ''));
-		console.log('Voted images:', votedImages);
 		// Filter out the images that the user has already voted on
 		const filteredData = serializedData.filter((data) => !votedImages.includes(data.id));
 
