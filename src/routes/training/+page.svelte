@@ -25,10 +25,10 @@
 			<div in:fly={{ y: 50, duration: 600, delay: 200 }}>
 				<DrawingCanvas />
 			</div>
-			<section class="mt-10">
+			<section class="mt-10" in:fly={{ y: 50, duration: 600, delay: 400 }}>
 				<h3 class="text-4xl font-semibold">Vote</h3>
 				<p class="opacity-70">Help decide what my model should be trained on</p>
-				<div class="mt-5 grid grid-cols-3 gap-4" in:fly={{ y: 50, duration: 600, delay: 400 }}>
+				<div class="mt-5 grid grid-cols-3 gap-4" >
 					{#each data.undecidedData as item}
 						<VoteCard data={item} />
 					{:else}
