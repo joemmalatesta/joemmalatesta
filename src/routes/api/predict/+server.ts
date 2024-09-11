@@ -4,6 +4,9 @@
 
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import { put } from "@vercel/blob";
+import { BLOB_READ_WRITE_TOKEN } from "$env/static/private";
+
 
 
 export const POST: RequestHandler = async ({ request }) => {
@@ -15,7 +18,16 @@ export const POST: RequestHandler = async ({ request }) => {
     // Decode the base64 image
     const base64Data = image.replace(/^data:image\/\w+;base64,/, "");
     const buffer = Buffer.from(base64Data, 'base64');
-    // buffer is image in usable format.
+    const imageSize = buffer.length;
+    console.log(`Image size: ${imageSize} bytes`);
+    const { url } = await put(`${label}.png`, buffer, { 
+        token: BLOB_READ_WRITE_TOKEN, 
+        access: "public",
+        contentType: "image/png"
+    });
+    console.log("URL: ", url);
+
+    // imageData is now a string containing the decoded image data
 
    
     return json({
