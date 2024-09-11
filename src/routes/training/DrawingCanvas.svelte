@@ -1,10 +1,8 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
 
 	let canvas: HTMLCanvasElement;
 	let ctx: CanvasRenderingContext2D;
-	let predictionDiv: HTMLDivElement;
 	let isDrawing = false;
     let hasDrawn = false;
 
@@ -48,6 +46,7 @@
 		ctx.fillStyle = '#2a2a2a';
 		ctx.fillRect(0, 0, canvas.width, canvas.height);
 		hasDrawn = false;
+		label = -1;
 	}
 
 	async function getImageData(): Promise<string> {
@@ -72,7 +71,7 @@
 			selectLabelError = true;
 			return;
 		}
-
+		//both have been checked, we can send data.
 		try {
 			const response = await fetch('/api/predict', {
 				method: 'POST',
@@ -87,23 +86,20 @@
 			}
 
 			const result = await response.json();
-			predictionDiv.textContent = `Prediction: ${result.prediction}`;
+            console.log(result);
 		} catch (error) {
-			console.error('Error during prediction:', error);
-			predictionDiv.textContent = 'Error: Failed to get prediction';
+			console.error('Prediction error:', error);
 		}
 	}
 </script>
 
-<div class="flex flex-col items-center">
-	<h1 class="text-2xl font-bold mb-4">Model</h1>
-	<!-- svelte-ignore a11y-mouse-events-have-key-events -->
-	<div class="flex gap-2 items-center justify-center">
+<div class="flex gap-2 items-center">
+		<!-- svelte-ignore a11y-mouse-events-have-key-events -->
 		<canvas
 			bind:this={canvas}
 			width="280"
 			height="280"
-			class="rounded-md ring-2 ring-light/20"
+			class="rounded-md ring-2 ring-light/20 cursor-crosshair"
 			on:mousedown={startDrawing}
 			on:mousemove={draw}
 			on:mouseup={stopDrawing}
@@ -129,5 +125,4 @@
 		<button on:click={clearCanvas}>Clear</button>
 		<button on:click={predict}>Predict</button>
 	</div>
-	<div bind:this={predictionDiv} class="prediction"></div>
-</div>
+

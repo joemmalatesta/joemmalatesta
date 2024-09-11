@@ -38,6 +38,7 @@
 	"type": "module",
 	"dependencies": {
 		"@vercel/blob": "^0.23.4",
+		"mongodb": "^6.8.1",
 		"motion": "^10.18.0"
 	}
 }
