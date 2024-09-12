@@ -21,6 +21,7 @@
 		<div class="flex flex-col">
 			<div class="flex flex-col gap-2 mb-5" in:fly={{ y: 50, duration: 600, delay: 0 }}>
 				<Header title="Training" description="Crowdsourcing the training data for my vision model..." />
+				<p class="opacity-70">Each day the model will be trained on the images you vote on over a single epoch.</p>
 			</div>
 			<div in:fly={{ y: 50, duration: 600, delay: 200 }}>
 				<DrawingCanvas />
