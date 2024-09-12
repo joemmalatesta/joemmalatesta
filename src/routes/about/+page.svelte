@@ -1,4 +1,6 @@
 <script lang="ts">
+  import Bookmark from './Bookmark.svelte';
+
 	import PhotoBook from '../../components/PhotoBook.svelte';
 	import Header from '../../components/Heading.svelte';
 	import { onMount } from 'svelte';
@@ -119,26 +121,7 @@
 					>
 						{#each bookmarks as bookmark}
 							{#if bookmark.type === bookmarkType}
-								<a
-									href={bookmark.link}
-									target="_blank"
-									class="opacity-90 hover:opacity-100 hover:bg-light/5 sm:px-3 py-2 rounded-lg items-center duration-300 flex justify-between"
-								>
-									<div class="w-2/3 flex gap-1 items-center text-base sm:text-lg">
-										<img
-											src="/bookmarks/{bookmark.image}"
-											alt={bookmark.title}
-											class="w-5 h-5 sm:w-6 sm:h-6 inline rounded-full"
-										/>
-										{bookmark.title}
-									</div>
-									<div class="w-1/3 opacity-50 text-sm flex justify-end">
-										<div class="truncate">
-											{bookmark.link?.replace(/^https?:\/\//, '')}
-											<img src="icons/outlink.svg" alt="outlink" class="w-4 h-4 inline" />
-										</div>
-									</div>
-								</a>
+								<Bookmark {bookmark} />
 							{/if}
 						{/each}
 					</div>
@@ -146,9 +129,8 @@
 			</div>
 		</section>
 
-		<!-- SECTION FOR FILM PHOTOGRAPHY -->
-		 <!-- todo: update with new scans when done -->
-		
+
+		<!-- Extras (Film Photography, Quotes, Fitness, Design when I get there) -->
 		<section class="gap-1 py-10" transition:fly={{ y: 50, duration: 400, delay: 600 }}>
 			<h3 class="text-4xl font-semibold">Extras</h3>
 			<p class="opacity-70">Check out these other things I do (more coming soon)</p>

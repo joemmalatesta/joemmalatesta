@@ -1,4 +1,4 @@
-type Bookmark = {
+export type Bookmark = {
     title: string; // Tool, website, design, person, quote
     type: string;
     link?: string;
