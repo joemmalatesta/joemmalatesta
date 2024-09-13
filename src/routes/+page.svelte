@@ -137,7 +137,7 @@
 		<section id="contact" transition:fly={{ y: 50, duration: 400, delay: 400 }} class="py-10">
 			<h3 class="relative text-3xl font-extralight group flex items-center border-b-2 border-light/10 py-2">Let's chat</h3>
 			<p class="opacity-70 pt-1 sm:text-base text-sm">
-				I wanna see what you're working on! Reach me at <a href="mailto:joemmalatesta@gmail.com" class="underline underline-offset-2 hover:underline-offset-4 transition-all duration-300">joemmalatesta@gmail.com</a> or any of the socials below. P.S - I don't want your coffee... Let's go do something outdoors.
+				I wanna see what you're working on! Reach me at <a href="mailto:joemmalatesta@gmail.com" class="underline underline-offset-2 hover:underline-offset-4 transition-all duration-300">joemmalatesta@gmail.com</a> or any of the socials below... p.s - I don't want your coffee. Let's go do something outdoors.
 			</p>
 		</section>
 	{/if}

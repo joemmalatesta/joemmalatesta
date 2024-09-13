@@ -71,9 +71,9 @@
 
 		<section
 			transition:fly={{ y: 50, duration: 400, delay: 200 }}
-			class="flex flex-col md:flex-row justify-between relative w-full md:gap-24 gap-12 pt-24 md:pt-32 pb-10"
+			class=" flex flex-col md:flex-row justify-between relative w-full md:gap-24 gap-12 pt-24 md:pt-32 py-10"
 		>
-			<div class="z-50 mx-auto flex justify-center items-center lg:-translate-x-20">
+			<div class="z-50 mx-auto flex justify-center items-center lg:-translate-x-20 mb-10">
 				<PhotoBook bind:activePicture bind:smallScreen />
 			</div>
 			<div
@@ -99,7 +99,7 @@
 		</section>
 
 		<!-- Tools, Design, Tech, Portfolio Inspiration -->
-		<section class="py-10" transition:fly={{ y: 50, duration: 400, delay: 400 }}>
+		<section class="py-10 " transition:fly={{ y: 50, duration: 400, delay: 400 }}>
 			<div class="gap-1">
 				<h3 class="text-4xl font-semibold">Bookmarks</h3>
 				<p class="opacity-70">Useful tools and inspiring people</p>
@@ -131,7 +131,7 @@
 
 
 		<!-- Extras (Film Photography, Quotes, Fitness, Design when I get there) -->
-		<section class="gap-1 py-10" transition:fly={{ y: 50, duration: 400, delay: 600 }}>
+		<section class="gap-1 py-10 " transition:fly={{ y: 50, duration: 400, delay: 600 }}>
 			<h3 class="text-4xl font-semibold">Extras</h3>
 			<p class="opacity-70">Check out these other things I do (more coming soon)</p>
 			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full py-2">
