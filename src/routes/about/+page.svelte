@@ -1,7 +1,7 @@
 <script lang="ts">
   import Bookmark from './Bookmark.svelte';
 
-	import PhotoBook from '../../components/PhotoBook.svelte';
+	import PhotoBook from './PhotoBook.svelte';
 	import Header from '../../components/Heading.svelte';
 	import { onMount } from 'svelte';
 	import { fade, fly, slide } from 'svelte/transition';
@@ -73,7 +73,7 @@
 			transition:fly={{ y: 50, duration: 400, delay: 200 }}
 			class=" flex flex-col md:flex-row justify-between relative w-full md:gap-24 gap-12 pt-24 md:pt-32 py-10"
 		>
-			<div class="z-50 mx-auto flex justify-center items-center lg:-translate-x-20 mb-10">
+			<div class="z-50 mx-auto flex justify-center items-center lg:-translate-x-20 sm:mb-10">
 				<PhotoBook bind:activePicture bind:smallScreen />
 			</div>
 			<div
@@ -134,7 +134,7 @@
 		<section class="gap-1 py-10 " transition:fly={{ y: 50, duration: 400, delay: 600 }}>
 			<h3 class="text-4xl font-semibold">Extras</h3>
 			<p class="opacity-70">Check out these other things I do (more coming soon)</p>
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full py-2">
+			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full py-4">
 				{#each extras as extra}
 					<a href={extra.href} class="rounded-lg flex realtive w-full relative sm:h-60 h-48 sm:ring-2 ring-light/10 group" >
 						<div class="absolute inset-0 overflow-hidden rounded-lg">

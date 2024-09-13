@@ -85,8 +85,8 @@
     class="absolute inset-0 rounded-lg {switchAnimation
     ? 'rotate-0 translate-x-0 translate-y-0'
     : hover
-        ? `rotate-[40deg] ${smallScreen ? 'translate-x-24' : 'translate-x-32'} translate-y-5 hover:rotate-[42deg] scale-95  hover:scale-100`
-        : ' rotate-[24deg] translate-x-16 -translate-y-3 '}  -z-10 transition-all duration-300 group"
+        ? `rotate-[40deg] ${smallScreen ? 'translate-x-16' : 'translate-x-32'} ${smallScreen ? 'translate-y-0' : 'translate-y-5'} hover:rotate-[42deg] scale-95  hover:scale-100`
+        : ` rotate-[24deg] ${smallScreen ? 'translate-x-10' : 'translate-x-16'} -translate-y-3 `}  -z-10 transition-all duration-300 group"
 		on:click={() => switchPicture(1)}
 		on:mouseenter={() => (hover = true)}
 		on:mouseleave={() => (hover = false)}
@@ -100,7 +100,7 @@
     class="absolute inset-0 rounded-lg {switchAnimation
     ? 'rotate-0 translate-x-0 translate-y-0'
     : hover
-        ? `rotate-6 hover:rotate-[10deg] scale-95  hover:scale-100 ${smallScreen ? '-translate-y-24' : '-translate-y-32'}`
+        ? `rotate-6 hover:rotate-[10deg] scale-95  hover:scale-100 ${smallScreen ? '-translate-y-[4.25rem]' : '-translate-y-32'}`
         : ' -translate-y-10 rotate-3'}  -z-10 transition-all duration-300 group"
 		on:click={() => switchPicture(2)}
 		on:mouseenter={() => (hover = true)}
@@ -115,8 +115,8 @@
 		class="absolute inset-0 rounded-lg group {switchAnimation
 			? 'rotate-0 translate-x-0 translate-y-0'
 			: hover
-				? `-rotate-[40deg] ${smallScreen ? '-translate-x-24' : '-translate-x-32'} -translate-y-5 hover:-rotate-[42deg] scale-95  hover:scale-100`
-				: ' -rotate-[24deg] -translate-x-12 -translate-y-7 '}  -z-10 transition-all duration-300"
+				? `-rotate-[40deg] ${smallScreen ? '-translate-x-16' : '-translate-x-32'} -translate-y-6 hover:-rotate-[42deg] scale-95  hover:scale-100`
+				: ` -rotate-[24deg] ${smallScreen ? '-translate-x-8' : '-translate-x-12'} -translate-y-7 `}  -z-10 transition-all duration-300"
 		on:click={() => switchPicture(3)}
 		on:mouseenter={() => (hover = true)}
 		on:mouseleave={() => (hover = false)}
