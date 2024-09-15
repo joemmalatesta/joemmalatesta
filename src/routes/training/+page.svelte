@@ -1,7 +1,7 @@
 <script lang="ts">
 	import DrawingCanvas from './DrawingCanvas.svelte';
 	import Header from '../../components/Heading.svelte';
-
+	import Classifier from './Classifier.svelte';
 	import { onMount } from 'svelte';
 	import type { trainingData } from '$lib/types';
 	import VoteCard from './VoteCard.svelte';
@@ -17,7 +17,8 @@
 </script>
 
 <main class="min-h-screen">
-	{#if ready}
+	<Classifier />
+	<!-- {#if ready}
 		<div class="flex flex-col">
 			<div class="flex flex-col gap-2 mb-5" in:fly={{ y: 50, duration: 600, delay: 0 }}>
 				<Header title="Training" description="Crowdsourcing the training data for my vision model..." />
@@ -38,5 +39,5 @@
 				</div>
 			</section>
 		</div>
-	{/if}
+	{/if} -->
 </main>
