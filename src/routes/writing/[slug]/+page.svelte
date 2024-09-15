@@ -3,6 +3,7 @@ import type { Post } from '$lib/posts';
 import { onMount } from 'svelte';
 	import type { PageData } from '../$types';
 	import { fly } from 'svelte/transition';
+	import { highlight } from '$lib/syntaxHighlighting';
 	let ready = false;
 	onMount(() => {
 		ready = true;

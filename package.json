@@ -18,6 +18,7 @@
 		"@sveltejs/vite-plugin-svelte": "^3.0.0",
 		"@tailwindcss/typography": "^0.5.15",
 		"@types/eslint": "^9.6.0",
+		"@types/prismjs": "^1.26.4",
 		"autoprefixer": "^10.4.20",
 		"eslint": "^9.0.0",
 		"eslint-config-prettier": "^9.1.0",
@@ -36,6 +37,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"motion": "^10.18.0"
+		"motion": "^10.18.0",
+		"prismjs": "^1.29.0"
 	}
 }
