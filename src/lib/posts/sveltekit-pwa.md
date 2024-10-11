@@ -153,4 +153,4 @@ There are only 2 files you will need to add to your application.
 
 
 ### Conclusion
-Making your website into a PWA can have massive benefits for your users and can allow your app to have a more native feel. SvelteKit has a special process and helpers for creating a PWA and I hope this guide helped you through the process of building your own. If you need additional help, you can [contact me](https://www.joemmalatesta.com/#contact), message me on [Twitter/X](https://twitter.com/_JoeMalatesta), or ask around in the [Svelte Discord](https://discord.gg/svelte) server.
+Making your website into a PWA can have massive benefits for your users and can allow your app to have a more native feel. SvelteKit has a special process and helpers for creating a PWA and I hope this guide helped you through the process of building your own. If you need additional help, you can [contact me](https://www.joemmalatesta.com/#contact), message me on [Twitter/X](https://twitter.com/joemmalatesta), or ask around in the [Svelte Discord](https://discord.gg/svelte) server.
