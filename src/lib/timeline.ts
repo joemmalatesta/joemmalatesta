@@ -9,7 +9,7 @@ export let updates: TimelineItem[] = [
     {
         title: "GrizzHacks 7",
         date: "Feb 2025",
-        content: "Upcoming... apply today at grizzhacks.org",
+        content: "Coming February 8th. apply today at grizzhacks.org",
         upcoming: true
     },
     {
@@ -17,6 +17,11 @@ export let updates: TimelineItem[] = [
         date: "Dec 2024",
         content: "with a B.S. in Computer Science, average grades, and lots of ambition :D",
         upcoming: true
+    },
+    {
+        title: "Interned at KL&A",
+        date: "Sept 2024",
+        content: ""
     },
     {
         title: "Interned at Sentry.io",
