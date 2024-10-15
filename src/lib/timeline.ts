@@ -19,9 +19,14 @@ export let updates: TimelineItem[] = [
         upcoming: true
     },
     {
+        title: "Won first place at Hack Dearborn (again)",
+        date: "Oct 2024",
+        content: "With Second Chapter, a site to empower the trading of used books in local communities"
+    },
+    {
         title: "Interned at KL&A",
         date: "Sept 2024",
-        content: ""
+        content: "As a Software Engineer on the R&D team"
     },
     {
         title: "Interned at Sentry.io",
