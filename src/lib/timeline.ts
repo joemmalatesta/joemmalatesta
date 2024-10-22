@@ -19,6 +19,11 @@ export let updates: TimelineItem[] = [
         upcoming: true
     },
     {
+        title: "Went to CalHacks",
+        date: "Oct 2024",
+        content: "Built a proof of concept for Ground Truth, a startup idea I've had for a while"
+    },
+    {
         title: "Won first place at Hack Dearborn (again)",
         date: "Oct 2024",
         content: "With Second Chapter, a site to empower the trading of used books in local communities"
