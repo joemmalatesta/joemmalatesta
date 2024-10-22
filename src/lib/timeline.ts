@@ -4,7 +4,7 @@ export type TimelineItem = {
     content: string;
     upcoming?: boolean;
 };
-// TODO: Add GC in RL
+// TODO: Make these raw html and add links where they need to be
 export let updates: TimelineItem[] = [
     {
         title: "GrizzHacks 7",
