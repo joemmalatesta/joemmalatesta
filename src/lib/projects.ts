@@ -11,7 +11,7 @@ export const projects: Project[] = [
 	{
 		title: 'Groople',
 		dateRange: 'Apr 2023 - Dec 2023',
-		description: 'Daily word game, evaluating answers with AI. Peaked at ~50 daily active users',
+		description: 'Daily word game, evaluating answers with AI. Peaked at ~100 daily active users',
 		image: 'groople.webp',
 		logos: ['vercel.svg', 'tailwind.png', 'svelte.png', 'openAI.png'],
 		link: 'https://groople.xyz'
