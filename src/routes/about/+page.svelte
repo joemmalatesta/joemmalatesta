@@ -81,7 +81,7 @@
 			>
 				Hey, I'm Joe 😸
 				<p>
-					I'm a developer and aspiring designer passionate in simplifying user interactions and
+					I'm a product focused developer passionate about simplifying user interactions and
 					building communities of engineers.
 				</p>
 				<p>
@@ -130,7 +130,8 @@
 		</section>
 
 
-		<!-- Extras (Film Photography, Quotes, Fitness, Design when I get there) -->
+		<!-- Extras (Film Photography, Quotes, Fitness, Travel, Design when I get there) -->
+		 <!-- TODO: Make these all icons. -->
 		<section class="gap-1 py-10 " transition:fly={{ y: 50, duration: 400, delay: 600 }}>
 			<h3 class="text-4xl font-semibold">Extras</h3>
 			<p class="opacity-70">Check out these other things I do (more coming soon)</p>
