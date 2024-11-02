@@ -19,7 +19,7 @@ export let updates: TimelineItem[] = [
         upcoming: true
     },
     {
-        title: "Went to CalHacks",
+        title: "Won at CalHacks",
         date: "Oct 2024",
         content: "Built a proof of concept for Ground Truth, a startup idea I've had for a while"
     },
