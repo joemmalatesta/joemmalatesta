@@ -1,7 +1,7 @@
 ---
 title: Making a social media with no database   
 description: A social cheese rating app built with SvelteKit, Tailwind, and Pinata.
-pubDate: "July 10, 2002"
+pubDate: "Dec 05, 2024"
 ---
 I just finished what is likely my last hackathon. It feels a bit melancholic, but having only joined this community a little over year ago, I can happily say that I made the absolute most out of my experiences. This hackathon, HackUTD, was special to me and summed up what the past year was all about. It was a time to build for fun, meet new people, and catch up with friends.
 
