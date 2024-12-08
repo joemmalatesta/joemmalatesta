@@ -5,8 +5,8 @@
 </script>
 
 <svelte:head>
-  <title>Joe Malatesta</title>
-  <meta name="description" content="Arjun's Portfolio" />
+	<title>Joe Malatesta</title>
+	<meta name="description" content="Joe Malatesta's Portfolio" />
 </svelte:head>
 
 <Navbar />
