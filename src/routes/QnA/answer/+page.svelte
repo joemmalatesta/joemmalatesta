@@ -5,6 +5,7 @@
 	import ArrowLeft from 'phosphor-svelte/lib/ArrowLeft';
 	import Trash from 'phosphor-svelte/lib/Trash';
 	import Header from '../../../components/Heading.svelte';
+	import { invalidateAll } from '$app/navigation';
 
 
 	export let data;
@@ -19,6 +20,7 @@
 		return async ({ result }: { result: any }) => {
 			authenticated = result.data.authenticated;
 			wrongPassword = result.data.incorrect || result.data.missing;
+			invalidateAll();
 		};
 	}
 </script>

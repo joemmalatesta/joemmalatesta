@@ -45,7 +45,7 @@ export const actions = {
             return fail(400, { incorrect: true });
         }
         cookies.set('admin', 'true', { path: '/' });
-        throw redirect(303, '/QnA/answer');
+        
         return {
             success: true
         };
