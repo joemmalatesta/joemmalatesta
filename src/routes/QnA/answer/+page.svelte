@@ -13,6 +13,7 @@
 	let wrongPassword: boolean = false;
 	let unansweredQuestions: Question[] = [];
 	$: unansweredQuestions = data.questions || [];
+	
 
 	async function login(event: any) {
 		return async ({ result }: { result: any }) => {
@@ -64,7 +65,10 @@
 			<div class="flex flex-col gap-5 w-full mt-10">
 				{#each unansweredQuestions as question}
 				<form action="?/answer" use:enhance method="POST" class="flex flex-col gap-1 w-full">
+					<div class="flex flex-col gap-1">
+						<span class="text-sm opacity-60">{question.dateAsked}</span>
 						<p>{question.question}</p>
+					</div>
 						<input hidden type="text" name="id" value={question.id} />
 						<textarea
 							name="answer"
@@ -82,7 +86,7 @@
 								formaction="?/delete"
 								name="id"
 								value={question.id}
-								class="w-1/5 bg-light/5 hover:bg-light/10 p-2 rounded-lg h-[48px] flex items-center justify-center"
+								class="w-1/5 bg-red-500/10 hover:bg-red-500/20 p-2 rounded-lg h-[48px] flex items-center justify-center"
 							>
 								<Trash weight="bold" size={18} />
 							</button>

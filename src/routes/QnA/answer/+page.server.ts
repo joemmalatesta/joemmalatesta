@@ -19,14 +19,14 @@ export const load = async ({ cookies }) => {
     await client.connect();
     const database = client.db('qna');
     const questions = database.collection('questions');
-    const unansweredQuestions = await questions.find({answer: null, deleted: false}).toArray();
+    const unansweredQuestions = await questions.find({answer: null, deleted: false}).sort({date: -1}).toArray();
     return {
         authenticated: true,
         questions: unansweredQuestions.map(doc => ({
             id: doc._id.toString(),
             question: doc.question,
             answer: doc.answer,
-            date: doc.date
+            dateAsked: doc.dateAsked
         })) as Question[]
     };
 };
@@ -55,11 +55,15 @@ export const actions = {
         const data = await request.formData();
         const id = data.get('id');
         const answer = data.get('answer');
-        
+
         await client.connect();
         const database = client.db('qna');
         const questions = database.collection('questions');
-        await questions.updateOne({ _id: new ObjectId(id) }, { $set: { answer } });
+        await questions.updateOne({ _id: new ObjectId(id) }, { $set: { answer, dateAnswered: new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        }) } });
         return {
             success: true
         };
