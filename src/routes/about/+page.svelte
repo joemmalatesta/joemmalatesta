@@ -37,7 +37,7 @@
 	type Extras = {
 		title: string;
 		href: string;
-		image: string;
+		image?: string;
 	}
 	let extras: Extras[] = [
 		{
@@ -48,7 +48,6 @@
 		{
 			title: 'Q&A',
 			href: '/QnA',
-			image: ''
 		},
 		// {
 		// 	title: 'Design',
@@ -138,10 +137,16 @@
 			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full py-4">
 				{#each extras as extra}
 					<a href={extra.href} class="rounded-lg flex realtive w-full relative sm:h-60 h-48 sm:ring-2 ring-light/10 group" >
+						{#if extra.image}
 						<div class="absolute inset-0 overflow-hidden rounded-lg">
-							<img src={extra.image} alt={extra.title} class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110" />
-						</div>
-						<div class="w-full h-12 absolute bottom-0 bg-gradient-to-t from-dark via-dark/40 to-transparent rounded-b-lg flex items-center justify-center">
+								<img src={extra.image} alt={extra.title} class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110" />
+							</div>
+						{:else}
+							<div class="w-full h-full bg-light/10 flex items-center justify-center">
+								<h5 class="text-6xl font-semibold">{extra.title}</h5>
+							</div>
+						{/if}
+						<div class="w-full absolute bottom-0 flex items-center justify-center rounded-lg">
 							<h5 class="text-lg font-semibold">{extra.title}</h5>
 						</div>
 					</a>
