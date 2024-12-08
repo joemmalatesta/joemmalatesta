@@ -115,7 +115,7 @@
 				</div>
 
 				{#key bookmarkType}
-					<div class="flex flex-col py-2">
+					<div class="flex flex-wrap gap-2 py-2">
 						{#each bookmarks as bookmark}
 							{#if bookmark.type === bookmarkType}
 								<Bookmark {bookmark} />
