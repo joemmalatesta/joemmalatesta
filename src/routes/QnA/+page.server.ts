@@ -7,11 +7,12 @@ const uri = `mongodb+srv://joemmalatesta:${MONGO_QnA_PASSWORD}@qa-cluster.ymmrk.
 const client = new MongoClient(uri);
 
 export async function load() {
+    // TODO: add pagination
     try {
         await client.connect();
         const database = client.db('qna');
         const questions = database.collection('questions');
-        const allQuestions = await questions.find({}).toArray();
+        const allQuestions = await questions.find({answer: {$ne: null}}).toArray();
         if (!allQuestions) {
             return {
                 questions: []
@@ -20,6 +21,7 @@ export async function load() {
         
         return {
             questions: allQuestions.map(doc => ({
+                id: doc._id.toString(),
                 question: doc.question,
                 answer: doc.answer,
                 date: doc.date
@@ -44,7 +46,7 @@ export const actions = {
         if (!question) {
             return {
                 success: false,
-                error: 'Question is required'
+                message: 'Question is required'
             };
         }
 
@@ -55,22 +57,24 @@ export const actions = {
 
             await questions.insertOne({
                 question,
-                answer: "Not answered yet",
+                answer: null,
                 date: new Date().toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
-                })
+                }),
+                deleted: false,
+                likes: 0
             });
 
             return {
-                success: true
+                success: true,
+                message: 'Question sent. Check back soon for an answer.'
             };
         } catch (error) {
-            console.error('Error saving question:', error);
             return {
                 success: false,
-                error: 'Failed to save question'
+                message: 'Failed to send question. Try again later.'
             };
         } finally {
             await client.close();

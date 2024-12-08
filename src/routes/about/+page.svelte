@@ -45,11 +45,11 @@
 			image: 'photography/camerastore.webp',
 			href: 'film'
 		},
-		// {
-		// 	title: 'Fitness',
-		// 	href: '/fitness',
-		// 	image: 'fitness'
-		// },
+		{
+			title: 'Q&A',
+			href: '/QnA',
+			image: ''
+		},
 		// {
 		// 	title: 'Design',
 		// 	href: '/design',
@@ -130,7 +130,7 @@
 		</section>
 
 
-		<!-- Extras (Film Photography, Quotes, Fitness, Travel, Design when I get there) -->
+		<!-- Extras (Film Photography, QnA, Quotes, Fitness, Travel, Design when I get there) -->
 		 <!-- TODO: Make these all icons. -->
 		<section class="gap-1 py-10 " transition:fly={{ y: 50, duration: 400, delay: 600 }}>
 			<h3 class="text-4xl font-semibold">Extras</h3>
