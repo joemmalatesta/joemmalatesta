@@ -12,7 +12,6 @@
 	let likedQuestions: string[] = [];
 	onMount(() => {
 		ready = true;
-		// Load liked questions from localStorage on mount
 		likedQuestions = JSON.parse(localStorage.getItem('likedQuestions') || '[]');
 	});
 
@@ -69,7 +68,7 @@
 						<h3 class="text-xl mb-1">{qna.question}</h3>
 						<p class="opacity-70">{qna.answer}</p>
 						<div class="flex items-center gap-1">
-							<Likes question={qna} />
+							<Likes question={qna} likedQuestions={likedQuestions} />
 						</div>
 					</div>
 				{/each}
