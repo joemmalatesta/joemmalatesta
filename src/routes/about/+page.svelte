@@ -133,6 +133,7 @@
 			<p class="opacity-70">Check out these other things I do (more coming soon)</p>
 			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full py-4">
 				{#each extras as extra}
+					<!-- Rly should be a better way of doing this. -->
 					{#if extra.image}
 						<a
 							href={extra.href}
