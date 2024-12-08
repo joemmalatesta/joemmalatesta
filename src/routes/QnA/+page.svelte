@@ -1,24 +1,8 @@
 <script lang="ts">
 	import { fly, fade } from 'svelte/transition';
 	import type { Question } from './types';
-
-	const qnas: Question[] = [
-		{
-			question: 'What tech stack do you use most often?',
-			answer: 'I primarily work with SvelteKit, Tailwind CSS, and Vercel for deployment. For backend needs, I often reach for Supabase or Firebase depending on the project requirements.',
-			date: 'March 15, 2024'
-		},
-		{
-			question: 'How did you get into web development?',
-			answer: 'I started with basic HTML/CSS in high school, but really dove deep during college when I discovered modern frameworks and the joy of building interactive applications.',
-			date: 'March 10, 2024'
-		},
-		{
-			question: 'What\'s your favorite project you\'ve worked on?',
-			answer: 'Probably Groople - it was my first project that gained real users and taught me a lot about building for an audience rather than just for myself.',
-			date: 'March 5, 2024'
-		}
-	];
+	export let data;
+	$: questions = data.questions;
 </script>
 
 <svelte:head>
@@ -35,7 +19,7 @@
             <button class="bg-light/5 rounded-r-lg hover:bg-light/10 p-2 w-1/6" type="submit">Ask me</button>
         </form>
 		<div class="flex flex-col gap-8">
-			{#each qnas as qna}
+			{#each questions as qna}
 				<div class="bg-light/5 rounded-lg p-6" transition:fade>
 					<div class="flex justify-between items-start mb-4">
 						<h3 class="text-xl font-medium">{qna.question}</h3>

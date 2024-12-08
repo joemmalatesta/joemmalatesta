@@ -11,17 +11,20 @@ export async function load() {
         await client.connect();
         const database = client.db('qna');
         const questions = database.collection('questions');
-        console.log(questions);
-        // const allQuestions = await questions.find({}).toArray();
-        // if (!allQuestions) {
-        //     return {
-        //         questions: []
-        //     };
-        // }
+        const allQuestions = await questions.find({}).toArray();
+        if (!allQuestions) {
+            return {
+                questions: []
+            };
+        }
         
-        // return {
-        //     questions: allQuestions as unknown as Question[]
-        // };
+        return {
+            questions: allQuestions.map(doc => ({
+                question: doc.question,
+                answer: doc.answer,
+                date: doc.date
+            })) as Question[]
+        };
     } catch (error) {
         console.error('Database connection error:', error);
         return {
