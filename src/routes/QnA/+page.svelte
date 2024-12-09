@@ -25,7 +25,7 @@
 	<meta name="description" content="Seek what your heart desires" />
 </svelte:head>
 
-<main class="max-w-3xl mx-auto min-h-[calc(100vh-9rem)]">
+<main class="mx-auto min-h-[calc(100vh-9rem)]">
 	{#if ready}
 		<div class="flex flex-col gap-2 mb-5" in:fly={{ y: 50, duration: 600, delay: 0 }}>
 			<Header title="Q&A" description="Seek what your heart desires" />
