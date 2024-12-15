@@ -16,7 +16,6 @@ export let updates: TimelineItem[] = [
         title: "Graduated Oakland University",
         date: "Dec 2024",
         content: "with a B.S. in Computer Science, average grades, and lots of ambition :D",
-        upcoming: true
     },
     {
         title: "Won at HackUTD",
