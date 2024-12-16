@@ -33,11 +33,14 @@
 		<section transition:fly={{ y: 50, duration: 600, delay: 0 }} class="py-10">
 			<!-- Silly phrase. change this at some point -->
 			<div class="pb-4">
-				<h1 class="text-5xl sm:text-7xl font-bold tracking-tight">Developing for fun. <span class="font-light">Thoroughly curious.</span></h1>
+				<h1 class="text-5xl sm:text-7xl font-bold tracking-tight">
+					Developing for fun. <span class="font-light">Thoroughly curious.</span>
+				</h1>
 			</div>
 			<p class="opacity-70 sm:text-base text-sm">
-				I'm a full stack developer and full time student focused on constant improvement in all aspects of my life. I've spent the last few summers teaching and building software, and the last few winters growing the next generation of engineers.
-				want to know even more <a
+				I'm a full stack developer and full time student focused on constant improvement in all
+				aspects of my life. I've spent the last few summers teaching and building software, and the
+				last few winters growing the next generation of engineers. want to know even more <a
 					href="/about"
 					class="underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
 					>about me?</a
@@ -68,17 +71,17 @@
 			transition:fly={{ y: 50, duration: 400, delay: isNavigatingFrom ? 200 : 1000 }}
 			class="py-10"
 		>
-		<a
-		href="/projects"
-		class="text-2xl sm:text-3xl font-extralight py-2 group flex gap-1 items-center border-b-2 border-light/10 relative"
-	>
-		Projects
-		<img
-			src="icons/arrow-right.svg"
-			class="w-6 h-6 group-hover:translate-x-2 transition-all duration-300"
-			alt="arrow right"
-		/>
-	</a>
+			<a
+				href="/projects"
+				class="text-2xl sm:text-3xl font-extralight py-2 group flex gap-1 items-center border-b-2 border-light/10 relative"
+			>
+				Projects
+				<img
+					src="icons/arrow-right.svg"
+					class="w-6 h-6 group-hover:translate-x-2 transition-all duration-300"
+					alt="arrow right"
+				/>
+			</a>
 			<div class="flex flex-col gap-10 sm:gap-2 pt-3">
 				{#each projects.slice(0, 3) as project}
 					<ProjectCard {project} />
@@ -135,9 +138,27 @@
 
 		<!-- Contact section -->
 		<section id="contact" transition:fly={{ y: 50, duration: 400, delay: 400 }} class="py-10">
-			<h3 class="relative text-3xl font-extralight group flex items-center border-b-2 border-light/10 py-2">Let's chat</h3>
+			<h3
+				class="relative text-3xl font-extralight group flex items-center border-b-2 border-light/10 py-2"
+			>
+				Let's chat
+			</h3>
 			<p class="opacity-70 pt-1 sm:text-base text-sm">
-				I wanna see what you're working on! Reach me at <a href="mailto:joemmalatesta@gmail.com" class="underline underline-offset-2 hover:underline-offset-4 transition-all duration-300">joemmalatesta@gmail.com</a> or any of the socials below... p.s - I don't want your coffee. Let's go do something outdoors.
+				I wanna see what you're working on! Reach me at <a
+					href="mailto:joemmalatesta@gmail.com"
+					class="underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+					>joemmalatesta@gmail.com</a
+				>,
+				<a
+					target="_blank"
+					class="underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+					href="https://x.com/joemmalatesta">joemmalatesta</a
+				>
+				on twitter, or ask me anything on my
+				<a
+					class="underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
+					href="/QnA">QnA</a
+				>.
 			</p>
 		</section>
 	{/if}
