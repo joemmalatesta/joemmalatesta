@@ -84,5 +84,11 @@ export const bookmarks: Bookmark[] = [
         link: "https://notion.so",
         image: "notion.png"
     },
+    {
+        title: "Grepper",
+        type: "tools",
+        link: "https://chromewebstore.google.com/detail/grepper/amaaokahonnfjjemodnpmeenfpnnbkco?hl=en",
+        image: "grepper.png"
+    },
     
 ]
