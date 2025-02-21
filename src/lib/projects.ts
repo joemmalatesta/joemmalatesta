@@ -25,6 +25,13 @@ export const projects: Project[] = [
 		link: 'https://grizzhacks.org'
 	},
 	{
+		title: 'Cheddarboxd',
+		dateRange: 'Dec 2024',
+		description: 'Letterboxd for cheese. 2x winner at HackUTD',
+		image: 'cheddarboxd.webp',
+		link: 'https://cheddar-boxd.vercel.app/'
+	},
+	{
 		title: 'Scanbite',
 		dateRange: 'Oct 2023',
 		description: 'First place at Hack Dearborn and 225k views on TikTok',
