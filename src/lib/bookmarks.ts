@@ -90,5 +90,16 @@ export const bookmarks: Bookmark[] = [
         link: "https://chromewebstore.google.com/detail/grepper/amaaokahonnfjjemodnpmeenfpnnbkco?hl=en",
         image: "grepper.png"
     },
-    
+    {
+        title: "Raycast",
+        type: "tools",
+        link: "https://raycast.com",
+        image: "raycast.svg"
+    },
+    {
+        title: "Cursor",
+        type: "tools",
+        link: "https://cursor.com",
+        image: "cursor.png"
+    },
 ]
