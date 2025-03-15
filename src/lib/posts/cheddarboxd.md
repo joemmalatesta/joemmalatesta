@@ -15,7 +15,7 @@ With only 24 hours to hack, I shrunk the scope to just having accounts and posts
 
 In order to work around not having a database, I needed to have some structure for my files. Luckily, Pinata allows grouping by folders. This enabled me to make “accounts” in Pinata where I could store user credentials and associate posts with accounts. 
 
-Once I mentally worked out the backend implementation, I spent a majority of my time on the frontend, doing things like ensuring loading states were displayed, creating a responsive design for the PWA, and removing copyright watermarks from my cheese SVG's.
+Once I mentally worked out the backend implementation, I spent a majority of my time on the frontend, doing things like ensuring loading states were displayed, creating a responsive design for the PWA, and removing copyright watermarks from my stolen cheese SVG's.
 
 I had honestly planned on finishing Cheddarboxd in a few hours and saving time for exploring campus and doing homework, but it wouldn't be in true hackathon spirit if some random bugs didn't keep me awake till 7am.
 
@@ -30,7 +30,7 @@ Pinata’s docs are painfully to the point. This is great for general reference 
 
 ### PWA Troubles
 
-I’ve turned SvelteKit projects into PWA’s before, and even [wrote a guide](https://www.joemmalatesta.com/writing/sveltekit-pwa) about it. Even so, I ran into two, retrospectively dumb complications that took away 3 hours of precious sleep. When I first saved the PWA to my phone and opened it, the keyboard refused to open when I clicked any of the inputs. After spending 40 minutes figuring out that I just need to soft reset my phone, I ran into a slightly more real issue.
+I’ve turned SvelteKit projects into PWA’s before, and even [wrote a guide](https://www.joemmalatesta.com/writing/sveltekit-pwa) about it. Even so, I ran into two, retrospectively dumb complications that took away 3 hours of precious sleep. When I first opened the PWA on my phone, the keyboard refused to open when I clicked any of the inputs. After spending 40 minutes worrying iOS 16 bricked all PWA's (I just needed to soft reset my phone), I ran into a slightly more real issue.
 
 Once I finally could, I tried logging into an account I had made and got redirected in a loop back to the login page, meaning my credentials couldn’t be validated. It didn’t make sense that a set of API calls would work on my desktop but not my phone, so I quickly narrowed it down to a cookies issue, which I was using to persist user information. After some super sleuth work and a couple `console.log's` I found that my cookies were not being persisted on page reloads. Again, why would this be an issue on network and not localhost? Apparently, even though localhost is technically also http, when you expose the site to the network using http, it requires the cookies to have `secure: false` parameter set. Another simple fix but one that is not well documented.
 
