@@ -153,7 +153,7 @@
 					{:else}
 						<a
 							href={extra.href}
-							class="w-full h-full bg-light/10 hover:bg-light/20 transition-colors rounded-lg flex items-center justify-center"
+							class="w-full sm:h-60 h-48 bg-light/10 hover:bg-light/20 transition-colors rounded-lg flex items-center justify-center"
 						>
 							<h5 class="text-6xl font-semibold">{extra.title}</h5>
 						</a>
