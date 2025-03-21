@@ -13,6 +13,18 @@ body {
 		@apply bg-light/20 font-mono text-light px-1 py-0.5 rounded-md;
 	}
 
+	.prose :where(tip) {
+		@apply my-2 p-1.5 px-3 rounded-sm bg-green-900/30 border-l-4 border-green-400 block;
+	}
+
+	.prose :where(info) {
+		@apply my-2 p-1.5 px-3 rounded-sm bg-yellow-700/20 border-l-4 border-yellow-400 block;
+	}
+
+	.prose :where(warning) {
+		@apply my-2 p-1.5 px-3 rounded-sm bg-red-900/30 border-l-4 border-red-400 block;
+	}
+
 	.prose :where(highlight) {
 		@apply bg-orange-400/30 text-light px-1 py-0.5;
 	}

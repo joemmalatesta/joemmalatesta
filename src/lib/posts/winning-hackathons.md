@@ -20,7 +20,7 @@ Over time, I curated a list of rules that I've personally used to win 100% of my
 ### Misconceptions
 > “You have to be **Cracked**”
 
-First, stop using that word, it has no meaning. Second, you don’t. I had randoms clowning me on TikTok about how simple my first hackathon project was (which won 1st place overall). A strong demo/idea can carry a boring codebase.
+First, stop using that word, it has no meaning. Second, you don’t. I had randoms clowning me on TikTok about how simple my first hackathon project was (which won 1st place). A strong demo/idea can carry a boring codebase.
 
 > “I need a strong team to help build x, y, and z features”
 
@@ -28,11 +28,11 @@ Before looking for people who will likely disagree with you and slow you down, f
 
 > “There’s so many people here, I could never win”
 
-I had this thought at CalHacks (2000+ people) and still won with a half baked project. Realistically, 50% of people will be demoing just an idea, broken project, or some boring fintech app that has judges spacing out.
+I had this thought at CalHacks (2000+ people) and still won with a half baked project. Realistically, 50% of people will be demoing just an idea, a broken project, or some boring fintech app that has judges spacing out.
 
 > “I can’t finish a whole project in 24 hours”
 
-Unless it’s your first time using a text editor, you can likely glue enough code together to get something pretty and functional for a handful of use cases (and that’s really all you need).
+Unless it’s your first time opening a text editor, you can likely glue enough code together to get something pretty and functional for a handful of use cases (and that’s really all you need). You can absolutely win as a beginner and lots of hackathons have specific beginner tracks.
 
 *** 
 
@@ -40,13 +40,14 @@ Unless it’s your first time using a text editor, you can likely glue enough co
 ### 1. Start with the demo
 To host a good hackathon, you're told "every decision should have the hacker in mind". Likewise for a good project, every decision should have the judges in mind. As harsh as it may sound, the 5 minute demo determines what your last 23 hours of work were worth. For [Cheddarboxd](https://devpost.com/software/cheddarboxd), I knew I was going to feed the judges cheese before I even touched down in Dallas.
 
-### 2. Build 10% of what you initially planned
-"Wouldn't it be cool if it _______?" Yeah, wouldn't it be cool if your project actually worked? Remember when I said 50% of projects are half baked? Here's the main culprit. Ever project I've made has had 2-3 well built features and nothing else. 
+### 2. Build 10% of what you planned
+"Wouldn't it be cool if it _______?" Yeah, but it'd be way cooler if your project actually worked. Remember when I said 50% of projects are half baked? Here's the main culprit. Every project I've demoed has had 2-3 well built features and nothing else. You only have ~5 minutes per judge anyway, 
+
 
 ### 3. Be Unique in idea, implementation, or demo
 You're not going to beat 100+ teams without being memorable to the judges. Luckily, there are a few ways to do this.
 
-### 4. Prefer no team to a stubborn team
+### 4. Prefer no team over a stubborn team
 As much as I love hackathons, it has never been a place for true collaboration. 
 
 ### Random Quick Tips
@@ -57,5 +58,5 @@ As much as I love hackathons, it has never been a place for true collaboration.
 
 ### What does a win mean, anyway?
 
-I say all of this just to say that winning prizes doesn't actually matter. At an event like this, there are dozens of ways to "win". For some people, winning could be meeting new people, learning a new skill, or even just doing the midnight karaoke. Anecdotally, I have a friend who won in a completely different way. He spent all of his time at hackathons meeting people and before he had ever won a prize, he secured an internship from connection he made at a hackathon. In order to compete for prizes, I always had to give up some of the more fun things hackathons have to offer.
+I say all of this just to say that winning prizes doesn't actually matter. At an event like this, there are dozens of ways to "win". For some people, winning could be meeting new people, learning a new skill, or even just doing the midnight karaoke. Anecdotally, I have a friend who won in a completely different way. He spent all of his time at hackathons meeting people and before he had ever won a prize, he secured an internship from a connection he made at a hackathon. In order to compete for prizes, I always had to give up some of the more fun things hackathons have to offer.
 
