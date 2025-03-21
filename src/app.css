@@ -9,11 +9,15 @@ body {
 }
 
 @layer components {
-	.prose :where(info) {
-		@apply my-6 p-4 bg-yellow-50 border-l-4 border-yellow-500 dark:bg-yellow-900/30 dark:border-yellow-400;
+	.prose :where(code) {
+		@apply bg-light/20 font-mono text-light px-1 py-0.5 rounded-md;
 	}
 
-	.prose :where(code) {
-		@apply bg-light/65 text-dark px-1 py-0.5 rounded-md;
+	.prose :where(highlight) {
+		@apply bg-orange-400/30 text-light px-1 py-0.5;
+	}
+
+	.prose :where(break) {
+		@apply h-1 w-full bg-light/20;
 	}
 }

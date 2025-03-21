@@ -13,12 +13,12 @@
 	const { metadata, post: Post } = data as { metadata: Post['metadata']; post: Post['default'] };
 </script>
 
-<main class="min-h-screen w-full mx-auto">
+<main class="min-h-screen w-full mx-auto flex justify-center">
 	{#if ready}
-		<article class="prose lg:prose-lg prose-invert">
+		<article class="prose prose-sm md:prose-base 2xl:prose-lg prose-invert">
 			<div in:fly={{ y: 50, duration: 400, delay: 0 }} class="flex flex-col">
-				<p class="text-sm text-light/60">{metadata.pubDate}</p>
-				<h1>{metadata.title}</h1>
+				<p class="text-sm text-light/60 mb-0">{metadata.pubDate}</p>
+				<h1 class="p-0 !mb-0">{metadata.title}</h1>
 			</div>
 			<div in:fly={{ y: 50, duration: 400, delay: 200 }} class="max-w-full mx-auto">
 				<Post />
