@@ -1,0 +1,21 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+
+# Allow access to static assets
+Allow: /static/
+Allow: /images/
+Allow: /favicon.ico
+
+# Protect sensitive directories
+Disallow: /api/
+Disallow: /.env
+Disallow: /.git/
+Disallow: /.svelte-kit/
+Disallow: /node_modules/
+Disallow: /.vercel/
+Disallow: /.vscode/
+
+# Default allow everything else
+Allow: /
+
+Sitemap: https://joemmalatesta.com/sitemap.xml

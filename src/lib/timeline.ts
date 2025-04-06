@@ -10,7 +10,6 @@ export let updates: TimelineItem[] = [
         title: "GrizzHacks 7",
         date: "Mar 2025",
         content: "Coming March 22nd, 2025. apply today at grizzhacks.org",
-        upcoming: true
     },
     {
         title: "Graduated Oakland University",
