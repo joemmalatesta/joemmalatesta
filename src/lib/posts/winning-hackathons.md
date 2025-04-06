@@ -1,8 +1,8 @@
 ---
-title: On Winning Hackathons
+title: How to Win Hackathons
 layout: "../../../layouts/BlogPost.astro" #Constant
-pubDate: "March 21, 2025"
-description: A guide on winning hackathons
+pubDate: "April 6, 2025"
+description: A practical guide for winning hackathons, from an average programmer who's pitched and been pitched dozens of winning projects.
 
 ---
 For two years I've been involved in hackathons as both an organizer and a participant. I've pitched and been pitched dozens of winning projects and they all have one thing in common - they're *never* the most technical. Instead, they all have something that makes them memorable - An entertaining demo, a unique idea, or a clever technical solution. 
