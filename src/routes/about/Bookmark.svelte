@@ -7,20 +7,18 @@
 <a
 	href={bookmark.link}
 	target="_blank"
-	class="opacity-90 hover:opacity-100 hover:bg-light/5 sm:px-3 py-2 rounded-lg items-center duration-300 flex justify-between"
+	class="opacity-90 hover:opacity-100 hover:bg-light/10 bg-light/5 px-3 py-2 rounded-full items-center duration-300 inline-flex gap-3 text-base"
 >
-	<div class="w-2/3 flex gap-1 items-center text-base sm:text-lg">
+	<div class="flex gap-2 items-center">
 		<img
 			src="/bookmarks/{bookmark.image}"
-			alt={bookmark.title}
-			class="w-5 h-5 sm:w-6 sm:h-6 inline rounded-full"
+			alt={bookmark.title} 
+			class="w-6 h-6 rounded-full"
 		/>
 		{bookmark.title}
 	</div>
-	<div class="w-1/3 opacity-50 text-sm flex justify-end">
-		<div class="truncate">
-			{bookmark.link?.replace(/^https?:\/\//, '')}
-			<img src="icons/outlink.svg" alt="outlink" class="w-4 h-4 inline" />
-		</div>
-	</div>
+	<!-- <div class="opacity-50 text-sm flex items-center gap-1">
+		{bookmark.link?.replace(/^https?:\/\//, '').split('/')[0]}
+		<img src="icons/outlink.svg" alt="outlink" class="w-3.5 h-3.5" />
+	</div> -->
 </a>

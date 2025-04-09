@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Bookmark from './Bookmark.svelte';
+	import Bookmark from './Bookmark.svelte';
 
 	import PhotoBook from './PhotoBook.svelte';
 	import Header from '../../components/Heading.svelte';
@@ -32,30 +32,28 @@
 	// Bookmark section
 	let bookmarkType = 'people';
 
-
 	// Extras section
 	type Extras = {
 		title: string;
 		href: string;
-		image: string;
-	}
+		image?: string;
+	};
 	let extras: Extras[] = [
 		{
 			title: 'Film Gallery',
 			image: 'photography/camerastore.webp',
 			href: 'film'
 		},
-		// {
-		// 	title: 'Fitness',
-		// 	href: '/fitness',
-		// 	image: 'fitness'
-		// },
+		{
+			title: 'Q&A',
+			href: '/QnA'
+		}
 		// {
 		// 	title: 'Design',
 		// 	href: '/design',
 		// 	image: 'design'
 		// }
-	]
+	];
 </script>
 
 <svelte:head>
@@ -63,7 +61,7 @@
 	<meta name="description" content="A closer look at who I am and aspire to be" />
 </svelte:head>
 
-<main class="min-h-screen overflow-x-hidden sm:overflow-visible	">
+<main class="min-h-screen overflow-x-hidden sm:overflow-visible">
 	{#if ready}
 		<section transition:fly={{ y: 50, duration: 600, delay: 0 }}>
 			<Header title="About" description="A closer look at who I am and aspire to be" />
@@ -99,7 +97,7 @@
 		</section>
 
 		<!-- Tools, Design, Tech, Portfolio Inspiration -->
-		<section class="py-10 " transition:fly={{ y: 50, duration: 400, delay: 400 }}>
+		<section class="py-10" transition:fly={{ y: 50, duration: 400, delay: 400 }}>
 			<div class="gap-1">
 				<h3 class="text-4xl font-semibold">Bookmarks</h3>
 				<p class="opacity-70">Useful tools and inspiring people</p>
@@ -109,16 +107,15 @@
 							on:click={() => {
 								bookmarkType = type;
 							}}
-							class="text-sm hover:opacity-100 rounded p-1 px-3 bg-light/10 {bookmarkType === type ? 'opacity-100' : ' opacity-60'}"
-							>{type}</button
+							class="text-sm hover:opacity-100 rounded p-1 px-3 bg-light/10 {bookmarkType === type
+								? 'opacity-100'
+								: ' opacity-60'}">{type}</button
 						>
 					{/each}
 				</div>
 
 				{#key bookmarkType}
-					<div
-						class="flex flex-col py-2"
-					>
+					<div class="flex flex-wrap gap-2 py-2">
 						{#each bookmarks as bookmark}
 							{#if bookmark.type === bookmarkType}
 								<Bookmark {bookmark} />
@@ -129,22 +126,38 @@
 			</div>
 		</section>
 
-
-		<!-- Extras (Film Photography, Quotes, Fitness, Travel, Design when I get there) -->
-		 <!-- TODO: Make these all icons. -->
-		<section class="gap-1 py-10 " transition:fly={{ y: 50, duration: 400, delay: 600 }}>
+		<!-- Extras (Film Photography, QnA, Quotes, Fitness, Travel, Design when I get there) -->
+		<!-- TODO: Make these all icons. -->
+		<section class="gap-1 py-10" transition:fly={{ y: 50, duration: 400, delay: 600 }}>
 			<h3 class="text-4xl font-semibold">Extras</h3>
 			<p class="opacity-70">Check out these other things I do (more coming soon)</p>
 			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full py-4">
 				{#each extras as extra}
-					<a href={extra.href} class="rounded-lg flex realtive w-full relative sm:h-60 h-48 sm:ring-2 ring-light/10 group" >
-						<div class="absolute inset-0 overflow-hidden rounded-lg">
-							<img src={extra.image} alt={extra.title} class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110" />
-						</div>
-						<div class="w-full h-12 absolute bottom-0 bg-gradient-to-t from-dark via-dark/40 to-transparent rounded-b-lg flex items-center justify-center">
-							<h5 class="text-lg font-semibold">{extra.title}</h5>
-						</div>
-					</a>
+					<!-- Rly should be a better way of doing this. -->
+					{#if extra.image}
+						<a
+							href={extra.href}
+							class="rounded-lg flex realtive w-full relative sm:h-60 h-48 sm:ring-2 ring-light/10 group"
+						>
+							<div class="absolute inset-0 overflow-hidden rounded-lg">
+								<img
+									src={extra.image}
+									alt={extra.title}
+									class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
+								/>
+								<div class="w-full absolute bottom-0 flex items-center justify-center rounded-lg">
+									<h5 class="text-lg font-semibold">{extra.title}</h5>
+								</div>
+							</div>
+						</a>
+					{:else}
+						<a
+							href={extra.href}
+							class="w-full sm:h-60 h-48 bg-light/10 hover:bg-light/20 transition-colors rounded-lg flex items-center justify-center"
+						>
+							<h5 class="text-6xl font-semibold">{extra.title}</h5>
+						</a>
+					{/if}
 				{/each}
 			</div>
 		</section>

@@ -23,9 +23,9 @@
 
 		<section
 			transition:fly={{ y: 50, duration: 400, delay: 200 }}
-			class="flex justify-between relative w-full gap-5 py-5"
+			class="relative flex justify-between w-full gap-5 py-5"
 		>
-			<div class="w-full z-50 mx-auto justify-center items-center">
+			<div class="z-50 items-center justify-center w-full mx-auto">
 				{#each updates as update, index}
 					<Timeline {update} {index} isLast={false} initialLoad={false} />
 				{/each}

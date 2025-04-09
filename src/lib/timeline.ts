@@ -8,18 +8,21 @@ export type TimelineItem = {
 export let updates: TimelineItem[] = [
     {
         title: "GrizzHacks 7",
-        date: "Feb 2025",
-        content: "Coming February 8th. apply today at grizzhacks.org",
-        upcoming: true
+        date: "Mar 2025",
+        content: "Coming March 22nd, 2025. apply today at grizzhacks.org",
     },
     {
         title: "Graduated Oakland University",
         date: "Dec 2024",
         content: "with a B.S. in Computer Science, average grades, and lots of ambition :D",
-        upcoming: true
     },
     {
-        title: "Winner at CalHacks",
+        title: "Won at HackUTD",
+        date: "Nov 2024",
+        content: "Track prize winner and best solo hack with Cheddarboxd, a social cheese rating app"
+    },
+    {
+        title: "Won at CalHacks",
         date: "Oct 2024",
         content: "Built a proof of concept for Ground Truth, a startup idea I've had for a while"
     },

@@ -10,6 +10,11 @@ export default {
       typography: {
         DEFAULT: {
           css: {
+            "blockquote p:first-of-type::before": { content: "none" },
+						"blockquote p:first-of-type::after": { content: "none" },
+            blockquote: {
+              fontWeight: "400",
+            },
             a: {
               color: "#f2f2f2",
               textDecoration: "underline",
@@ -26,10 +31,10 @@ export default {
             'code:not(pre code)': {
               backgroundColor: "#0d1117",
               color: "#ffffff",
-              fontWeight: "400",
               padding: "0.2em 0.4em",
               borderRadius: "0.25rem",
               fontSize: "0.875em",
+              fontWeight: "400",
             },
             // Remove default padding for inline code
             'code::before': {
@@ -42,27 +47,6 @@ export default {
             },
           },
         },
-        quoteless: {
-          css: {
-            "blockquote p:first-of-type::before": { content: "none" },
-            "blockquote p:last-of-type::after": { content: "none" },
-            pre: {
-              backgroundColor: "#171717",
-              color: "#ffffff",
-            },
-            // Styling for block code (inside pre tags)
-            'pre code': {
-              backgroundColor: "transparent",
-              color: "inherit",
-              fontSize: "inherit",
-              fontWeight: "inherit",
-              padding: "0",
-            },
-          },
-        },
-      },
-      fontFamily: {
-        sans: ['Inter', 'sans-serif']
       },
     },
   },

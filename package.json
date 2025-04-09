@@ -37,7 +37,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"mongodb": "^6.11.0",
 		"motion": "^10.18.0",
+		"phosphor-svelte": "^1.1.0",
+		"posthog-js": "^1.223.3",
 		"prismjs": "^1.29.0"
 	}
 }
