@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Bookmark from './Bookmark.svelte';
-
+	import GradientBox from '../../components/GradientBox.svelte';
 	import PhotoBook from './PhotoBook.svelte';
 	import Header from '../../components/Heading.svelte';
 	import { onMount } from 'svelte';
@@ -36,23 +36,16 @@
 	type Extras = {
 		title: string;
 		href: string;
-		image?: string;
 	};
 	let extras: Extras[] = [
 		{
 			title: 'Film Gallery',
-			image: 'photography/camerastore.webp',
 			href: 'film'
 		},
 		{
 			title: 'Q&A',
 			href: '/QnA'
-		}
-		// {
-		// 	title: 'Design',
-		// 	href: '/design',
-		// 	image: 'design'
-		// }
+		},
 	];
 </script>
 
@@ -126,38 +119,13 @@
 			</div>
 		</section>
 
-		<!-- Extras (Film Photography, QnA, Quotes, Fitness, Travel, Design when I get there) -->
-		<!-- TODO: Make these all icons. -->
+		<!-- Extras section -->
 		<section class="gap-1 py-10" transition:fly={{ y: 50, duration: 400, delay: 600 }}>
 			<h3 class="text-4xl font-semibold">Extras</h3>
-			<p class="opacity-70">Check out these other things I do (more coming soon)</p>
-			<div class="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full py-4">
+			<p class="opacity-70">Proof that I exist outside of your screen</p>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full py-4">
 				{#each extras as extra}
-					<!-- Rly should be a better way of doing this. -->
-					{#if extra.image}
-						<a
-							href={extra.href}
-							class="rounded-lg flex realtive w-full relative sm:h-60 h-48 sm:ring-2 ring-light/10 group"
-						>
-							<div class="absolute inset-0 overflow-hidden rounded-lg">
-								<img
-									src={extra.image}
-									alt={extra.title}
-									class="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
-								/>
-								<div class="w-full absolute bottom-0 flex items-center justify-center rounded-lg">
-									<h5 class="text-lg font-semibold">{extra.title}</h5>
-								</div>
-							</div>
-						</a>
-					{:else}
-						<a
-							href={extra.href}
-							class="w-full sm:h-60 h-48 bg-light/10 hover:bg-light/20 transition-colors rounded-lg flex items-center justify-center"
-						>
-							<h5 class="text-6xl font-semibold">{extra.title}</h5>
-						</a>
-					{/if}
+					<GradientBox title={extra.title} href={extra.href} />
 				{/each}
 			</div>
 		</section>
