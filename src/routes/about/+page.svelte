@@ -122,7 +122,7 @@
 		<!-- Extras section -->
 		<section class="gap-1 py-10" transition:fly={{ y: 50, duration: 400, delay: 600 }}>
 			<h3 class="text-4xl font-semibold">Extras</h3>
-			<p class="opacity-70">Check out these other things I do (more coming soon)</p>
+			<p class="opacity-70">Proof that I exist outside of your screen</p>
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full py-4">
 				{#each extras as extra}
 					<GradientBox title={extra.title} href={extra.href} />

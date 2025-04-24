@@ -29,7 +29,7 @@
 	/>
 
 	<!-- Dark overlay for better text contrast -->
-	<div class="absolute inset-0 bg-black/20 z-[1]" />
+	<div class="absolute inset-0 bg-black/25 z-10" />
 
 	<!-- Multiple noise texture overlays for increased grain -->
 	<div
@@ -41,7 +41,7 @@
 
 	<!-- Content -->
 	<div class="relative h-full flex items-center justify-center">
-		<h3 class="text-2xl font-semibold text-white z-[2]">{title}</h3>
+		<h3 class="text-3xl font-semibold text-light z-20">{title}</h3>
 	</div>
 
 	<!-- Default state background -->
