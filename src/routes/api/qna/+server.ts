@@ -20,3 +20,12 @@ export const GET: RequestHandler = async () => {
 
 	return json(dummyQnA);
 };
+
+export const POST: RequestHandler = async ({ request }) => {
+	const data = await request.json();
+	const { question } = data;
+
+	console.log('Received question:', question);
+
+	return json({ message: 'Question received successfully' });
+};
