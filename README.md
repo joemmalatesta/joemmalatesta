@@ -5,22 +5,3 @@
 <a href="https://linkedin.com/in/https://www.linkedin.com/in/joemmalatesta/" target="blank"><img align="center" src="https://img.icons8.com/m_rounded/512/FFFFFF/linkedin--v2.png" alt="https://www.linkedin.com/in/joemmalatesta/" width="22" /></a>
 </div>
 <hr>
-
-### Building
-- [Groople.xyz](https://www.groople.xyz/): Daily game based on Scattergories
-- [Joemmalatesta.com](https://www.joemmalatesta.com/): My personal website and where I write about tech stuff
-- [Ifnotnow.tw](https://www.ifnotnow.tw/): A personal blog about growth
-- [Devpost](https://devpost.com/joemmalatesta): My devpost from my hackathon days
-<hr>
-
-### Learning
-🎤 Voice agents
-
-🖌️ Design
-<hr>
-
-### Playing
-🎾 Tennis
-
-🏀 Basketball
-<hr>
