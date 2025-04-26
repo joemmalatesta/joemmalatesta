@@ -159,7 +159,20 @@
 					class="underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
 					href="/QnA">QnA</a
 				>.
-			</p>
+				<div class="flex items-center gap-2 pt-2">
+					<p class="opacity-70 sm:text-base text-sm">You can also talk to "me" on the phone</p>
+					<form class="flex items-center" method="post">
+						<input 
+						type="tel"
+						placeholder="(555) 555-5555"
+						name="phone"
+						class="bg-light/10 rounded-l-lg px-3 py-1 focus:outline-none focus:ring-2 focus:ring-light/20 focus:bg-light/10 text-sm"
+					/>
+					<button class="bg-light/20 hover:bg-light/30 rounded-r-lg px-3 py-1 transition-colors duration-200 focus:bg-light/20 active:bg-light/20 text-sm">
+						Call me
+					</button>
+				</form>
+			</div>
 		</section>
 	{/if}
 </main>
