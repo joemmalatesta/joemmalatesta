@@ -10,10 +10,13 @@
 	});
 
 	export let data: PageData;
-	const { metadata, post: Post } = data as { metadata: Post['metadata']; post: Post['default'] };
+	$: ({ metadata, post: PostComponent } = data as {
+		metadata: Post['metadata'];
+		post: Post['default'];
+	});
 </script>
 
-<main class="min-h-screen w-full mx-auto flex justify-center">
+<main class="min-h-screen w-full mx-auto md:flex md:justify-center">
 	{#if ready}
 		<article class="prose prose-sm md:prose-base 2xl:prose-lg prose-invert">
 			<div in:fly={{ y: 50, duration: 400, delay: 0 }} class="flex flex-col">
@@ -21,7 +24,9 @@
 				<h1 class="p-0 !mb-0">{metadata.title}</h1>
 			</div>
 			<div in:fly={{ y: 50, duration: 400, delay: 200 }} class="max-w-full mx-auto">
-				<Post />
+				{#key metadata.title}
+					<PostComponent />
+				{/key}
 			</div>
 		</article>
 	{/if}
@@ -34,7 +39,7 @@
 		white-space: pre-wrap;
 		word-wrap: break-word;
 	}
-	
+
 	:global(code) {
 		white-space: pre;
 	}
