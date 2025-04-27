@@ -44,7 +44,6 @@ export const actions = {
     askQuestion: async ({ request }) => {
         const data = await request.formData();
         const question = data.get('question')?.toString();
-        console.log(question);
 
         if (!question) {
             return {
