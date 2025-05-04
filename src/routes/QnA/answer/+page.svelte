@@ -68,7 +68,7 @@
 				{#each unansweredQuestions as question}
 				<form action="?/answer" use:enhance method="POST" class="flex flex-col gap-1 w-full">
 					<div class="flex flex-col gap-1">
-						<span class="text-sm opacity-60">{question.dateAsked}</span>
+						<span class="text-sm opacity-60">{new Date(question.dateAsked).toLocaleDateString('en-US')} at {new Date(question.dateAsked).toLocaleTimeString('en-US')}</span>
 						<p>{question.question}</p>
 					</div>
 						<input hidden type="text" name="id" value={question.id} />

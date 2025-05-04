@@ -1,4 +1,4 @@
-import { fail, redirect, type Actions } from '@sveltejs/kit';
+import { fail, redirect, type Actions, type Cookies } from '@sveltejs/kit';
 import { ADMIN_PASSWORD } from '$env/static/private';
 import type { Question } from '../types';
 import { MongoClient } from 'mongodb';
@@ -8,7 +8,7 @@ import { ObjectId } from 'mongodb';
 const uri = `mongodb+srv://joemmalatesta:${MONGO_QnA_PASSWORD}@qa-cluster.ymmrk.mongodb.net/?retryWrites=true&w=majority&appName=qa-cluster`;
 const client = new MongoClient(uri);
 
-export const load = async ({ cookies }) => {
+export const load = async ({ cookies }: { cookies: Cookies }) => {
     const admin = cookies.get('admin');
     if (!admin) {
         return {
@@ -19,7 +19,7 @@ export const load = async ({ cookies }) => {
     await client.connect();
     const database = client.db('qna');
     const questions = database.collection('questions');
-    const unansweredQuestions = await questions.find({answer: null, deleted: false}).sort({date: -1}).toArray();
+    const unansweredQuestions = await questions.find({answer: null, deleted: false}).sort({dateAsked: -1}).toArray();
     return {
         authenticated: true,
         questions: unansweredQuestions.map(doc => ({
@@ -53,17 +53,13 @@ export const actions = {
 
     answer: async ({ request }) => {
         const data = await request.formData();
-        const id = data.get('id');
+        const id = data.get('id') as string;
         const answer = data.get('answer');
 
         await client.connect();
         const database = client.db('qna');
         const questions = database.collection('questions');
-        await questions.updateOne({ _id: new ObjectId(id) }, { $set: { answer, dateAnswered: new Date().toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        }) } });
+        await questions.updateOne({ _id: new ObjectId(id) }, { $set: { answer, dateAnswered: new Date()} });
         return {
             success: true
         };
@@ -73,7 +69,7 @@ export const actions = {
     delete: async ({ request }) => {
         try {
             const data = await request.formData();
-            const id = data.get('id');
+            const id = data.get('id') as string;
             // mark as deleted in db
             await client.connect();
             const database = client.db('qna');
