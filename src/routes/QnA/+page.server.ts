@@ -13,7 +13,7 @@ export async function load() {
         await client.connect();
         const database = client.db('qna');
         const questions = database.collection('questions');
-        const allQuestions = await questions.find({answer: {$ne: null}, dateAnswered: {$ne: null}}).sort({dateAnswered: -1}).toArray();
+        const allQuestions = await questions.find({answer: {$ne: null}, dateAnswered: {$ne: null}, deleted: {$ne: true}}).sort({dateAnswered: -1}).toArray();
         if (!allQuestions) {
             return {
                 questions: []
