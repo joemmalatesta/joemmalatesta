@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import { fly } from 'svelte/transition';
 	import Header from '../../components/Heading.svelte';
+	import FilmCanister from './FilmCanister.svelte';
+
 	let ready = false;
 	onMount(() => {
 		ready = true;
@@ -28,7 +30,7 @@
 	let hoveredImage: string | null = null;
 
 	// Toggle between film canisters
-	let activeCanister = 'gold'; // 'gold' or 'fuji'
+	let activeCanister: 'gold' | 'fuji' = 'gold';
 </script>
 
 <!-- SECTION FOR FILM PHOTOGRAPHY -->
@@ -57,27 +59,8 @@
 				</button>
 			</div>
 
-			<!-- Gold Film Canister -->
-			<div id="can" class={activeCanister === 'gold' ? 'visible' : 'hidden'}>
-				<div id="topcap"></div>
-				<div id="text">
-					<p class="gold">GOLD</p>
-					<p class="num">2024</p>
-					<p class="mm">35mm film for color prints</p>
-				</div>
-				<div id="bottomcap"></div>
-			</div>
-
-			<!-- Fujifilm Canister -->
-			<div id="fuji-can" class={activeCanister === 'fuji' ? 'visible' : 'hidden'}>
-				<div id="fuji-topcap"></div>
-				<div id="fuji-text">
-					<p class="fuji-brand">FUJIFILM</p>
-					<p class="fuji-num">400</p>
-					<p class="fuji-desc">FILM FOR COLOR PRINTS</p>
-				</div>
-				<div id="fuji-bottomcap"></div>
-			</div>
+			<!-- Film Canister Component -->
+			<FilmCanister type={activeCanister} />
 
 			<!-- Film Roll -->
 			<div id="film" class={activeCanister === 'fuji' ? 'fuji-active' : ''}>
@@ -159,168 +142,6 @@
 
 	.selector-btn:hover {
 		background: rgba(50, 50, 50, 0.9);
-	}
-
-	/* Gold Canister Styles */
-	#topcap,
-	#bottomcap {
-		position: absolute;
-		left: -5px;
-		width: 130px;
-		height: 10px;
-		background: linear-gradient(
-			to right,
-			rgba(63, 63, 63, 1) 0%,
-			rgba(0, 0, 0, 1) 17%,
-			rgba(86, 86, 86, 1) 39%,
-			rgba(14, 14, 14, 1) 89%,
-			rgba(71, 71, 71, 1) 100%
-		);
-	}
-
-	#bottomcap {
-		bottom: 0;
-	}
-
-	#can {
-		box-shadow: 8px 0px 10px rgba(0, 0, 0, 0.5);
-		position: absolute;
-		top: 20px;
-		left: 50px;
-		width: 120px;
-		height: 230px;
-		background: linear-gradient(
-			to right,
-			rgba(164, 97, 8, 1) 0%,
-			rgba(242, 216, 67, 1) 38%,
-			rgba(223, 150, 35, 1) 80%,
-			rgba(164, 97, 8, 1) 100%
-		);
-		z-index: 40;
-		transition: opacity 0.3s ease;
-	}
-
-	#can #text {
-		transform: rotate(90deg) translate(60px, 40px);
-		display: block;
-		color: #000;
-		font-family: helvetica;
-		font-weight: bold;
-		text-align: center;
-		width: 200px;
-	}
-
-	#can p {
-		margin: 0;
-	}
-
-	#can p.gold {
-		font-size: 3em;
-		line-height: 0.9em;
-	}
-
-	#can p.num {
-		font-size: 2em;
-		font-style: italic;
-	}
-
-	#can p.mm {
-		font-size: 0.8em;
-		font-family: serif;
-	}
-
-	/* Fujifilm Canister Styles */
-	#fuji-topcap,
-	#fuji-bottomcap {
-		position: absolute;
-		left: -5px;
-		width: 130px;
-		height: 10px;
-		background: linear-gradient(
-			to right,
-			rgba(63, 63, 63, 1) 0%,
-			rgba(0, 0, 0, 1) 17%,
-			rgba(86, 86, 86, 1) 39%,
-			rgba(14, 14, 14, 1) 89%,
-			rgba(71, 71, 71, 1) 100%
-		);
-	}
-
-	#fuji-bottomcap {
-		bottom: 0;
-	}
-
-	#fuji-can {
-		box-shadow: 8px 0px 10px rgba(0, 0, 0, 0.5);
-		position: absolute;
-		top: 20px;
-		left: 50px;
-		width: 120px;
-		height: 230px;
-		background: linear-gradient(
-			to right,
-			rgba(125, 125, 125, 1) 0%,
-			rgba(200, 200, 200, 1) 40%,
-			rgba(255, 255, 255, 1) 50%,
-			rgba(200, 200, 200, 1) 60%,
-			rgba(125, 125, 125, 1) 100%
-		);
-		z-index: 40;
-		transition: opacity 0.3s ease;
-	}
-
-	#fuji-can::before {
-		content: '';
-		position: absolute;
-		top: 30px;
-		left: 0;
-		width: 120px;
-		height: 110px;
-		background: #43a047;
-		z-index: -1;
-	}
-
-	#fuji-can #fuji-text {
-		transform: rotate(90deg) translate(60px, 40px);
-		display: block;
-		color: #fff;
-		font-family: helvetica;
-		font-weight: bold;
-		text-align: center;
-		width: 200px;
-	}
-
-	#fuji-can p {
-		margin: 0;
-	}
-
-	#fuji-can p.fuji-brand {
-		font-size: 2.5em;
-		line-height: 0.9em;
-		color: #fff;
-		text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
-	}
-
-	#fuji-can p.fuji-num {
-		font-size: 3em;
-		font-weight: 800;
-		color: #000;
-	}
-
-	#fuji-can p.fuji-desc {
-		font-size: 0.7em;
-		font-family: sans-serif;
-		color: #000;
-	}
-
-	.visible {
-		display: block;
-		opacity: 1;
-	}
-
-	.hidden {
-		display: none;
-		opacity: 0;
 	}
 
 	#film {
