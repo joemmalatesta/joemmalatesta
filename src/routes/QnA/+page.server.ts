@@ -13,7 +13,7 @@ export async function load() {
         await client.connect();
         const database = client.db('qna');
         const questions = database.collection('questions');
-        const allQuestions = await questions.find({answer: {$ne: null}}).sort({dateAnswered: 1}).toArray();
+        const allQuestions = await questions.find({answer: {$ne: null}, dateAnswered: {$ne: null}, deleted: {$ne: true}}).sort({dateAnswered: -1}).toArray();
         if (!allQuestions) {
             return {
                 questions: []
@@ -44,7 +44,6 @@ export const actions = {
     askQuestion: async ({ request }) => {
         const data = await request.formData();
         const question = data.get('question')?.toString();
-        console.log(question);
 
         if (!question) {
             return {
@@ -61,11 +60,7 @@ export const actions = {
             await questions.insertOne({
                 question,
                 answer: null,
-                dateAsked: new Date().toLocaleDateString('en-US', {
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                }),
+                dateAsked: new Date(),
                 deleted: false,
                 likes: 0
             });

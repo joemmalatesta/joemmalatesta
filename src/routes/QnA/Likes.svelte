@@ -2,7 +2,6 @@
 	import type { Question } from './types';
 	import { enhance } from '$app/forms';
 	import Heart from 'phosphor-svelte/lib/Heart';
-	import { onMount } from 'svelte';
 	import { invalidateAll } from '$app/navigation';
 
 	export let question: Question;
@@ -27,9 +26,10 @@
 			}}
 		>
 			<input hidden type="text" name="id" value={question.id} />
-			<button type="submit">
+			<button type="submit" class="hover:text-[#ff3333]">
 				<Heart size={18} />
 			</button>
+			<p class="text-sm opacity-60">{!question.likes || question.likes < 0 ? 0 : question.likes}</p>
 		</form>
 	{:else}
 		<!-- If liked. -->
@@ -50,9 +50,9 @@
 		>
 			<input hidden type="text" name="id" value={question.id} />
 			<button type="submit">
-				<Heart weight={'fill'} size={18} color="#f2f2f2" />
+				<Heart weight={'fill'} size={18} color="#ff3333" />
 			</button>
+			<p class="text-sm opacity-60">{!question.likes || question.likes < 0 ? 0 : question.likes}</p>
 		</form>
 	{/if}
-	<p class="text-sm opacity-60">{question.likes && question.likes < 0 ? 0 : question.likes}</p>
 {/if}

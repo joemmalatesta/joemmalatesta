@@ -63,13 +63,13 @@
 			/>
 			<div class="flex flex-col gap-8 py-5">
 				{#each questions as qna}
-					<div transition:fade>
-						<span class="text-sm opacity-60 block mb-2">{qna.dateAnswered} </span>
-						<h3 class="text-xl mb-1">{qna.question}</h3>
-						<p class="opacity-70">{qna.answer}</p>
-						<div class="flex items-center gap-1">
-							<Likes question={qna} likedQuestions={likedQuestions} />
-						</div>
+					<div transition:fade class="flex flex-col gap-1">
+						<p class="text-sm opacity-60">
+							{new Date(qna.dateAnswered || new Date()).toLocaleDateString('en-US')}
+						</p>
+						<h3 class="text-xl mb-1 font-semibold">{qna.question}</h3>
+						<p class="opacity-70 whitespace-pre-line">{qna.answer}</p>
+						<Likes question={qna} {likedQuestions} />
 					</div>
 				{/each}
 			</div>

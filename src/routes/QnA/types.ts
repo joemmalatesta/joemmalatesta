@@ -4,6 +4,6 @@ export type Question = {
     answer: string;
     likes?: number;
     deleted?: boolean;
-    dateAsked: string;
-    dateAnswered?: string;
+    dateAsked: Date;
+    dateAnswered?: Date;
 }
