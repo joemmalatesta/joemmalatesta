@@ -28,9 +28,6 @@
 
 	// Track which image is being hovered
 	let hoveredImage: string | null = null;
-
-	// Toggle between film canisters
-	let activeCanister: 'gold' | 'fuji' = 'gold';
 </script>
 
 <!-- SECTION FOR FILM PHOTOGRAPHY -->
@@ -43,27 +40,11 @@
 			/>
 		</section>
 		<section class="gap-1 relative" transition:fly={{ y: 50, duration: 400, delay: 200 }}>
-			<!-- Film Canister Selector -->
-			<div class="canister-selector">
-				<button
-					class="selector-btn {activeCanister === 'gold' ? 'active' : ''}"
-					on:click={() => (activeCanister = 'gold')}
-				>
-					Gold
-				</button>
-				<button
-					class="selector-btn {activeCanister === 'fuji' ? 'active' : ''}"
-					on:click={() => (activeCanister = 'fuji')}
-				>
-					Fujifilm
-				</button>
-			</div>
-
 			<!-- Film Canister Component -->
-			<FilmCanister type={activeCanister} />
+			<FilmCanister />
 
 			<!-- Film Roll -->
-			<div id="film" class={activeCanister === 'fuji' ? 'fuji-active' : ''}>
+			<div id="film">
 				<ul>
 					{#each filmPictures as picture}
 						<li>
@@ -82,7 +63,7 @@
 									src="photography/{picture}.webp"
 									alt="film"
 									on:load={() => handleImageLoad(picture)}
-									class="film-negative {activeCanister === 'fuji' ? 'fuji-filter' : ''}"
+									class="film-negative"
 								/>
 
 								<!-- Spotlight overlay -->
@@ -93,79 +74,28 @@
 				</ul>
 			</div>
 		</section>
-	{:else}
-		<!-- Skeleton loading state -->
-		<section class="gap-1 py-5">
-			<div class="h-10 w-40 bg-light/5 rounded-lg animate-pulse mb-2"></div>
-			<div class="h-5 w-72 bg-light/5 rounded-lg animate-pulse"></div>
-		</section>
-		<section class="gap-1">
-			<div class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full py-2">
-				{#each Array(9) as _}
-					<div class="w-full h-40 bg-light/5 rounded-lg animate-pulse"></div>
-				{/each}
-			</div>
-		</section>
 	{/if}
 </main>
 
 <style>
-	img {
-		max-width: 100%;
-	}
-
-	.canister-selector {
-		position: absolute;
-		top: -20px;
-		left: 50px;
-		z-index: 45;
-		display: flex;
-		gap: 5px;
-	}
-
-	.selector-btn {
-		padding: 5px 10px;
-		background: rgba(20, 20, 20, 0.8);
-		border: 1px solid rgba(255, 255, 255, 0.2);
-		border-radius: 5px;
-		color: rgba(255, 255, 255, 0.8);
-		font-size: 12px;
-		cursor: pointer;
-		transition: all 0.2s ease;
-	}
-
-	.selector-btn.active {
-		background: rgba(40, 40, 40, 0.9);
-		border-color: rgba(255, 255, 255, 0.5);
-		color: white;
-	}
-
-	.selector-btn:hover {
-		background: rgba(50, 50, 50, 0.9);
-	}
-
 	#film {
 		position: absolute;
 		top: 35px;
-		left: 160px;
-		width: 150px;
+		left: 130px;
+		width: 80px;
+		overflow: auto;
 		overflow: hidden;
-		transition: all 1s;
+		transition: all 0.5s ease-in-out;
 		z-index: 30;
 	}
 
 	#film:hover {
-		width: 80vw;
-		max-width: 1200px;
+		width: 50vw;
+		overflow-x: scroll;
 	}
 
 	#film:hover ul {
 		transform: translatex(0px);
-	}
-
-	#film.fuji-active ul {
-		border-image: url(https://i.imgur.com/Sm9CNai.png) 27 fill repeat stretch;
-		border-color: #43a047;
 	}
 
 	ul {
@@ -217,11 +147,6 @@
 		position: relative;
 		z-index: 10;
 		transition: all 0.3s ease-in-out;
-	}
-
-	/* Fuji filter variation */
-	.film-negative.fuji-filter {
-		filter: invert(1) hue-rotate(140deg) brightness(0.6) contrast(1.7) sepia(0.3);
 	}
 
 	/* Hover state to show original image */
