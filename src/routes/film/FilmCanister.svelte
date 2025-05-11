@@ -1,5 +1,5 @@
 <script lang="ts">
-	export const year: number = 2024;
+	export let title: string = '404';
 </script>
 
 <div id="can" class="z-50">
@@ -7,7 +7,7 @@
 	<div id="topcap"></div>
 	<div id="text">
 		<p class="kodak" >Kodak</p>
-		<p class="num">{year}</p>
+		<p class="num">{title}</p>
 		<p class="mm">35mm color for print film</p>
 	</div>
 	<div id="bottomcap"></div>
