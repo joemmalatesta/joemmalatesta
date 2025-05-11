@@ -2,10 +2,10 @@
 	import { fly } from 'svelte/transition';
 	import FilmCanister from './FilmCanister.svelte';
 	import { onMount } from 'svelte';
-	import { filmImages } from '$lib/film';
+	import { filmImages, type FilmImage } from '$lib/film';
 
 	export let folder: string;
-	let images = filmImages.filter((image) => image.category === folder);
+	let images: FilmImage[] = filmImages.filter((image) => image.category === folder);
 
 	let ready = false;
 	onMount(() => {
@@ -15,7 +15,7 @@
 	function handleImageLoad(picture: string) {
 		loadedImages[picture] = true;
 	}
-	let hoveredImage: string | null = null;
+	export let hoveredImage: FilmImage | null = null;
 </script>
 
 {#if ready}
@@ -28,7 +28,7 @@
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<div
 							class="film-container"
-							on:mouseenter={() => (hoveredImage = picture.source)}
+							on:mouseenter={() => (hoveredImage = picture)}
 							on:mouseleave={() => (hoveredImage = null)}
 						>
 							<div class="placeholder {!loadedImages[picture.source] ? 'animate-pulse' : ''}"></div>
@@ -39,7 +39,6 @@
 								on:load={() => handleImageLoad(picture.source)}
 								class="film-negative"
 							/>
-							<div class="spotlight-overlay"></div>
 						</div>
 					</li>
 				{/each}
@@ -114,15 +113,6 @@
 	.film-container:hover .film-negative {
 		filter: none;
 		transform: scale(1.05);
-	}
-	.spotlight-overlay {
-		position: absolute;
-		inset: 0;
-		z-index: 20;
-		background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
-		opacity: 0;
-		transition: opacity 0.3s;
-		pointer-events: none;
 	}
 	.film-container:hover .spotlight-overlay {
 		opacity: 1;

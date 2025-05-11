@@ -1,6 +1,14 @@
-export const filmImages = [
+export type FilmImage = {
+	source: string;
+	category: string;
+	description?: string;
+	location?: string;
+};
+
+export const filmImages: FilmImage[] = [
+	// TODO: add description and location.
 	// Asia
-	{ source: '/photography/Asia/bella-elephant.webp', category: 'Asia' },
+	{ source: '/photography/Asia/bella-elephant.webp', category: 'Asia', description: 'Bella Elephant', location: 'Thailand' },
 	{ source: '/photography/Asia/bella-fancipan.webp', category: 'Asia' },
 	{ source: '/photography/Asia/joe-lila.webp', category: 'Asia' },
 	{ source: '/photography/Asia/philipines.webp', category: 'Asia' },
