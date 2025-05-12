@@ -29,49 +29,52 @@
 				description="I've got a film camera. I take pictures when I remember it."
 			/>
 		</section>
-		<section class="gap-1 relative" transition:fly={{ y: 50, duration: 400, delay: 200 }}>
+		<section
+			class="gap-1 relative lg:block hidden"
+			transition:fly={{ y: 50, duration: 400, delay: 200 }}
+		>
 			<!-- Show only the active FilmRoll -->
 			<div class="my-10">
 				{#key activeCategory}
 					<FilmRoll folder={activeCategory} bind:hoveredImage />
 				{/key}
 			</div>
-		</section>
-		<!-- Show the other categories as canisters in the holder -->
-		<div class="flex gap-5">
-			{#each filmCategories.filter((c) => c !== activeCategory) as category}
-				<button on:click={() => setActiveCategory(category)}>
-					<FilmHolder label={category}>
-						<FilmCanister title={category} />
-					</FilmHolder>
-				</button>
-			{/each}
-			<!-- Image selected -->
-			{#if hoveredImage}
-				<div class="w-1/2 flex justify-center items-start">
-					<div
-						class="bg-neutral-900/90 p-4 rounded-xl shadow-2xl border border-neutral-700 flex flex-col items-center max-w-md"
-					>
-						<img
-							src={hoveredImage.source}
-							alt="Selected Film"
-							class="border-8 border-white shadow-xl rounded-md -rotate-2 mb-3 max-w-full h-auto transition-transform duration-300 hover:rotate-1"
-						/>
+			<!-- Show the other categories as canisters in the holder -->
+			<div class="flex gap-5">
+				{#each filmCategories.filter((c) => c !== activeCategory) as category}
+					<button on:click={() => setActiveCategory(category)}>
+						<FilmHolder label={category}>
+							<FilmCanister title={category} />
+						</FilmHolder>
+					</button>
+				{/each}
+				<!-- Image selected -->
+				{#if hoveredImage}
+					<div class="w-1/2 flex justify-center items-start">
 						<div
-							class="bg-neutral-800/80 px-4 py-2 rounded-b-md w-full text-center mt-1 shadow text-gray-200 font-mono text-base"
+							class="bg-neutral-900/90 p-4 rounded-xl shadow-2xl border border-neutral-700 flex flex-col items-center max-w-md"
 						>
-							<h3 class="font-bold text-lg mb-1">{hoveredImage.description}</h3>
-							<div class="flex gap-1 justify-center items-center">
-								<MapPin size={16} />
-								<p class="text-xs italic">{hoveredImage.location}</p>
+							<img
+								src={hoveredImage.source}
+								alt="Selected Film"
+								class="border-8 border-light/70 ring-light/50 shadow-xl rounded-md -rotate-2 mb-3 max-w-full h-auto transition-transform duration-300 hover:rotate-1"
+							/>
+							<div
+								class="bg-neutral-800/80 px-4 py-2 rounded-b-md w-full text-center mt-1 shadow text-gray-200 font-mono text-base"
+							>
+								<h3 class="font-bold text-lg mb-1">{hoveredImage.description}</h3>
+								<div class="flex gap-1 justify-center items-center">
+									<MapPin size={16} />
+									<p class="text-xs italic">{hoveredImage.location}</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			{/if}
-		</div>
+				{/if}
+			</div>
+		</section>
 
-		<div class="flex gap-5">
+		<div class="flex gap-5 lg:hidden py-10 overflow-x-hidden">
 			<FilmStackMobile folder="Asia" />
 		</div>
 	{/if}

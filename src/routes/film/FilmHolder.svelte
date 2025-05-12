@@ -27,23 +27,17 @@
 		transition: box-shadow 0.2s;
 	}
 	.holder:hover {
-		animation: rock 0.5s cubic-bezier(0.1, 0.5, 0.3, 0.1) both;
+		animation: rock 0.35s cubic-bezier(0.1, 0.5, 0.3, 0.1) both;
 	}
 	@keyframes rock {
 		0% {
 			transform: rotate(0deg);
 		}
-		20% {
-			transform: rotate(-5deg);
-		}
-		40% {
-			transform: rotate(4deg);
-		}
-		60% {
-			transform: rotate(-3deg);
-		}
-		80% {
+		30% {
 			transform: rotate(2deg);
+		}
+		70% {
+			transform: rotate(-2deg) translateY(-10px);
 		}
 		100% {
 			transform: rotate(0deg);

@@ -114,9 +114,6 @@
 		filter: none;
 		transform: scale(1.05);
 	}
-	.film-container:hover .spotlight-overlay {
-		opacity: 1;
-	}
 	.film-container::before {
 		content: '';
 		position: absolute;

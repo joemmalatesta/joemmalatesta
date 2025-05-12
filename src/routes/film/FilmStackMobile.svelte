@@ -54,6 +54,8 @@
 	function getOffset(i: number) {
 		return i * 8;
 	}
+
+	$: console.log(dragX);
 </script>
 
 <div class="mobile-stack flex flex-col items-center relative min-h-[80vw] w-full justify-center">
@@ -68,7 +70,7 @@
 				i
 			)}deg) scale({1 - i * 0.04});
         top: {i * 8}px;
-        opacity: {i === 0 ? 1 : 0.85 - i * 0.1};
+        opacity: {i === 0 ? (dragging ? Math.max(0, 1 - Math.abs(dragX) / 400) : 1) : 0.85 - i * 0.1};
         cursor: {i === 0 ? 'grab' : 'default'};
       "
 			on:pointerdown={i === 0 ? handlePointerDown : undefined}
@@ -87,16 +89,6 @@
 </div>
 
 <style>
-	@media (min-width: 641px) {
-		.mobile-stack {
-			display: none;
-		}
-	}
-	@media (max-width: 640px) {
-		.mobile-stack {
-			display: flex;
-		}
-	}
 	.stacked-img {
 		position: absolute;
 		left: 0;
@@ -105,7 +97,6 @@
 		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
 		border-radius: 8px;
 		border: 6px solid #fff;
-		width: 90vw;
 		max-width: 350px;
 		user-select: none;
 		touch-action: pan-x;
@@ -116,7 +107,6 @@
 	.info-panel {
 		margin-top: 70vw;
 		max-width: 350px;
-		width: 90vw;
 		background: rgba(30, 30, 30, 0.92);
 		border-radius: 0 0 12px 12px;
 		padding: 1rem;
