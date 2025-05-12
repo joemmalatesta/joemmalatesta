@@ -7,6 +7,7 @@
 	import FilmCanister from './FilmCanister.svelte';
 	import { filmImages, type FilmImage } from '$lib/film';
 	import MapPin from 'phosphor-svelte/lib/MapPin';
+	import FilmStackMobile from './FilmStackMobile.svelte';
 	let ready = false;
 	onMount(() => {
 		ready = true;
@@ -20,7 +21,6 @@
 	}
 </script>
 
-<!-- SECTION FOR FILM PHOTOGRAPHY -->
 <main class="min-h-screen">
 	{#if ready}
 		<section class="gap-1 py-5" transition:fly={{ y: 50, duration: 400, delay: 0 }}>
@@ -41,7 +41,7 @@
 		<div class="flex gap-5">
 			{#each filmCategories.filter((c) => c !== activeCategory) as category}
 				<button on:click={() => setActiveCategory(category)}>
-					<FilmHolder>
+					<FilmHolder label={category}>
 						<FilmCanister title={category} />
 					</FilmHolder>
 				</button>
@@ -69,6 +69,10 @@
 					</div>
 				</div>
 			{/if}
+		</div>
+
+		<div class="flex gap-5">
+			<FilmStackMobile folder="Asia" />
 		</div>
 	{/if}
 </main>

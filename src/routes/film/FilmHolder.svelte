@@ -1,17 +1,21 @@
 <script lang="ts">
-	// No props needed for now
+	export let label: string = '';
 </script>
 
 <div class="holder">
 	<div class="lid"></div>
 	<div class="body">
-		<div class="scale-75 opacity-30 translate-y-1.5 -translate-x-0.5">
+		{#if label}
+			<div class="canister-label">{label}</div>
+		{/if}
+		<div class="scale-75 opacity-25 translate-y-1.5 -translate-x-0.5 blur-[2px]">
 			<slot />
 		</div>
 	</div>
 </div>
 
 <style>
+	@import url('https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Schoolbell&display=swap');
 	.holder {
 		position: relative;
 		width: 130px;
@@ -70,5 +74,22 @@
 		justify-content: center;
 		position: relative;
 		z-index: 1;
+	}
+	.canister-label {
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%) rotate(-4deg);
+		top: 18px;
+		height: 170px;
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+		font-family: 'Schoolbell', cursive;
+		font-weight: 800;
+		font-size: 2.8rem;
+		color: #111;
+		letter-spacing: 0.05em;
+		user-select: none;
+		pointer-events: none;
+		z-index: 3;
 	}
 </style>
