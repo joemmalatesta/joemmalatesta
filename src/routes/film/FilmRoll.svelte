@@ -81,9 +81,8 @@
 	}
 	ul li {
 		display: block;
-		width: 160px;
+		width: 180px;
 		height: 160px;
-		margin: 3px 10px;
 		background: #000;
 		flex-shrink: 0;
 		position: relative;
@@ -105,7 +104,7 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		filter: invert(1) hue-rotate(180deg) brightness(0.5) contrast(1.5) sepia(0.4);
+		filter: invert(1) hue-rotate(180deg) brightness(0.5) contrast(1.5) sepia(.7);
 		position: relative;
 		z-index: 10;
 		transition: all 0.3s ease-in-out;
