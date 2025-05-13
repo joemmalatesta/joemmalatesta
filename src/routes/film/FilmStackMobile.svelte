@@ -1,10 +1,11 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { filmImages, type FilmImage } from '$lib/film';
+	import { filmImages, type FilmImage, filmFolders } from '$lib/film';
 	import MapPin from 'phosphor-svelte/lib/MapPin';
-	import { fly } from 'svelte/transition';
-	export let folder: string;
+	import FilmHolder from './FilmHolder.svelte';
+	import FilmCanister from './FilmCanister.svelte';
 
+	let selectedFolder: string | null = null;
 	let images: FilmImage[] = [];
 	let stack: FilmImage[] = [];
 	let dragging = false;
@@ -12,38 +13,32 @@
 	let startX = 0;
 	let threshold = 80; // px to trigger swipe
 
-	onMount(() => {
-		images = filmImages.filter((img) => img.category === folder) || [];
-		stack = [...images];
-	});
-
-	$: if (folder) {
-		images = filmImages.filter((img) => img.category === folder) || [];
+	$: if (selectedFolder) {
+		images = filmImages.filter((img) => img.category === selectedFolder) || [];
 		stack = [...images];
 	}
 
-	function handlePointerDown(e: PointerEvent) {
+	function handleTouchStart(e: TouchEvent) {
 		dragging = true;
-		startX = e.clientX;
+		startX = e.touches[0].clientX;
 		dragX = 0;
-		window.addEventListener('pointermove', handlePointerMove);
-		window.addEventListener('pointerup', handlePointerUp);
+		window.addEventListener('touchmove', handleTouchMove);
+		window.addEventListener('touchend', handleTouchEnd);
 	}
 
-	function handlePointerMove(e: PointerEvent) {
+	function handleTouchMove(e: TouchEvent) {
 		if (!dragging) return;
-		dragX = e.clientX - startX;
+		dragX = e.touches[0].clientX - startX;
 	}
 
-	function handlePointerUp() {
+	function handleTouchEnd() {
 		if (Math.abs(dragX) > threshold) {
-			// Animate out and remove top image
 			stack = stack.slice(1);
 		}
 		dragging = false;
 		dragX = 0;
-		window.removeEventListener('pointermove', handlePointerMove);
-		window.removeEventListener('pointerup', handlePointerUp);
+		window.removeEventListener('touchmove', handleTouchMove);
+		window.removeEventListener('touchend', handleTouchEnd);
 	}
 
 	function getRotation(i: number) {
@@ -70,10 +65,14 @@
 				i
 			)}deg) scale({1 - i * 0.04});
         top: {i * 8}px;
-        opacity: {i === 0 ? (dragging ? Math.max(0, 1 - Math.abs(dragX) / 400) : 1) : 0.85 - i * 0.1};
+        opacity: {i === 0
+				? dragging
+					? Math.max(0, 1 - Math.abs(dragX) / 400)
+					: 1
+				: 0.85 - i * 0.1};
         cursor: {i === 0 ? 'grab' : 'default'};
       "
-			on:pointerdown={i === 0 ? handlePointerDown : undefined}
+			on:touchstart={i === 0 ? handleTouchStart : undefined}
 			draggable="false"
 		/>
 	{/each}
@@ -84,6 +83,18 @@
 				<MapPin size={16} />
 				<span class="text-xs italic">{stack[0].location}</span>
 			</div>
+		</div>
+	{:else}
+		<div class="flex">
+			{#each filmFolders as folder}
+				{#if folder !== selectedFolder}
+					<button class="scale-75" on:click={() => (selectedFolder = folder)}>
+						<FilmHolder label={folder}>
+							<FilmCanister title={folder} />
+						</FilmHolder>
+					</button>
+				{/if}
+			{/each}
 		</div>
 	{/if}
 </div>

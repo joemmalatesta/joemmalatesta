@@ -75,7 +75,7 @@
 		</section>
 
 		<div class="flex gap-5 lg:hidden py-10 overflow-x-hidden">
-			<FilmStackMobile folder="Asia" />
+			<FilmStackMobile />
 		</div>
 	{/if}
 </main>

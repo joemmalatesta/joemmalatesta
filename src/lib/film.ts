@@ -5,6 +5,8 @@ export type FilmImage = {
 	location?: string;
 };
 
+export const filmFolders = ['Asia', '2022', '2024'];
+
 export const filmImages: FilmImage[] = [
 	// TODO: add description and location.
 	// Asia
