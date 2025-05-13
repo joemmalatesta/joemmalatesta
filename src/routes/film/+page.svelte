@@ -14,7 +14,7 @@
 	});
 
 	const filmCategories = ['Asia', '2022', '2024'];
-	let activeCategory = '2024';
+	let activeCategory: string | null = null;
 	let hoveredImage: FilmImage | null = null;
 	function setActiveCategory(category: string) {
 		activeCategory = category;
@@ -30,14 +30,16 @@
 			/>
 		</section>
 		<section
-			class="gap-1 relative lg:block hidden"
+			class="gap-1 relative {!activeCategory ? 'lg:flex lg:justify-center my-10' : 'lg:block'} hidden"
 			transition:fly={{ y: 50, duration: 400, delay: 200 }}
 		>
 			<!-- Show only the active FilmRoll -->
 			<div class="my-10">
-				{#key activeCategory}
-					<FilmRoll folder={activeCategory} bind:hoveredImage />
-				{/key}
+				{#if activeCategory}
+					{#key activeCategory}
+						<FilmRoll folder={activeCategory} bind:hoveredImage />
+					{/key}
+				{/if}
 			</div>
 			<!-- Show the other categories as canisters in the holder -->
 			<div class="flex gap-5">

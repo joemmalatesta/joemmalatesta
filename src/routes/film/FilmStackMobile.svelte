@@ -50,7 +50,6 @@
 		return i * 8;
 	}
 
-	$: console.log(dragX);
 </script>
 
 <div class="mobile-stack flex flex-col items-center relative min-h-[80vw] w-full justify-center">
