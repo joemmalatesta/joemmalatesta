@@ -19,15 +19,19 @@
 </script>
 
 {#if ready}
-	<section class="gap-1 relative" transition:fly={{ y: 50, duration: 400, delay: 200 }}>
-		<FilmCanister title={folder} />
+	<section transition:fly={{ y: 50, duration: 400, delay: 200 }}>
+		<div class="canister-container w-fit">
+			<FilmCanister title={folder} />
+		</div>
 		<div class="film-roll">
 			<ul>
-				{#each images as picture}
+				{#each images as picture, index}
 					<li>
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<div
-							class="film-container"
+							class="film-container {index === images.length - 1
+								? 'border-b-0'
+								: 'border-b-8'} border-neutral-950 border-x-[12px]"
 							on:mouseenter={() => (hoveredImage = picture)}
 							on:mouseleave={() => (hoveredImage = null)}
 						>
@@ -35,7 +39,7 @@
 							<img
 								loading="lazy"
 								src={picture.source}
-								alt="film"
+								alt={picture.description}
 								on:load={() => handleImageLoad(picture.source)}
 								class="film-negative"
 							/>
@@ -48,45 +52,40 @@
 {/if}
 
 <style>
+	.canister-container {
+		transform: rotate(-90deg);
+		position: relative;
+		left: 45px;
+		top: 65px;
+		z-index: 100;
+	}
 	.film-roll {
 		position: absolute;
-		top: 35px;
-		left: 130px;
-		width: 80px;
+		height: 80px;
 		overflow: auto;
 		overflow: hidden;
+		/* hide scrollbar */
+		scrollbar-width: none;
+		-ms-overflow-style: none;
 		transition: all 0.5s ease-in-out;
 		z-index: 30;
 	}
 	.film-roll:hover {
-		width: 50vw;
-		overflow-x: scroll;
+		height: 60vh;
+		overflow-y: scroll;
 	}
 	.film-roll:hover ul {
-		transform: translatex(0px);
+		transform: translatey(0px);
 	}
 	ul {
-		transform: translatex(-70%);
+		transform: translatey(-60%);
 		transition: all 1s;
-		width: auto;
-		height: 166px;
-		padding: 0;
-		margin: 0;
-		list-style: none;
-		border-style: solid;
-		border-width: 17px 0px;
-		border-image: url(https://i.imgur.com/Sm9CNai.png) 27 fill repeat stretch;
+		height: auto;
+		width: 220px;
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
 	}
-	ul li {
-		display: block;
-		width: 180px;
-		height: 160px;
-		background: #000;
-		flex-shrink: 0;
-		position: relative;
-	}
+
 	.film-container {
 		width: 100%;
 		height: 100%;
@@ -94,17 +93,33 @@
 		overflow: hidden;
 		cursor: pointer;
 	}
-	.placeholder {
+
+	.film-container::before {
+		content: "";
 		position: absolute;
-		inset: 0;
-		background-color: rgba(255, 255, 255, 0.05);
-		z-index: 0;
+		left: 20px;
+		width: 8px;
+		height: 8px;
+		background: #5e5e5e;
+		box-shadow: 14px 0px 0px #5e5e5e, 28px 0px 0px #5e5e5e, 42px 0px 0px #5e5e5e, 56px 0px 0px #5e5e5e, 70px 0px 0px #5e5e5e, 84px 0px 0px #5e5e5e, 98px 0px 0px #5e5e5e, 112px 0px 0px #5e5e5e, 126px 0px 0px #5e5e5e, 140px 0px 0px #5e5e5e, 154px 0px 0px #5e5e5e, 168px 0px 0px #5e5e5e, 182px 0px 0px #5e5e5e, 196px 0px 0px #5e5e5e, 210px 0px 0px #5e5e5e, 224px 0px 0px #5e5e5e, 238px 0px 0px #5e5e5e, 252px 0px 0px #5e5e5e, 266px 0px 0px #5e5e5e, 280px 0px 0px #5e5e5e, 294px 0px 0px #5e5e5e, 308px 0px 0px #5e5e5e;
 	}
+
+	.film-container::after {
+		content: "";
+		position: absolute;
+		bottom: 4px;
+		left: 0px;
+		width: 8px;
+		height: 8px;
+		background: #5e5e5e;
+		box-shadow: 14px 0px 0px #5e5e5e, 28px 0px 0px #5e5e5e, 42px 0px 0px #5e5e5e, 56px 0px 0px #5e5e5e, 70px 0px 0px #5e5e5e, 84px 0px 0px #5e5e5e, 98px 0px 0px #5e5e5e, 112px 0px 0px #5e5e5e, 126px 0px 0px #5e5e5e, 140px 0px 0px #5e5e5e, 154px 0px 0px #5e5e5e, 168px 0px 0px #5e5e5e, 182px 0px 0px #5e5e5e, 196px 0px 0px #5e5e5e, 210px 0px 0px #5e5e5e, 224px 0px 0px #5e5e5e, 238px 0px 0px #5e5e5e, 252px 0px 0px #5e5e5e, 266px 0px 0px #5e5e5e, 280px 0px 0px #5e5e5e, 294px 0px 0px #5e5e5e, 308px 0px 0px #5e5e5e;
+	}
+
 	.film-negative {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		filter: invert(1) hue-rotate(180deg) brightness(0.5) contrast(1.5) sepia(.7);
+		filter: invert(1) hue-rotate(180deg) brightness(0.5) contrast(1.5) sepia(0.7);
 		position: relative;
 		z-index: 10;
 		transition: all 0.3s ease-in-out;
@@ -112,41 +127,5 @@
 	.film-container:hover .film-negative {
 		filter: none;
 		transform: scale(1.05);
-	}
-	.film-container::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		left: 0;
-		width: 8px;
-		background: repeating-linear-gradient(
-			to bottom,
-			transparent,
-			transparent 4px,
-			rgba(0, 0, 0, 0.5) 4px,
-			rgba(0, 0, 0, 0.5) 8px
-		);
-		z-index: 15;
-		opacity: 0.7;
-		pointer-events: none;
-	}
-	.film-container::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		right: 0;
-		width: 8px;
-		background: repeating-linear-gradient(
-			to bottom,
-			transparent,
-			transparent 4px,
-			rgba(0, 0, 0, 0.5) 4px,
-			rgba(0, 0, 0, 0.5) 8px
-		);
-		z-index: 15;
-		opacity: 0.7;
-		pointer-events: none;
 	}
 </style>

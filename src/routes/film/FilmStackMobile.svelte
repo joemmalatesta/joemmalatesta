@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { filmImages, type FilmImage, filmFolders } from '$lib/film';
 	import MapPin from 'phosphor-svelte/lib/MapPin';
 	import FilmHolder from './FilmHolder.svelte';
@@ -49,7 +48,6 @@
 	function getOffset(i: number) {
 		return i * 8;
 	}
-
 </script>
 
 <div class="mobile-stack flex flex-col items-center relative min-h-[80vw] w-full justify-center">
@@ -76,7 +74,7 @@
 		/>
 	{/each}
 	{#if stack[0]}
-		<div class="info-panel">
+		<div class="mt-[70vw] bg-neutral-900/90 rounded-xl p-4 text-gray-200 shadow-lg font-mono">
 			<h3 class="font-bold text-lg mb-1">{stack[0].description}</h3>
 			<div class="flex gap-1 items-center justify-center">
 				<MapPin size={16} />
@@ -84,10 +82,10 @@
 			</div>
 		</div>
 	{:else}
-		<div class="flex">
+		<div class="flex flex-wrap justify-center">
 			{#each filmFolders as folder}
 				{#if folder !== selectedFolder}
-					<button class="scale-75" on:click={() => (selectedFolder = folder)}>
+					<button class="scale-[.65] sm:scale-75 p-0 w-28 sm:w-32" on:click={() => (selectedFolder = folder)}>
 						<FilmHolder label={folder}>
 							<FilmCanister title={folder} />
 						</FilmHolder>
@@ -118,7 +116,7 @@
 		margin-top: 70vw;
 		max-width: 350px;
 		background: rgba(30, 30, 30, 0.92);
-		border-radius: 0 0 12px 12px;
+		border-radius: 12px;
 		padding: 1rem;
 		color: #eee;
 		box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);

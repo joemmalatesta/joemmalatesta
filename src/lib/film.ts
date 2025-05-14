@@ -1,8 +1,8 @@
 export type FilmImage = {
 	source: string;
 	category: string;
-	description?: string;
-	location?: string;
+	description: string;
+	location: string;
 };
 
 export const filmFolders = ['Asia', '2022', '2024'];

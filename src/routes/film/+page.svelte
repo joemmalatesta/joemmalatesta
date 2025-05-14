@@ -30,29 +30,36 @@
 			/>
 		</section>
 		<section
-			class="gap-1 relative {!activeCategory ? 'lg:flex lg:justify-center my-10' : 'lg:block'} hidden"
+			class="{!activeCategory ? 'md:flex md:justify-center' : 'md:flex md:justify-between'} hidden"
 			transition:fly={{ y: 50, duration: 400, delay: 200 }}
 		>
-			<!-- Show only the active FilmRoll -->
-			<div class="my-10">
-				{#if activeCategory}
+			<!-- Show only the active FilmRoll on the left -->
+			{#if activeCategory}
+				<div class="md:w-2/5">
 					{#key activeCategory}
-						<FilmRoll folder={activeCategory} bind:hoveredImage />
+						<div class="absolute top-32">
+							<FilmRoll folder={activeCategory} bind:hoveredImage />
+						</div>
 					{/key}
-				{/if}
-			</div>
-			<!-- Show the other categories as canisters in the holder -->
-			<div class="flex gap-5">
-				{#each filmCategories.filter((c) => c !== activeCategory) as category}
-					<button on:click={() => setActiveCategory(category)}>
-						<FilmHolder label={category}>
-							<FilmCanister title={category} />
-						</FilmHolder>
-					</button>
-				{/each}
+				</div>
+			{/if}
+
+			<!-- Right side with film canisters and hovered image -->
+			<div class="md:w-3/5 flex flex-col items-start gap-5">
+				<!-- Show the other categories as canisters in the holder -->
+				<div class="flex gap-5 justify-end">
+					{#each filmCategories.filter((c) => c !== activeCategory) as category}
+						<button on:click={() => setActiveCategory(category)}>
+							<FilmHolder label={category}>
+								<FilmCanister title={category} />
+							</FilmHolder>
+						</button>
+					{/each}
+				</div>
+
 				<!-- Image selected -->
 				{#if hoveredImage}
-					<div class="w-1/2 flex justify-center items-start">
+					<div class="flex justify-end items-start mt-5">
 						<div
 							class="bg-neutral-900/90 p-4 rounded-xl shadow-2xl border border-neutral-700 flex flex-col items-center max-w-md"
 						>
@@ -76,7 +83,7 @@
 			</div>
 		</section>
 
-		<div class="flex gap-5 lg:hidden py-10 overflow-x-hidden">
+		<div class="flex gap-5 md:hidden py-10 overflow-x-hidden">
 			<FilmStackMobile />
 		</div>
 	{/if}

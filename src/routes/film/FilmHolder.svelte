@@ -29,6 +29,9 @@
 	.holder:hover {
 		animation: rock 0.35s cubic-bezier(0.1, 0.5, 0.3, 0.1) both;
 	}
+	.holder:hover .lid {
+		animation: rock 0.45s cubic-bezier(0.1, 0.5, 0.3, 0.1) both;
+	}
 	@keyframes rock {
 		0% {
 			transform: rotate(0deg);
