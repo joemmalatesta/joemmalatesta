@@ -9,9 +9,9 @@ $: {
         activeTab = 'home';
     } else if (path.startsWith('/about')) {
         activeTab = 'about';
-    } else if (path.includes('/projects')) {
+    } else if (path.startsWith('/projects')) {
         activeTab = 'projects';
-    } else if (path.includes('/writing')) {
+    } else if (path.startsWith('/writing')) {
         activeTab = 'writing';
     } else {
         activeTab = '';
@@ -20,8 +20,8 @@ $: {
 </script>
 
 <nav class="flex justify-between items-center py-6">
+    <a href="/" class="sm:hidden"><img src="/logo-light.svg" alt="JMM" class="w-8 h-8"></a>
 	<a href="/" class="hidden sm:block text-xl">Joe Malatesta</a>
-    <a href="/" class="sm:hidden text-xl">JMM</a>
 	<div class="flex gap-4">
 		<a href="/about" class="relative group sm:text-lg text-sm">
 			About
