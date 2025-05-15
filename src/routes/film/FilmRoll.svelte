@@ -6,6 +6,8 @@
 
 	export let folder: string;
 	let images: FilmImage[] = filmImages.filter((image) => image.category === folder);
+	let hasBeenHovered = false;
+	$: console.log(hasBeenHovered);
 
 	let ready = false;
 	onMount(() => {
@@ -24,15 +26,16 @@
 			<FilmCanister title={folder} />
 		</div>
 		<div class="film-roll">
-			<ul>
+			<ul class={hasBeenHovered ? '-translate-y-[20%]' : '-translate-y-[60%]'}>
 				{#each images as picture, index}
 					<li>
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
 						<div
-							class="film-container {index === images.length - 1
-								? 'border-b-0'
-								: 'border-b-8'} border-neutral-950 border-x-[12px]"
-							on:mouseenter={() => (hoveredImage = picture)}
+							class="film-container border-b-8 border-black border-x-4"
+							on:mouseenter={() => {
+								hasBeenHovered = true;
+								hoveredImage = picture;
+							}}
 							on:mouseleave={() => (hoveredImage = null)}
 						>
 							<div class="placeholder {!loadedImages[picture.source] ? 'animate-pulse' : ''}"></div>
@@ -62,6 +65,7 @@
 	.film-roll {
 		position: absolute;
 		height: 80px;
+		min-height: 80px;
 		overflow: auto;
 		overflow: hidden;
 		/* hide scrollbar */
@@ -78,12 +82,18 @@
 		transform: translatey(0px);
 	}
 	ul {
-		transform: translatey(-60%);
+		min-height: 80px;
 		transition: all 1s;
 		height: auto;
 		width: 220px;
 		display: flex;
 		flex-direction: column;
+		border-style: solid;
+		border-width: 0px 17px;
+		-moz-border-image: url(https://i.imgur.com/oOf93Qm.png) 20 repeat;
+		-webkit-border-image: url(https://i.imgur.com/oOf93Qm.png) 20 repeat;
+		-o-border-image: url(https://i.imgur.com/oOf93Qm.png) 20 repeat;
+		border-image: url(https://i.imgur.com/oOf93Qm.png) 20 repeat;
 	}
 
 	.film-container {
@@ -92,27 +102,6 @@
 		position: relative;
 		overflow: hidden;
 		cursor: pointer;
-	}
-
-	.film-container::before {
-		content: "";
-		position: absolute;
-		left: 20px;
-		width: 8px;
-		height: 8px;
-		background: #5e5e5e;
-		box-shadow: 14px 0px 0px #5e5e5e, 28px 0px 0px #5e5e5e, 42px 0px 0px #5e5e5e, 56px 0px 0px #5e5e5e, 70px 0px 0px #5e5e5e, 84px 0px 0px #5e5e5e, 98px 0px 0px #5e5e5e, 112px 0px 0px #5e5e5e, 126px 0px 0px #5e5e5e, 140px 0px 0px #5e5e5e, 154px 0px 0px #5e5e5e, 168px 0px 0px #5e5e5e, 182px 0px 0px #5e5e5e, 196px 0px 0px #5e5e5e, 210px 0px 0px #5e5e5e, 224px 0px 0px #5e5e5e, 238px 0px 0px #5e5e5e, 252px 0px 0px #5e5e5e, 266px 0px 0px #5e5e5e, 280px 0px 0px #5e5e5e, 294px 0px 0px #5e5e5e, 308px 0px 0px #5e5e5e;
-	}
-
-	.film-container::after {
-		content: "";
-		position: absolute;
-		bottom: 4px;
-		left: 0px;
-		width: 8px;
-		height: 8px;
-		background: #5e5e5e;
-		box-shadow: 14px 0px 0px #5e5e5e, 28px 0px 0px #5e5e5e, 42px 0px 0px #5e5e5e, 56px 0px 0px #5e5e5e, 70px 0px 0px #5e5e5e, 84px 0px 0px #5e5e5e, 98px 0px 0px #5e5e5e, 112px 0px 0px #5e5e5e, 126px 0px 0px #5e5e5e, 140px 0px 0px #5e5e5e, 154px 0px 0px #5e5e5e, 168px 0px 0px #5e5e5e, 182px 0px 0px #5e5e5e, 196px 0px 0px #5e5e5e, 210px 0px 0px #5e5e5e, 224px 0px 0px #5e5e5e, 238px 0px 0px #5e5e5e, 252px 0px 0px #5e5e5e, 266px 0px 0px #5e5e5e, 280px 0px 0px #5e5e5e, 294px 0px 0px #5e5e5e, 308px 0px 0px #5e5e5e;
 	}
 
 	.film-negative {
