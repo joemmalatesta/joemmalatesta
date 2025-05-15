@@ -92,7 +92,7 @@
 	{/if}
 
 	{#if stack[0]}
-		<div class=" bg-neutral-900/90 rounded-xl p-4 text-gray-200 font-mono mt-64">
+		<div class=" bg-neutral-950/90 rounded-xl p-4 text-gray-200 font-mono mt-64">
 			<h3 class="font-bold text-lg mb-1">{stack[0].description}</h3>
 			<div class="flex gap-1 items-center justify-center">
 				<MapPin size={16} />

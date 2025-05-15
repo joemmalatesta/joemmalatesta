@@ -61,15 +61,15 @@
 				{#if hoveredImage}
 					<div class="flex justify-end items-start mt-5">
 						<div
-							class="bg-neutral-900/90 p-4 rounded-xl shadow-2xl border border-neutral-700 flex flex-col items-center max-w-md"
+							class="bg-neutral-900/90 p-4 rounded-xl shadow-2xl border border-neutral-700/80 flex flex-col items-center max-w-md"
 						>
 							<img
 								src={hoveredImage.source}
 								alt="Selected Film"
-								class="border-8 border-light/70 ring-light/50 shadow-xl rounded-md -rotate-2 mb-3 max-w-full h-auto transition-transform duration-300 hover:rotate-1"
+								class="border-8 border-neutral-700/80 shadow-xl rounded-md -rotate-2 mb-3 max-w-full h-auto transition-transform duration-300 hover:rotate-1"
 							/>
 							<div
-								class="bg-neutral-800/80 px-4 py-2 rounded-b-md w-full text-center mt-1 shadow text-gray-200 font-mono text-base"
+								class="bg-neutral-800/80 px-4 py-2 rounded-md w-full text-center mt-1 shadow text-gray-200 font-mono text-base"
 							>
 								<h3 class="font-bold text-lg mb-1">{hoveredImage.description}</h3>
 								<div class="flex gap-1 justify-center items-center">

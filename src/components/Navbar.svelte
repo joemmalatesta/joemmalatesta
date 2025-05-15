@@ -20,7 +20,7 @@ $: {
 </script>
 
 <nav class="flex justify-between items-center py-6">
-    <a href="/" class="sm:hidden"><img src="/logo-dark.svg" alt="JMM" class="w-8 h-8"></a>
+    <a href="/" class="sm:hidden"><img src="/logo-light.svg" alt="JMM" class="w-8 h-8"></a>
 	<a href="/" class="hidden sm:block text-xl">Joe Malatesta</a>
 	<div class="flex gap-4">
 		<a href="/about" class="relative group sm:text-lg text-sm">
