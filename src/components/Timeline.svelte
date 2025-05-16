@@ -25,7 +25,7 @@
 			>{update.date} {#if update.upcoming} <img src="/icons/countdown.svg" alt="Upcoming" class="w-4 h-4 inline-block" />{/if}</time>
                 <div class="text-lg sm:text-xl font-semibold">{update.title}</div>
                 <!-- Content -->
-                 <p class="text-sm opacity-60">{update.content}</p>
+                 <p class="text-sm opacity-60">{@html update.content.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="underline underline-offset-2 hover:underline-offset-4 transition-all" target="_blank">$1</a>')}</p>
         </div>
 		<!-- Using bg-light/40 fucked things up so I'm just using #717171 bc it's close and doesn't have a weird overlap -->
 		{#if isLast}

@@ -4,32 +4,36 @@ export type TimelineItem = {
     content: string;
     upcoming?: boolean;
 };
-// TODO: Make these raw html and add links where they need to be
 export let updates: TimelineItem[] = [
     {
         title: "GrizzHacks 7",
         date: "Mar 2025",
-        content: "Coming March 22nd, 2025. apply today at grizzhacks.org",
+        content: "Bigger prizes and better projects. Massively AI accelerated.",
+    },
+    {
+        title: "Full Time @ KL&A",
+        date: "Feb 2025",
+        content: "My first big boy job. 1 of 3 developers on the R&D team",
     },
     {
         title: "Graduated Oakland University",
         date: "Dec 2024",
-        content: "with a B.S. in Computer Science, average grades, and lots of ambition :D",
+        content: "with a B.S. in Computer Science, average grades, and lots of ambition",
     },
     {
-        title: "Won at HackUTD",
+        title: "Went to HackUTD",
         date: "Nov 2024",
-        content: "Track prize winner and best solo hack with Cheddarboxd, a social cheese rating app"
+        content: "Won Pinata's track prize and best solo hack with [Cheddarboxd](https://devpost.com/software/cheddarboxd), a social cheese rating app"
     },
     {
-        title: "Won at CalHacks",
+        title: "Went to CalHacks",
         date: "Oct 2024",
-        content: "Built a proof of concept for Ground Truth, a startup idea I've had for a while"
+        content: "Won ChromaDB's track prize with [Ground Truth](https://devpost.com/software/ground-truth-97nqws), a RAG app to align your docs to your codebase."
     },
     {
         title: "Won first place at Hack Dearborn (again)",
         date: "Oct 2024",
-        content: "With Second Chapter, a site to empower the trading of used books in local communities"
+        content: "With [Second Chapter](https://devpost.com/software/second-chapter), a site to empower the trading of used books in local communities"
     },
     {
         title: "Interned at KL&A",
@@ -49,7 +53,7 @@ export let updates: TimelineItem[] = [
     {
         title: "Won first place at Hack Dearborn",
         date: "Oct 2023",
-        content: "Built and demoed ScanBite, an app to give a nutritional breakdown of your food from an image"
+        content: "Built and demoed [ScanBite](https://devpost.com/software/snapbite), an app to give a nutritional breakdown of your food from an image"
     },
     {
         title: "Launched Groople.xyz",
@@ -59,7 +63,7 @@ export let updates: TimelineItem[] = [
     {
         title: "Interned at Mercedes-Benz Financial",
         date: "May 2023",
-        content: "Interned as a Software Engineer. Sped up daily processes and built UI for an internal chatbot"
+        content: "Interned as a Software Engineer. Decided I never want to commute more than 20 minutes"
     },
     {
         title: "Interned at Alps Alpine",

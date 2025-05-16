@@ -102,7 +102,6 @@
 	{:else}
 		<div class="flex flex-wrap justify-center">
 			{#each filmFolders as folder}
-				{#if folder !== selectedFolder}
 					<button
 						class="scale-[.65] sm:scale-75 p-0 w-28 sm:w-32"
 						on:click={() => (selectedFolder = folder)}
@@ -111,7 +110,6 @@
 							<FilmCanister title={folder} />
 						</FilmHolder>
 					</button>
-				{/if}
 			{/each}
 		</div>
 	{/if}
