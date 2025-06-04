@@ -7,6 +7,7 @@
 
 ### Links
 - [Joemmalatesta.com](https://joemmalatesta.com): My portfolio website
+- [Doings](https://doings.today): Social media for your daily efforts
 - [Groople.xyz](https://groople.xyz): A daily game based on Scattergories
 - [Devpost](https://devpost.com/joemmalatesta): All of my hackathon projects
 - [Ifnotnow.tw](https://ifnotnow.tw): A blog with a personal touch.
