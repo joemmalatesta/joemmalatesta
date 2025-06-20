@@ -38,9 +38,9 @@
 				</h1>
 			</div>
 			<p class="opacity-70 sm:text-base text-sm">
-				I'm a full stack developer and full time student focused on constant improvement in all
+				I'm a full stack developer and recent graduate focused on constant improvement in all
 				aspects of my life. I've spent the last few summers teaching and building software, and the
-				last few winters growing the next generation of engineers. want to know even more <a
+				last few winters growing the next generation of engineers. Want to know even more <a
 					href="/about"
 					class="underline underline-offset-2 hover:underline-offset-4 transition-all duration-300"
 					>about me?</a
