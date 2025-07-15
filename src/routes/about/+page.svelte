@@ -1,10 +1,39 @@
 <script lang="ts">
+	type BookmarkCategory = {
+		label: string;
+		title: string;
+		icon: typeof SvelteComponent<any>;
+		color: string;
+	};
+	let bookmarkCategories: BookmarkCategory[] = [
+		{
+			label: 'People',
+			title: 'people',
+			icon: User,
+			color: '#dc3545'
+		},
+		{
+			label: 'Tools',
+			title: 'tools',
+			icon: Wrench,
+			color: '#28a745'
+		},
+		{
+			label: 'Websites',
+			title: 'websites',
+			icon: Globe,
+			color: '#007bff'
+		}
+	];
+	import User from 'phosphor-svelte/lib/User';
+	import Wrench from 'phosphor-svelte/lib/Wrench';
+	import Globe from 'phosphor-svelte/lib/Globe';
 	import Bookmark from './Bookmark.svelte';
 	import GradientBox from '../../components/GradientBox.svelte';
 	import PhotoBook from './PhotoBook.svelte';
 	import Header from '../../components/Heading.svelte';
-	import { onMount } from 'svelte';
-	import { fade, fly, slide } from 'svelte/transition';
+	import { onMount, SvelteComponent } from 'svelte';
+	import { fade, fly } from 'svelte/transition';
 	import { bookmarks } from '../../lib/bookmarks';
 	let ready = false;
 	onMount(() => {
@@ -45,7 +74,7 @@
 		{
 			title: 'Q&A',
 			href: '/QnA'
-		},
+		}
 	];
 </script>
 
@@ -93,17 +122,21 @@
 		<section class="py-10" transition:fly={{ y: 50, duration: 400, delay: 400 }}>
 			<div class="gap-1">
 				<h3 class="text-4xl font-semibold">Bookmarks</h3>
-				<p class="opacity-70">Useful tools and inspiring people</p>
+				<p class="opacity-70">What I use and where I find inspiration</p>
 				<div class="gap-2 flex py-2">
-					{#each ['people', 'tools'] as type}
+					{#each bookmarkCategories as category}
 						<button
 							on:click={() => {
-								bookmarkType = type;
+								bookmarkType = category.title;
 							}}
-							class="text-sm hover:opacity-100 rounded p-1 px-3 bg-light/10 {bookmarkType === type
+							class="text-sm hover:opacity-100 rounded py-1.5 pr-3 flex items-center gap-1.5 {bookmarkType ===
+							category.title
 								? 'opacity-100'
-								: ' opacity-60'}">{type}</button
+								: ' opacity-60'}"
 						>
+							<svelte:component this={category.icon} size={18} />
+							{category.label}
+						</button>
 					{/each}
 				</div>
 

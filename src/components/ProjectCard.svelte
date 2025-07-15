@@ -6,7 +6,7 @@
 <a
 	href={project.link}
 	target="_blank"
-	class="group flex flex-col sm:flex-row w-full items-center hover:opacity-100 transition-all duration-300 sm:gap-8 sm:p-4 sm:hover:bg-light/5 sm:hover:ring-2 ring-light/10 rounded-lg"
+	class="group flex flex-col sm:flex-row w-full items-center hover:opacity-100 transition-all duration-300 sm:gap-8 sm:p-4 sm:hover:bg-light/10 rounded-lg"
 >
 	<!-- Details -->
 	<div class="w-full sm:w-1/2 flex flex-col gap-2 mb-4 sm:mb-0">

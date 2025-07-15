@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fly } from 'svelte/transition';
 	let ready = false;
 	let innerWidth: number;
 	export let smallScreen: boolean = false;

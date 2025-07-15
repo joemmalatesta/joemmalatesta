@@ -37,10 +37,10 @@ export const bookmarks: Bookmark[] = [
         image: "anthonyteo.png"
     },
     {
-        title: "Shots.so",
+        title: "Supabase",
         type: "tools",
-        link: "https://shots.so",
-        image: "shots.png"
+        link: "https://supabase.com",
+        image: "supabase.png"
     },
     {
         title: "Icons",
@@ -102,4 +102,46 @@ export const bookmarks: Bookmark[] = [
         link: "https://cursor.com",
         image: "cursor.png"
     },
+    {
+        title: "Jhey Tompkins",
+        type: "people",
+        link: "https://jhey.dev",
+        image: "jhey.png"
+    },
+    {
+        title: "AnimeJs",
+        type: "websites",
+        link: "https://animejs.com",
+        image: "animejs.png"
+    },
+    {
+        title: "Nivo Rocks",
+        type: "websites",
+        link: "https://nivo.rocks",
+        image: "nivo.png"
+    },
+    {
+        title: "Opal Tadpole",
+        type: "websites",
+        link: "https://opalcamera.com/opal-tadpole",
+        image: "opal.png"
+    },
+    {
+        title: "Stripe Press",
+        type: "websites",
+        link: "https://stripe.press",
+        image: "stripe-press.png"
+    },
+    {
+        title: "Shadcn",
+        type: "tools",
+        link: "https://ui.shadcn.com/",
+        image: "shadcn.png"
+    },
+    {
+        title: "Perthirtysix",
+        type: "websites",
+        link: "https://perthirtysix.com/",
+        image: "pts.png"
+    }
 ]
