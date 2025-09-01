@@ -18,6 +18,7 @@
 		loadedImages[picture] = true;
 	}
 	export let hoveredImage: FilmImage | null = null;
+	export let stickyImage: FilmImage | null = null;
 </script>
 
 {#if ready}
@@ -30,13 +31,20 @@
 				{#each images as picture, index}
 					<li>
 						<!-- svelte-ignore a11y-no-static-element-interactions -->
+						<!-- svelte-ignore a11y-click-events-have-key-events -->
 						<div
 							class="film-container border-b-8 border-black border-x-4"
 							on:mouseenter={() => {
 								hasBeenHovered = true;
 								hoveredImage = picture;
 							}}
-							on:mouseleave={() => (hoveredImage = null)}
+							on:mouseleave={() => {
+								hoveredImage = null;
+							}}
+							on:click={() => {
+								stickyImage = picture;
+								hoveredImage = null; // Clear hover state when clicking
+							}}
 						>
 							<div class="placeholder {!loadedImages[picture.source] ? 'animate-pulse' : ''}"></div>
 							<img
