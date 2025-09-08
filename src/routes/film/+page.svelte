@@ -23,6 +23,8 @@
 	let modalImage: FilmImage | null = null;
 	let showModalInfo = false;
 	let carouselIndex = 0;
+	let currentImageIndex = 0;
+	let currentCategoryImages: FilmImage[] = [];
 
 	function setActiveCategory(category: string) {
 		activeCategory = category;
@@ -32,18 +34,46 @@
 
 	function openModal(image: FilmImage) {
 		modalImage = image;
+		// Get all images from the current category
+		currentCategoryImages = filmImages.filter((img) => img.category === image.category);
+		// Find the index of the current image
+		currentImageIndex = currentCategoryImages.findIndex((img) => img.source === image.source);
 		document.body.style.overflow = 'hidden'; // Prevent background scrolling
 	}
 
 	function closeModal() {
 		modalImage = null;
 		showModalInfo = false;
+		currentCategoryImages = [];
+		currentImageIndex = 0;
 		document.body.style.overflow = 'auto'; // Restore scrolling
+	}
+
+	function nextModalImage() {
+		if (currentCategoryImages.length > 1 && currentImageIndex < currentCategoryImages.length - 1) {
+			currentImageIndex = currentImageIndex + 1;
+			modalImage = currentCategoryImages[currentImageIndex];
+		}
+	}
+
+	function prevModalImage() {
+		if (currentCategoryImages.length > 1 && currentImageIndex > 0) {
+			currentImageIndex = currentImageIndex - 1;
+			modalImage = currentCategoryImages[currentImageIndex];
+		}
 	}
 
 	function handleKeydown(event: KeyboardEvent) {
 		if (event.key === 'Escape' && modalImage) {
 			closeModal();
+		} else if (
+			event.key === 'ArrowRight' &&
+			modalImage &&
+			currentImageIndex < currentCategoryImages.length - 1
+		) {
+			nextModalImage();
+		} else if (event.key === 'ArrowLeft' && modalImage && currentImageIndex > 0) {
+			prevModalImage();
 		}
 	}
 
@@ -111,16 +141,16 @@
 					{#if activeCategory && showNavigation}
 						<button
 							on:click={prevCarousel}
-							class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-neutral-800/40 hover:bg-neutral-700/40 p-1.5 rounded-full transition-colors"
+							class="absolute left-0 top-1/2 -translate-x-7 -translate-y-3 opacity-70 hover:opacity-100"
 						>
-							<CaretLeft size={16} />
+							<CaretLeft size={25} />
 						</button>
 
 						<button
 							on:click={nextCarousel}
-							class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-neutral-800/40 hover:bg-neutral-700/40 p-1.5 rounded-full transition-colors"
+							class="absolute right-0 top-1/2 -translate-y-3 translate-x-5 opacity-70 hover:opacity-100"
 						>
-							<CaretRight size={16} />
+							<CaretRight size={25} />
 						</button>
 					{/if}
 
@@ -130,9 +160,7 @@
 							{#each visibleCategories as category, index}
 								<button
 									on:click={() => setActiveCategory(category)}
-									class="transform transition-all duration-300 {index === 1
-										? 'scale-100 opacity-100'
-										: 'scale-90 opacity-60'} hover:scale-105 hover:opacity-80"
+									class="transform transition-all duration-300 scale-90 opacity-60 hover:scale-95 hover:opacity-80"
 								>
 									<FilmHolder label={category}>
 										<FilmCanister title={category} />
@@ -218,12 +246,33 @@
 				transition:fly={{ duration: 300, opacity: 0 }}
 			>
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
-				<div 
-					class="relative w-[60vw] max-h-[80vh]" 
+				<div
+					class="relative w-[60vw] max-h-[80vh]"
 					on:click|stopPropagation
-					on:mouseenter={() => showModalInfo = true}
-					on:mouseleave={() => showModalInfo = false}
+					on:mouseenter={() => (showModalInfo = true)}
+					on:mouseleave={() => (showModalInfo = false)}
 				>
+					<!-- Left navigation caret -->
+					{#if currentCategoryImages.length > 1 && currentImageIndex > 0}
+						<button
+							class="absolute left-0 top-1/2 -translate-x-16 -translate-y-1/2  opacity-70 hover:opacity-100"
+							on:click={prevModalImage}
+							aria-label="Previous image"
+						>
+							<CaretLeft size={24} />
+						</button>
+					{/if}
+
+					<!-- Right navigation caret -->
+					{#if currentCategoryImages.length > 1 && currentImageIndex < currentCategoryImages.length - 1}
+						<button
+							class="absolute right-0 top-1/2 translate-x-16 -translate-y-1/2 opacity-70 hover:opacity-100"
+							on:click={nextModalImage}
+							aria-label="Next image"
+						>
+							<CaretRight size={24} />
+						</button>
+					{/if}
 					<img
 						src={modalImage.source}
 						alt={modalImage.description}
