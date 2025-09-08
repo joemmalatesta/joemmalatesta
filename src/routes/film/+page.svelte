@@ -253,9 +253,9 @@
 					on:mouseleave={() => (showModalInfo = false)}
 				>
 					<!-- Left navigation caret -->
-					{#if currentCategoryImages.length > 1 && currentImageIndex > 0}
+					{#if currentCategoryImages.length > 1}
 						<button
-							class="absolute left-0 top-1/2 -translate-x-16 -translate-y-1/2  opacity-70 hover:opacity-100"
+							class="p-4 absolute left-0 top-1/2 -translate-x-16 -translate-y-1/2  opacity-70 {currentImageIndex > 0 ? "hover:opacity-100": "opacity-30"}"
 							on:click={prevModalImage}
 							aria-label="Previous image"
 						>
@@ -264,9 +264,9 @@
 					{/if}
 
 					<!-- Right navigation caret -->
-					{#if currentCategoryImages.length > 1 && currentImageIndex < currentCategoryImages.length - 1}
+					{#if currentCategoryImages.length > 1}
 						<button
-							class="absolute right-0 top-1/2 translate-x-16 -translate-y-1/2 opacity-70 hover:opacity-100"
+							class="p-4 absolute right-0 top-1/2 translate-x-16 -translate-y-1/2 opacity-70 {currentImageIndex < currentCategoryImages.length - 1 ? "hover:opacity-100" : "opacity-30"}"
 							on:click={nextModalImage}
 							aria-label="Next image"
 						>
