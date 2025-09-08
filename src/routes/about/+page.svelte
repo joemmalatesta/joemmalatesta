@@ -45,7 +45,7 @@
 	let pictureText: string;
 	$: switch (activePicture) {
 		case 0:
-			pictureText = 'spent a summer exploring San Francisco.';
+			pictureText = 'just moved to San Francisco.';
 			break;
 		case 1:
 			pictureText = 'have been practicing hand stands for the last 2 years.';
