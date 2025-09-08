@@ -143,5 +143,12 @@ export const bookmarks: Bookmark[] = [
         type: "websites",
         link: "https://perthirtysix.com/",
         image: "pts.png"
-    }
+    },
+    {
+        title: "Sahil Lavingia",
+        type: "blogs",
+        link: "https://sahillavingia.com/reflecting",
+        image: "sahil.png"
+    },
+
 ]

@@ -6,6 +6,11 @@ export type TimelineItem = {
 };
 export let updates: TimelineItem[] = [
     {
+        title: "Joined Grove",
+        date: "Jul 2025",
+        content:"As the fourth hire and the Founding Forward Deployed Engineer"
+    },
+    {
         title: "GrizzHacks 7",
         date: "Mar 2025",
         content: "Bigger prizes and better projects. Massively AI accelerated.",
