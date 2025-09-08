@@ -10,6 +10,9 @@
 	import FilmStackMobile from './FilmStackMobile.svelte';
 	import CaretLeft from 'phosphor-svelte/lib/CaretLeft';
 	import CaretRight from 'phosphor-svelte/lib/CaretRight';
+	import Camera from 'phosphor-svelte/lib/Camera';
+	import Calendar from 'phosphor-svelte/lib/Calendar';
+	import X from 'phosphor-svelte/lib/X';
 
 	let ready = false;
 	onMount(() => {
@@ -22,13 +25,23 @@
 	let stickyImage: FilmImage | null = null;
 	let modalImage: FilmImage | null = null;
 	let showModalInfo = false;
-	let carouselIndex = 0;
 	let currentImageIndex = 0;
 	let currentCategoryImages: FilmImage[] = [];
 
+	function getCategoryIcon(category: string) {
+		if (/^\d{4}$/.test(category)) {
+			return Calendar;
+		}
+		// Treat non-year named categories as locations; known list kept explicit for clarity
+		const locationCategories = new Set(['Asia', 'Michigan', 'SF']);
+		if (locationCategories.has(category)) {
+			return MapPin;
+		}
+		return Camera;
+	}
+
 	function setActiveCategory(category: string) {
 		activeCategory = category;
-		carouselIndex = 0; // Reset carousel to start
 		stickyImage = null; // Clear sticky image when switching rolls
 	}
 
@@ -76,36 +89,6 @@
 			prevModalImage();
 		}
 	}
-
-	function nextCarousel() {
-		const remainingCategories = filmCategories.filter((c) => c !== activeCategory);
-		carouselIndex = (carouselIndex + 1) % remainingCategories.length;
-	}
-
-	function prevCarousel() {
-		const remainingCategories = filmCategories.filter((c) => c !== activeCategory);
-		carouselIndex = (carouselIndex - 1 + remainingCategories.length) % remainingCategories.length;
-	}
-
-	$: remainingCategories = filmCategories.filter((c) => c !== activeCategory);
-	$: visibleCategories = (() => {
-		if (remainingCategories.length <= 3) {
-			return remainingCategories;
-		}
-		// Ensure we always get 3 by wrapping around
-		const start = carouselIndex % remainingCategories.length;
-		const end = start + 3;
-		if (end <= remainingCategories.length) {
-			return remainingCategories.slice(start, end);
-		} else {
-			// Wrap around case
-			return [
-				...remainingCategories.slice(start),
-				...remainingCategories.slice(0, end - remainingCategories.length)
-			];
-		}
-	})();
-	$: showNavigation = remainingCategories.length > 3;
 </script>
 
 <svelte:window on:keydown={handleKeydown} />
@@ -134,40 +117,49 @@
 			{/if}
 
 			<!-- Right side with film canisters and hovered image -->
-			<div class="{activeCategory ? 'md:w-3/5' : 'md:w-full'} flex flex-col items-start gap-5">
-				<!-- Show the other categories as canisters in the holder -->
-				<div class="relative w-full">
-					<!-- Navigation buttons -->
-					{#if activeCategory && showNavigation}
-						<button
-							on:click={prevCarousel}
-							class="absolute left-0 top-1/2 -translate-x-7 -translate-y-3 opacity-70 hover:opacity-100"
-						>
-							<CaretLeft size={25} />
-						</button>
-
-						<button
-							on:click={nextCarousel}
-							class="absolute right-0 top-1/2 -translate-y-3 translate-x-5 opacity-70 hover:opacity-100"
-						>
-							<CaretRight size={25} />
-						</button>
-					{/if}
-
-					<!-- Canisters display with visual hierarchy -->
-					<div class="flex gap-5 justify-start flex-wrap items-center min-h-[120px]">
-						{#if activeCategory}
-							{#each visibleCategories as category, index}
+			<div class="{activeCategory ? 'md:w-3/5' : 'md:w-full'} flex flex-col items-start gap-2">
+				<!-- Deselect active category option -->
+				{#if activeCategory}
+					<div class="relative w-full">
+						<div class="flex gap-2 justify-start flex-wrap items-center">
+							<!-- All category buttons -->
+							{#each filmCategories as category}
 								<button
 									on:click={() => setActiveCategory(category)}
-									class="transform transition-all duration-300 scale-90 opacity-60 hover:scale-95 hover:opacity-80"
+									class="hover:bg-light/10 px-3 py-2 rounded-full items-center duration-300 inline-flex gap-2 text-base {category ===
+									activeCategory
+										? 'bg-light/10 border-light/50'
+										: ''}"
 								>
-									<FilmHolder label={category}>
-										<FilmCanister title={category} />
-									</FilmHolder>
+									<div class="flex gap-2 items-center">
+										<div class="w-6 h-6 flex items-center justify-center">
+											{#if getCategoryIcon(category) === Calendar}
+												<Calendar
+													size={18}
+													color={category === activeCategory ? 'white' : 'currentColor'}
+												/>
+											{:else if getCategoryIcon(category) === MapPin}
+												<MapPin
+													size={18}
+													color={category === activeCategory ? 'white' : 'currentColor'}
+												/>
+											{:else}
+												<Camera
+													size={18}
+													color={category === activeCategory ? 'white' : 'currentColor'}
+												/>
+											{/if}
+										</div>
+										{category}
+									</div>
 								</button>
 							{/each}
-						{:else}
+						</div>
+					</div>
+				{:else}
+					<!-- Show film categories when none selected -->
+					<div class="relative w-full">
+						<div class="flex gap-5 justify-start flex-wrap items-center min-h-[120px]">
 							{#each filmCategories as category}
 								<button
 									on:click={() => setActiveCategory(category)}
@@ -178,9 +170,9 @@
 									</FilmHolder>
 								</button>
 							{/each}
-						{/if}
+						</div>
 					</div>
-				</div>
+				{/if}
 
 				<!-- Image selected -->
 				{#if stickyImage || hoveredImage}
@@ -255,7 +247,10 @@
 					<!-- Left navigation caret -->
 					{#if currentCategoryImages.length > 1}
 						<button
-							class="p-4 absolute left-0 top-1/2 -translate-x-16 -translate-y-1/2  opacity-70 {currentImageIndex > 0 ? "hover:opacity-100": "opacity-30"}"
+							class="p-4 absolute left-0 top-1/2 -translate-x-16 -translate-y-1/2 opacity-70 {currentImageIndex >
+							0
+								? 'hover:opacity-100'
+								: 'opacity-30'}"
 							on:click={prevModalImage}
 							aria-label="Previous image"
 						>
@@ -266,7 +261,10 @@
 					<!-- Right navigation caret -->
 					{#if currentCategoryImages.length > 1}
 						<button
-							class="p-4 absolute right-0 top-1/2 translate-x-16 -translate-y-1/2 opacity-70 {currentImageIndex < currentCategoryImages.length - 1 ? "hover:opacity-100" : "opacity-30"}"
+							class="p-4 absolute right-0 top-1/2 translate-x-16 -translate-y-1/2 opacity-70 {currentImageIndex <
+							currentCategoryImages.length - 1
+								? 'hover:opacity-100'
+								: 'opacity-30'}"
 							on:click={nextModalImage}
 							aria-label="Next image"
 						>

@@ -22,7 +22,7 @@
 </script>
 
 {#if ready}
-	<section transition:fly={{ y: 50, duration: 400, delay: 200 }}>
+	<section transition:fly={{ y: 50, duration: 300, delay: 100 }}>
 		<div class="canister-container w-fit">
 			<FilmCanister title={folder} />
 		</div>
