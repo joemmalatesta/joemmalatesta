@@ -150,5 +150,10 @@ export const bookmarks: Bookmark[] = [
         link: "https://sahillavingia.com/reflecting",
         image: "sahil.png"
     },
-
+    {
+        title: "Excalidraw",
+        type: "tools",
+        link: "https://excalidraw.com/",
+        image: "excalidraw.svg"
+    }
 ]

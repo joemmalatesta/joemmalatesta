@@ -6,6 +6,11 @@ export type TimelineItem = {
 };
 export let updates: TimelineItem[] = [
     {
+        title: "Grove acquired by Hippocratic AI",
+        date: "Feb 2026",
+        content: "The Grove team was acquired by Hippocratic to build out their new life sciences division."
+    },
+    {
         title: "Joined Grove",
         date: "Jul 2025",
         content:"As the fourth hire and the Founding Forward Deployed Engineer"
