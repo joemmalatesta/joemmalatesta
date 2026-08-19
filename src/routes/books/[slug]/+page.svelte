@@ -37,7 +37,7 @@
 		</header>
 
 		<div class="md:flex md:gap-10 lg:gap-16 md:items-start">
-			<div class="flex justify-end mb-8 md:mb-0 md:w-2/5 shrink-0 md:sticky md:top-24">
+			<div class="flex justify-center scale-75 sm:scale-100 mb-8 md:mb-0 md:w-2/5 shrink-0 md:sticky md:top-24">
 				<Book
 					{book}
 					mode="detail"

@@ -41,6 +41,8 @@ export const books: Book[] = [
 
 Books far more tragic (A Long Way Gone, A Thousand Splendid Suns) haven't had the same effect, I think, because this is the first in which I could actually imagine myself in the author's shoes.
 
+I often read for the reminder of "Someone always has it worse"
+
 This book raised a question for me. I always had the thought that "someone else always has it worse" and often read to exemplify and remind myself of this. Not to say a terminal cancer diagnosis is something to scoff at, but isn't watching your sister get raped or holding your father's body in your hands after a bomb a far worse thing? But suffering is not really an objective thing. Yes, watching terrorism burn your city to the ground sounds worse than a cancer diagnosis surrounded by your loved ones. When death is an expectation instead of an anomaly, does it make it easier to accept? Is it more unfair — is it worse — to be born into a place where your dreams are crushed out of the womb, or have your dreams crushed later down the line, when you've spent your whole life in a game of delayed gratification. The former forces you to live in the moment, the latter presses you to live only when you know you'll die.
 
 Maybe morbid to make a sports analogy here, but as a fanbase is it worse to have a really shitty team that has no chance of winning, or a team that you had hopes for that comes crumbling when it hits the playoffs. If there was nothing to lose in the first place, how tragic is it really? When you're winning, the wins are meh and the losses are crushing. When you're losing, the losses are meh and the wins are joyful. Are the two situations comparable?
@@ -123,6 +125,19 @@ I should re-read this for a refresher.`
 		thoughts: `A book my brother made me read. It has two main arcs. One where it compares our consumption of the earth's resources to jumping off a cliff with homemade wings, which I think is a completely false equivalence.
 
 Second part was a bit about history, Adam and Eve and how the apple gave them the illusion that they were the ones to pass judgement on what is good and evil, and taking the power from the Gods. It also talked about how Cain and Abel represented "Takers" and "Leavers", which were defined during the agricultural revolution during the time of the Fertile Crescent. The Leavers are those who live in balance with the world around them — the Takers are the rest of us.`
+	},
+	{
+		slug: 'the-glass-castle',
+		title: 'The Glass Castle',
+		author: 'Jeannette Walls',
+		dateRead: '2023-05-14',
+		isbn: '9780743247542',
+		coverColor: '#8b6914',
+		coverImage: '/books/the-glass-castle.webp',
+		quote: 'Things usually work out in the end.',
+		thoughts: `Memoir about growing up with a brilliant but alcoholic father and a free-spirited mother who'd rather paint than feed her kids. They moved constantly — desert towns, Welch, West Virginia — chasing the dad's dream of building a glass castle in the desert while the kids went hungry and learned to fend for themselves.
+
+What's wild is how much love runs through it despite everything. The parents aren't villains, just completely incapable of putting their children first. Jeannette and her siblings eventually escape to New York and build normal lives, but you never fully leave that upbringing behind.`
 	}
 ];
 
@@ -165,7 +180,6 @@ export function formatBookDate(dateRead: string) {
 	return new Date(dateRead).toLocaleDateString('en-US', {
 		year: 'numeric',
 		month: 'short',
-		day: 'numeric'
 	});
 }
 

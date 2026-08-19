@@ -230,7 +230,6 @@
 
 	.page.last blockquote {
 		margin: 0;
-		font-family: 'Dancing Script', cursive;
 		font-size: 0.55rem;
 		line-height: 1.35;
 		color: var(--dark-color);
