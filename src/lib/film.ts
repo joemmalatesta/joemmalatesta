@@ -5,7 +5,11 @@ export type FilmImage = {
 	location: string;
 };
 
-export const filmFolders = ['Asia', '2022', '2024', '2025', 'Michigan', 'sf'];
+export const filmFolders = ['Asia', '2022', '2024', '2025', 'Michigan', 'SF', 'Euro 26'];
+
+export function filmSlug(image: FilmImage): string {
+	return (image.source.split('/').pop() ?? '').replace(/\.[^.]+$/, '');
+}
 
 export const filmImages: FilmImage[] = [
 	// TODO: add description and location.
@@ -442,5 +446,200 @@ export const filmImages: FilmImage[] = [
 		category: 'SF',
 		description: 'Lava Lamps at Cloudflare',
 		location: 'Embarcadero'
-	}
+	},
+	{
+		source: '/photography/SF/cesar-chavez.webp',
+		category: 'SF',
+		description: 'Cesar Chavez',
+		location: 'The Mission'
+	},
+	{
+		source: '/photography/SF/bella-in-tahoe.webp',
+		category: '2025',
+		description: 'How is it snowing in 80 degrees?',
+		location: 'Tahoe'
+	},
+	{
+		source: '/photography/SF/dad-on-golden-gate.webp',
+		category: 'SF',
+		description: "I'll be here when you come back",
+		location: 'Golden Gate Bridge'
+	},
+	{
+		source: '/photography/SF/half-of-these-people-cant-swim.webp',
+		category: '2025',
+		description: "Surfing but half of us can't swim",
+		location: 'Santa Cruz'
+	},
+	{
+		source: '/photography/SF/halloween.webp',
+		category: 'SF',
+		description: 'Pulled off sleepy Joe in a matter of minutes',
+		location: "Daniel and Alexa's"
+	},
+	{
+		source: '/photography/SF/kendall-and-lila.webp',
+		category: 'SF',
+		description: 'Kendall and Lila',
+		location: 'Dolores Park'
+	},
+	{
+		source: '/photography/SF/me-and-sohit.webp',
+		category: 'SF',
+		description: 'Table tennis is not a real sport',
+		location: 'Olympic Club'
+	},
+	{
+		source: '/photography/SF/performative-fest.webp',
+		category: '2025',
+		description: 'Is the Bhagavad Gita considered performative?',
+		location: 'Mission Dolores Park'
+	},
+	{
+		source: '/photography/SF/yamo.webp',
+		category: 'SF',
+		description: 'We win when it matters...',
+		location: 'Yamo'
+	},
+	// Euro 26 — TODO: add description and location.
+	// {
+	// 	source: '/photography/Euro-26/4th-in-budapest.webp',
+	// 	category: 'Euro 26',
+	// 	description: '4th in Budapest',
+	// 	location: 'Budapest Chain Bridge'
+	// },
+	// {
+	// 	source: '/photography/Euro-26/cute-with-reba.webp',
+	// 	category: 'Euro 26',
+	// 	description: 'My sweetest Mother',
+	// 	location: 'TODO'
+	// },
+	// {
+	// 	source: '/photography/Euro-26/amy-and-fred.webp',
+	// 	category: 'Euro 26',
+	// 	description: 'Amy and Fred',
+	// 	location: 'TODO'
+	// },
+	{
+		source: '/photography/Euro-26/cutest-with-reba.webp',
+		category: 'Euro 26',
+		description: 'How did I get so lucky?',
+		location: 'Tuscany, Italy'
+	},
+	{
+		source: '/photography/Euro-26/italian-in-vienna.webp',
+		category: 'Euro 26',
+		description: 'Its pasta, yes. But its also everything else.',
+		location: 'Vienna, Austria'
+	},
+	// {
+	// 	source: '/photography/Euro-26/budapest.webp',
+	// 	category: 'Euro 26',
+	// 	description: 'City feels Harry Potter-esque',
+	// 	location: 'Fishermans Bastion, Budapest'
+	// },
+	// {
+	// 	source: '/photography/Euro-26/cooking-class.webp',
+	// 	category: 'Euro 26',
+	// 	description: 'Cooking class',
+	// 	location: 'TODO'
+	// },
+	{
+		source: '/photography/Euro-26/annabelle-and-lucy.webp',
+		category: 'Euro 26',
+		description: 'Lucy why did you drop your sticks?',
+		location: 'Liberty Statue, Budapest'
+	},
+	{
+		source: '/photography/Euro-26/budapest-locals.webp',
+		category: 'Euro 26',
+		description: "Loving the conversation but I really can't turn my head right now.",
+		location: 'A Bar I wish I remembered, Budapest'
+	},
+	{
+		source: '/photography/Euro-26/reba-matt-cake.webp',
+		category: 'Euro 26',
+		description: 'A quince tree represents... uhh.. Line?',
+		location: 'Rebas Wedding'
+	},
+	{
+		source: '/photography/Euro-26/climbing-prague.webp',
+		category: 'Euro 26',
+		description: "Chalk is pretty ineffective when it's 105",
+		location: 'Prague, Czechia'
+	},
+	{
+		source: '/photography/Euro-26/dogbar.webp',
+		category: 'Euro 26',
+		description: 'I swear I was just trying to play cards...',
+		location: 'Dog Bar, Prague'
+	},
+	{
+		source: '/photography/Euro-26/wedding-dinner.webp',
+		category: 'Euro 26',
+		description: 'family friend, cousin, manager, dance teammate, what am I missing?',
+		location: 'Rebas Wedding'
+	},
+	{
+		source: '/photography/Euro-26/pool-pic.webp',
+		category: 'Euro 26',
+		description: 'Please do not play Kid Rock in Italy',
+		location: 'Tuscany, Italy'
+	},
+	{
+		source: '/photography/Euro-26/train-prague.webp',
+		category: 'Euro 26',
+		description: 'Some dude from LA said Prague reminded him of SF.. ',
+		location: 'Prague'
+	},
+	// {
+	// 	source: '/photography/Euro-26/hero-square.webp',
+	// 	category: 'Euro 26',
+	// 	description: 'Hero Square',
+	// 	location: 'Hero Square, Budapest'
+	// },
+	{
+		source: '/photography/Euro-26/kayak.webp',
+		category: 'SF',
+		description: 'Giants game Kayak edition',
+		location: 'Pier something'
+	},
+	// {
+	// 	source: '/photography/Euro-26/matthew-boat-2.webp',
+	// 	category: 'Euro 26',
+	// 	description: 'This building is something else',
+	// 	location: 'Between Buda and Pest'
+	// },
+	{
+		source: '/photography/Euro-26/matthew-danube.webp',
+		category: 'Euro 26',
+		description: 'Two touch, a proper swim, and a debatable watermelon',
+		location: 'Vienna'
+	},
+	{
+		source: '/photography/Euro-26/prague-morning-walk.webp',
+		category: 'Euro 26',
+		description: 'Why else would you stay up till 7am for a hike?',
+		location: 'Prague, Czechia'
+	},
+	{
+		source: '/photography/Euro-26/unlimited-beers-boat.webp',
+		category: 'Euro 26',
+		description: 'The boat of 1 million beers',
+		location: 'Champagne Cruise, Danube River'
+	},
+	{
+		source: '/photography/Euro-26/lake-balaton.webp',
+		category: 'Euro 26',
+		description: 'Biggest lake, but its all Sandbar.',
+		location: 'Lake Balaton, Hungary'
+	},
 ];
+
+export function findFilmImage(
+	roll: string | null | undefined,
+	img: string | null | undefined
+): FilmImage | undefined {
+	if (!roll || !img) return undefined;
+	return filmImages.find((image) => image.category === roll && filmSlug(image) === img);
+}

@@ -1,11 +1,13 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 	import { fly } from 'svelte/transition';
 	import Header from '../../components/Heading.svelte';
 	import FilmRoll from './FilmRoll.svelte';
 	import FilmHolder from './FilmHolder.svelte';
 	import FilmCanister from './FilmCanister.svelte';
-	import { filmImages, type FilmImage } from '$lib/film';
+	import { filmImages, filmSlug, findFilmImage, type FilmImage } from '$lib/film';
 	import MapPin from 'phosphor-svelte/lib/MapPin';
 	import FilmStackMobile from './FilmStackMobile.svelte';
 	import CaretLeft from 'phosphor-svelte/lib/CaretLeft';
@@ -14,12 +16,8 @@
 	import Calendar from 'phosphor-svelte/lib/Calendar';
 	import X from 'phosphor-svelte/lib/X';
 
+	const filmCategories = ['Asia', '2022', '2024', '2025', 'Michigan', 'SF', 'Euro 26'];
 	let ready = false;
-	onMount(() => {
-		ready = true;
-	});
-
-	const filmCategories = ['Asia', '2022', '2024', '2025', 'Michigan', 'SF'];
 	let activeCategory: string | null = null;
 	let hoveredImage: FilmImage | null = null;
 	let stickyImage: FilmImage | null = null;
@@ -28,12 +26,42 @@
 	let currentImageIndex = 0;
 	let currentCategoryImages: FilmImage[] = [];
 
+	onMount(() => {
+		const roll = $page.url.searchParams.get('roll');
+		const img = $page.url.searchParams.get('img');
+		const found = findFilmImage(roll, img);
+		if (found) {
+			activeCategory = found.category;
+			stickyImage = found;
+		}
+		ready = true;
+	});
+
+	$: if (ready) {
+		syncFilmUrl(activeCategory, stickyImage);
+	}
+
+	function filmSharePath(roll: string | null, image: FilmImage | null): string {
+		if (!roll || !image) return '/film';
+		const params = new URLSearchParams();
+		params.set('roll', roll);
+		params.set('img', filmSlug(image));
+		return `/film?${params}`;
+	}
+
+	function syncFilmUrl(roll: string | null, image: FilmImage | null) {
+		const next = filmSharePath(roll, image);
+		const current = `${$page.url.pathname}${$page.url.search}`;
+		if (current === next) return;
+		goto(next, { replaceState: true, keepFocus: true, noScroll: true });
+	}
+
 	function getCategoryIcon(category: string) {
 		if (/^\d{4}$/.test(category)) {
 			return Calendar;
 		}
 		// Treat non-year named categories as locations; known list kept explicit for clarity
-		const locationCategories = new Set(['Asia', 'Michigan', 'SF']);
+		const locationCategories = new Set(['Asia', 'Michigan', 'SF', 'Euro 26']);
 		if (locationCategories.has(category)) {
 			return MapPin;
 		}
@@ -225,7 +253,7 @@
 		</section>
 
 		<div class="flex gap-5 md:hidden py-10 overflow-x-hidden">
-			<FilmStackMobile />
+			<FilmStackMobile initialImage={stickyImage} />
 		</div>
 
 		<!-- Modal -->

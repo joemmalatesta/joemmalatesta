@@ -4,6 +4,8 @@
 	import FilmHolder from './FilmHolder.svelte';
 	import FilmCanister from './FilmCanister.svelte';
 
+	export let initialImage: FilmImage | null = null;
+
 	let selectedFolder: string | null = null;
 	let images: FilmImage[] = [];
 	let stack: FilmImage[] = [];
@@ -13,9 +15,19 @@
 	let threshold = 80; // px to trigger swipe
 	let showTutorial = true;
 
+	$: if (initialImage && selectedFolder === null) {
+		selectedFolder = initialImage.category;
+		showTutorial = false;
+	}
+
 	$: if (selectedFolder) {
 		images = filmImages.filter((img) => img.category === selectedFolder) || [];
-		stack = [...images];
+		const pinned = initialImage;
+		if (pinned && pinned.category === selectedFolder) {
+			stack = [pinned, ...images.filter((img) => img.source !== pinned.source)];
+		} else {
+			stack = [...images];
+		}
 	}
 
 	function handleTouchStart(e: TouchEvent) {

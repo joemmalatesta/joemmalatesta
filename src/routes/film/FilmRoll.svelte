@@ -42,8 +42,9 @@
 								hoveredImage = null;
 							}}
 							on:click={() => {
-								stickyImage = picture;
-								hoveredImage = null; // Clear hover state when clicking
+								stickyImage =
+									stickyImage?.source === picture.source ? null : picture;
+								hoveredImage = picture;
 							}}
 						>
 							<div class="placeholder {!loadedImages[picture.source] ? 'animate-pulse' : ''}"></div>
