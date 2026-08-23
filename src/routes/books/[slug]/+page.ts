@@ -1,13 +1,5 @@
-import { error } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
-import { getBookBySlug } from '$lib/books';
+import { redirect } from '@sveltejs/kit';
 
-export const load: PageLoad = ({ params }) => {
-	const book = getBookBySlug(params.slug);
-
-	if (!book) {
-		error(404, 'Book not found');
-	}
-
-	return { book };
-};
+export function load() {
+	throw redirect(301, '/reading');
+}

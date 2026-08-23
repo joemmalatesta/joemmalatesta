@@ -76,8 +76,8 @@
 			href: '/QnA'
 		},
 		{
-			title: 'Library',
-			href: '/books'
+			title: 'Reading',
+			href: '/reading'
 		}
 	];
 </script>

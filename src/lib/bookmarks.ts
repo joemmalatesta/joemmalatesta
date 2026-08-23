@@ -63,14 +63,8 @@ export const bookmarks: Bookmark[] = [
     {
         title: "SwellGarfo",
         type: "people",
-        link: "https://gar.fo",
+        link: "https://swellgarfo.com/",
         image: "user.svg"
-    },
-    {
-        title: "Tree",
-        type: "tools",
-        link: "https://tree.nathanfriend.io/",
-        image: "tree.png"
     },
     {
         title: "Screen Studio",
@@ -83,12 +77,6 @@ export const bookmarks: Bookmark[] = [
         type: "tools",
         link: "https://notion.so",
         image: "notion.png"
-    },
-    {
-        title: "Grepper",
-        type: "tools",
-        link: "https://chromewebstore.google.com/detail/grepper/amaaokahonnfjjemodnpmeenfpnnbkco?hl=en",
-        image: "grepper.png"
     },
     {
         title: "Raycast",
@@ -155,5 +143,29 @@ export const bookmarks: Bookmark[] = [
         type: "tools",
         link: "https://excalidraw.com/",
         image: "excalidraw.svg"
+    },
+    {
+        title: "Poke",
+        type: "tools",
+        link: "https://poke.com",
+        image: "poke.png"
+    },
+    {
+        title: "Granola",
+        type: "tools",
+        link: "https://granola.ai",
+        image: "granola.png"
+    },
+    {
+        title: "Arc",
+        type: "tools",
+        link: "https://arc.net",
+        image: "arc.png"
+    },
+    {
+        title: "Sentry",
+        type: "tools",
+        link: "https://sentry.io",
+        image: "sentry.svg"
     }
 ]
