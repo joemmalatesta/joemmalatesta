@@ -74,6 +74,10 @@
 		{
 			title: 'Q&A',
 			href: '/QnA'
+		},
+		{
+			title: 'Reading',
+			href: '/reading'
 		}
 	];
 </script>
