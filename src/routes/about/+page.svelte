@@ -2,7 +2,7 @@
 	type BookmarkCategory = {
 		label: string;
 		title: string;
-		icon: typeof SvelteComponent<any>;
+		icon: ComponentType;
 		color: string;
 	};
 	let bookmarkCategories: BookmarkCategory[] = [
@@ -32,7 +32,8 @@
 	import GradientBox from '../../components/GradientBox.svelte';
 	import PhotoBook from './PhotoBook.svelte';
 	import Header from '../../components/Heading.svelte';
-	import { onMount, SvelteComponent } from 'svelte';
+	import { onMount } from 'svelte';
+	import type { ComponentType } from 'svelte';
 	import { fade, fly } from 'svelte/transition';
 	import { bookmarks } from '../../lib/bookmarks';
 	let ready = false;

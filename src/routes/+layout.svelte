@@ -11,6 +11,7 @@
   import '../app.css';
 	import Footer from '../components/Footer.svelte';
   import Navbar from '../components/Navbar.svelte';
+	import CommandPalette from '../components/CommandPalette.svelte';
 </script>
 
 <svelte:head>
@@ -19,5 +20,6 @@
 </svelte:head>
 
 <Navbar />
+<CommandPalette />
 <slot />
 <Footer />

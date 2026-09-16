@@ -6,7 +6,10 @@ import {mdsvex} from 'mdsvex';
 const config = {
   extensions: ['.svelte', '.md'],
   kit: {
-    adapter: adapter()
+    adapter: adapter(),
+    alias: {
+      $convex: 'src/convex'
+    }
   },
   preprocess: [vitePreprocess(), mdsvex({ extensions: ['.md'] })]
 };

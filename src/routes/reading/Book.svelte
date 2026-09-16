@@ -13,22 +13,22 @@
 	style="--dark-color: {colors.dark}; --subtle-color: {colors.subtle}; --main-color: {colors.main}; --cover-color: {item.coverColor}"
 >
 	<div class="book" class:open={hovered}>
-		<span class="shadow" />
-		<div class="back" />
-		<div class="cover-end" />
+		<span class="shadow"></span>
+		<div class="back"></div>
+		<div class="cover-end"></div>
 		<div class="page last">
 			{#if item.quote}
 				<blockquote>"{item.quote}"</blockquote>
 			{/if}
 		</div>
-		<div class="page third" />
-		<div class="page second" />
-		<div class="page first" />
+		<div class="page third"></div>
+		<div class="page second"></div>
+		<div class="page first"></div>
 		<div class="cover">
 			{#if item.coverImage}
 				<img src={item.coverImage} alt="" />
 			{:else}
-				<div class="cover-fill" />
+				<div class="cover-fill"></div>
 			{/if}
 		</div>
 	</div>

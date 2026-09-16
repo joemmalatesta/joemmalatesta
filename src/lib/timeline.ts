@@ -31,12 +31,12 @@ export let updates: TimelineItem[] = [
         content: "with a B.S. in Computer Science, average grades, and lots of ambition",
     },
     {
-        title: "Went to HackUTD",
+        title: "Won at HackUTD",
         date: "Nov 2024",
         content: "Won Pinata's track prize and best solo hack with [Cheddarboxd](https://devpost.com/software/cheddarboxd), a social cheese rating app"
     },
     {
-        title: "Went to CalHacks",
+        title: "Won at CalHacks",
         date: "Oct 2024",
         content: "Won ChromaDB's track prize with [Ground Truth](https://devpost.com/software/ground-truth-97nqws), a RAG app to align your docs to your codebase."
     },

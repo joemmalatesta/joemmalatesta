@@ -1,178 +1,76 @@
-import { fail, redirect, type Actions, type Cookies } from '@sveltejs/kit';
-import { ADMIN_PASSWORD } from '$env/static/private';
-import type { Question } from '../types';
-import { MongoClient } from 'mongodb';
-import { MONGO_QnA_PASSWORD } from '$env/static/private';
-import { ObjectId } from 'mongodb';
+import { fail, type Actions } from '@sveltejs/kit';
+import { ADMIN_PASSWORD, CONVEX_ADMIN_KEY } from '$env/static/private';
+import { api } from '../../../convex/_generated/api';
+import { getConvex } from '$lib/convex';
 
-const uri = `mongodb+srv://joemmalatesta:${MONGO_QnA_PASSWORD}@qa-cluster.ymmrk.mongodb.net/?retryWrites=true&w=majority&appName=qa-cluster`;
-const client = new MongoClient(uri);
+function adminKey() {
+	return CONVEX_ADMIN_KEY || ADMIN_PASSWORD;
+}
+
+async function buckets() {
+	return getConvex().query(api.questions.listAdmin, { adminKey: adminKey() });
+}
 
 export const actions = {
 	login: async ({ request }) => {
-		const data = await request.formData();
-		const password = data.get('qnaPassword');
-
-		if (!password) {
-			return fail(400, { missing: true });
+		const password = (await request.formData()).get('qnaPassword');
+		if (!password) return fail(400, { missing: true });
+		if (password !== ADMIN_PASSWORD) return fail(400, { incorrect: true });
+		try {
+			const data = await buckets();
+			return { authenticated: true, ...data };
+		} catch (error) {
+			console.error(error);
+			return fail(500, { error: 'Failed to load questions' });
 		}
-
-		if (password !== ADMIN_PASSWORD) {
-			return fail(400, { incorrect: true });
-		}
-
-		const { unansweredQuestions, deletedQuestions, answeredQuestions } = await getQuestions();
-		return {
-			authenticated: true,
-			unansweredQuestions,
-			deletedQuestions,
-			answeredQuestions
-		};
 	},
 
 	answer: async ({ request }) => {
 		const data = await request.formData();
 		const id = data.get('id') as string;
-		const answer = data.get('answer');
-
-		if (!answer) {
-			return fail(400, { failedId: id });
-		}
-
-		await client.connect();
-		const database = client.db('qna');
-		const questions = database.collection('questions');
-		await questions.updateOne(
-			{ _id: new ObjectId(id) },
-			{ $set: { answer, dateAnswered: new Date() } }
-		);
-		const { unansweredQuestions, deletedQuestions, answeredQuestions } = await getQuestions();
-		return {
-			success: true,
-			unansweredQuestions,
-			deletedQuestions,
-			answeredQuestions
-		};
+		const answer = data.get('answer')?.toString();
+		if (!answer) return fail(400, { failedId: id });
+		await getConvex().mutation(api.questions.answer, { adminKey: adminKey(), id: id as never, answer });
+		return { success: true, ...(await buckets()) };
 	},
 
 	delete: async ({ request }) => {
-		try {
-			const data = await request.formData();
-			const id = data.get('id') as string;
-			const confirmation = data.get('confirmation') as string;
-			if (confirmation !== 'delete') {
-				return fail(400, { failedId: id });
-			}
-			await client.connect();
-			const database = client.db('qna');
-			const questions = database.collection('questions');
-			await questions.updateOne({ _id: new ObjectId(id) }, { $set: { deleted: true } });
-			const { unansweredQuestions, deletedQuestions, answeredQuestions } = await getQuestions();
-			return {
-				success: true,
-				unansweredQuestions,
-				deletedQuestions,
-				answeredQuestions
-			};
-		} catch (error) {
-			console.error('Error deleting question:', error);
-			return fail(500, { error: 'Failed to delete question' });
-		}
+		const data = await request.formData();
+		const id = data.get('id') as string;
+		if (data.get('confirmation') !== 'delete') return fail(400, { failedId: id });
+		await getConvex().mutation(api.questions.setStatus, {
+			adminKey: adminKey(),
+			id: id as never,
+			status: 'deleted'
+		});
+		return { success: true, ...(await buckets()) };
 	},
 
 	restore: async ({ request }) => {
-		try {
-			const data = await request.formData();
-			const id = data.get('id') as string;
-
-			// Remove the deleted flag from the question
-			await client.connect();
-			const database = client.db('qna');
-			const questions = database.collection('questions');
-			await questions.updateOne({ _id: new ObjectId(id) }, { $unset: { deleted: '' } });
-			const { unansweredQuestions, deletedQuestions, answeredQuestions } = await getQuestions();
-			return {
-				success: true,
-				unansweredQuestions,
-				deletedQuestions,
-				answeredQuestions
-			};
-		} catch (error) {
-			console.error('Error restoring question:', error);
-			return fail(500, { error: 'Failed to restore question' });
-		}
+		const id = (await request.formData()).get('id') as string;
+		const convex = getConvex();
+		const admin = adminKey();
+		const all = await convex.query(api.questions.listAdmin, { adminKey: admin });
+		const row = [...all.unansweredQuestions, ...all.answeredQuestions, ...all.deletedQuestions].find(
+			(q) => q.id === id
+		);
+		await convex.mutation(api.questions.setStatus, {
+			adminKey: admin,
+			id: id as never,
+			status: row?.answer ? 'answered' : 'open'
+		});
+		return { success: true, ...(await buckets()) };
 	},
+
 	deleteForGood: async ({ request }) => {
-		try {
-			const data = await request.formData();
-			const id = data.get('id') as string;
-			await client.connect();
-			const database = client.db('qna');
-			const questions = database.collection('questions');
-			await questions.deleteOne({ _id: new ObjectId(id) });
-			const { unansweredQuestions, deletedQuestions, answeredQuestions } = await getQuestions();
-			return {
-				success: true,
-				unansweredQuestions,
-				deletedQuestions,
-				answeredQuestions
-			};
-		} catch (error) {
-			console.error('Error deleting question:', error);
-			return fail(500, { error: 'Failed to delete question' });
-		}
+		const id = (await request.formData()).get('id') as string;
+		await getConvex().mutation(api.questions.remove, { adminKey: adminKey(), id: id as never });
+		return { success: true, ...(await buckets()) };
 	},
 
 	clearAnswer: async ({ request }) => {
-		try {
-			const data = await request.formData();
-			const id = data.get('id') as string;
-			await client.connect();
-			const database = client.db('qna');
-			const questions = database.collection('questions');
-			await questions.updateOne(
-				{ _id: new ObjectId(id) },
-				{ $unset: { answer: null, dateAnswered: null, likes: 0, deleted: false } }
-			);
-			const { unansweredQuestions, deletedQuestions, answeredQuestions } = await getQuestions();
-			return {
-				success: true,
-				unansweredQuestions,
-				deletedQuestions,
-				answeredQuestions
-			};
-		} catch (error) {
-			console.error('Error clearing answer:', error);
-			return fail(500, { error: 'Failed to clear answer' });
-		}
+		const id = (await request.formData()).get('id') as string;
+		await getConvex().mutation(api.questions.clearAnswer, { adminKey: adminKey(), id: id as never });
+		return { success: true, ...(await buckets()) };
 	}
 } satisfies Actions;
-
-async function getQuestions() {
-	await client.connect();
-	const database = client.db('qna');
-	const questions = database.collection('questions');
-	const allQuestions = await questions.find({}).sort({ dateAsked: -1 }).toArray();
-	const unansweredQuestions = allQuestions.filter((doc) => !doc.answer && !doc.deleted);
-	const deletedQuestions = allQuestions.filter((doc) => doc.deleted);
-	const answeredQuestions = allQuestions
-		.filter((doc) => doc.answer && !doc.deleted)
-		.sort((a, b) => new Date(b.dateAnswered).getTime() - new Date(a.dateAnswered).getTime());
-	return { unansweredQuestions: unansweredQuestions.map((doc) => ({
-		id: doc._id.toString(),
-		question: doc.question,
-		answer: doc.answer,
-		dateAsked: doc.dateAsked
-	})), deletedQuestions: deletedQuestions.map((doc) => ({
-		id: doc._id.toString(),
-		question: doc.question,
-		answer: doc.answer,
-		dateAsked: doc.dateAsked
-	})), answeredQuestions: answeredQuestions.map((doc) => ({
-		id: doc._id.toString(),
-		question: doc.question,
-		answer: doc.answer,
-		dateAsked: doc.dateAsked
-	}))
-	};
-}

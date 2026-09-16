@@ -9,8 +9,6 @@ export type ReadingItem = {
 	href: string;
 	/** Optional line on the row — a takeaway or quote. Fine to leave empty. */
 	note?: string;
-	/** ISO date string */
-	date?: string;
 	/** Primary color — spine, paper edges, masthead */
 	coverColor: string;
 	/** Local webp in /static/books/ or any image URL */
@@ -31,7 +29,6 @@ export const reading: ReadingItem[] = [
 		kind: 'book',
 		title: 'When Breath Becomes Air',
 		byline: 'Paul Kalanithi',
-		date: '2024-11-12',
 		isbn: '9780812988406',
 		href: 'https://www.amazon.com/s?k=9780812988406',
 		coverColor: '#c4a035',
@@ -43,7 +40,6 @@ export const reading: ReadingItem[] = [
 		kind: 'book',
 		title: 'A Thousand Splendid Suns',
 		byline: 'Khaled Hosseini',
-		date: '2023-08-03',
 		isbn: '9781594489501',
 		href: 'https://www.amazon.com/s?k=9781594489501',
 		coverColor: '#1e4a6e',
@@ -55,7 +51,6 @@ export const reading: ReadingItem[] = [
 		kind: 'book',
 		title: 'A Long Way Gone',
 		byline: 'Ishmael Beah',
-		date: '2019-04-15',
 		isbn: '9780374531263',
 		href: 'https://www.amazon.com/s?k=9780374531263',
 		coverColor: '#6b5038',
@@ -68,7 +63,6 @@ export const reading: ReadingItem[] = [
 		kind: 'book',
 		title: 'Atomic Habits',
 		byline: 'James Clear',
-		date: '2023-01-22',
 		isbn: '9780735211292',
 		href: 'https://www.amazon.com/s?k=9780735211292',
 		coverColor: '#d4a017',
@@ -80,7 +74,6 @@ export const reading: ReadingItem[] = [
 		kind: 'book',
 		title: 'The 5 AM Club',
 		byline: 'Robin Sharma',
-		date: '2022-06-08',
 		isbn: '9781443456623',
 		href: 'https://www.amazon.com/s?k=9781443456623',
 		coverColor: '#e85d2a',
@@ -91,7 +84,6 @@ export const reading: ReadingItem[] = [
 		kind: 'book',
 		title: 'The Girl with the Dragon Tattoo',
 		byline: 'Stieg Larsson',
-		date: '2024-02-19',
 		isbn: '9781849160322',
 		href: 'https://www.amazon.com/s?k=9781849160322',
 		coverColor: '#1c1410',
@@ -102,7 +94,6 @@ export const reading: ReadingItem[] = [
 		kind: 'book',
 		title: 'Ishmael',
 		byline: 'Daniel Quinn',
-		date: '2021-11-30',
 		isbn: '9780553375404',
 		href: 'https://www.amazon.com/s?k=9780553375404',
 		coverColor: '#3a6b52',
@@ -114,7 +105,6 @@ export const reading: ReadingItem[] = [
 		kind: 'book',
 		title: 'The Glass Castle',
 		byline: 'Jeannette Walls',
-		date: '2023-05-14',
 		isbn: '9780743247542',
 		href: 'https://www.amazon.com/s?k=9780743247542',
 		coverColor: '#8b6914',
@@ -126,9 +116,29 @@ export const reading: ReadingItem[] = [
 		kind: 'essay',
 		title: 'Reflecting',
 		byline: 'Sahil Lavingia',
-		date: '2019-07-23',
 		href: 'https://sahillavingia.com/reflecting',
 		coverColor: '#3d2b1f'
+	},
+	{
+		kind: 'essay',
+		title: "Maker's Schedule, Manager's Schedule",
+		byline: 'Paul Graham',
+		href: 'https://www.paulgraham.com/makersschedule.html',
+		coverColor: '#8b3a1a'
+	},
+	{
+		kind: 'essay',
+		title: 'You can have two Big Things, but not three',
+		byline: 'Jason Cohen',
+		href: 'https://longform.asmartbear.com/two-big-things/',
+		coverColor: '#1f4d4a'
+	},
+	{
+		kind: 'essay',
+		title: 'Fast',
+		byline: 'Patrick Collison',
+		href: 'https://patrickcollison.com/fast',
+		coverColor: '#1a2744'
 	}
 ];
 
@@ -160,11 +170,4 @@ export function derivePaperColors(coverColor: string) {
 		subtle: rgbToHex(...mix(rgb, [128, 128, 128], 0.55)),
 		main: rgbToHex(...mix(rgb, [249, 255, 255], 0.9))
 	};
-}
-
-export function formatReadingDate(date: string) {
-	return new Date(date).toLocaleDateString('en-US', {
-		year: 'numeric',
-		month: 'short'
-	});
 }

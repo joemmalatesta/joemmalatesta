@@ -7,6 +7,22 @@ export type FilmImage = {
 
 export const filmFolders = ['Asia', '2022', '2024', '2025', 'Michigan', 'sf'];
 
+export function filmSlug(image: FilmImage): string {
+	return (image.source.split('/').pop() ?? '').replace(/\.[^.]+$/, '');
+}
+
+export function filmUrl(image: FilmImage): string {
+	return `/film?roll=${encodeURIComponent(image.category)}&img=${encodeURIComponent(filmSlug(image))}`;
+}
+
+export function filmSourceId(image: FilmImage): string {
+	return `film:${image.category}/${filmSlug(image)}`;
+}
+
+export function filmThumbnailUrl(image: FilmImage): string {
+	return `/images/thumbnails/${image.category}/${filmSlug(image)}.webp`;
+}
+
 export const filmImages: FilmImage[] = [
 	// TODO: add description and location.
 	// Asia

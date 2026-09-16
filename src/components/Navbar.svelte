@@ -1,5 +1,12 @@
 <script lang="ts">
 import { page } from '$app/stores';
+import MagnifyingGlass from 'phosphor-svelte/lib/MagnifyingGlass';
+
+	function openSearch() {
+		window.dispatchEvent(
+			new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true })
+		);
+	}
 
 let activeTab: string;
 
@@ -22,7 +29,16 @@ $: {
 <nav class="flex justify-between items-center py-6">
     <a href="/" class="sm:hidden"><img src="/logo-light.svg" alt="JMM" class="w-8 h-8"></a>
 	<a href="/" class="hidden sm:block text-xl">Joe Malatesta</a>
-	<div class="flex gap-4">
+	<div class="flex items-center gap-4">
+		<button
+			type="button"
+			on:click={openSearch}
+			class="flex items-center gap-1.5 rounded-lg bg-light/5 px-2 py-1 text-light/70 hover:bg-light/10"
+			aria-label="Search"
+		>
+			<MagnifyingGlass size={16} />
+			<kbd class="hidden text-[11px] text-light/40 sm:inline">⌘K</kbd>
+		</button>
 		<a href="/about" class="relative group sm:text-lg text-sm">
 			About
 			<span

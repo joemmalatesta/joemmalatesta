@@ -13,29 +13,23 @@
 		<p class="text-sm opacity-50 hidden sm:block">{project.dateRange}</p>
 		<div class="flex gap-1 flex-col items-start">
 			<h2 class="text-2xl sm:text-3xl font-semibold">{project.title}</h2>
-			<a
-				href={project.link}
-				target="_blank"
-				class="gap-2 items-center text-xs opacity-40 transition-all sm:hidden flex"
-			>
+			<div class="gap-2 items-center text-xs opacity-40 transition-all sm:hidden flex">
 				<p class="">{project.dateRange}</p>
 				<p>/</p>
 				<div class="flex gap-0.5 items-center truncate">
 					<p>{project.link.replace('https://', '')}</p>
 					<img src="/icons/outlink.svg" alt="External Link" class="w-4" />
 				</div>
-			</a>
+			</div>
 		</div>
 		<p class="text-sm md:text-base">{project.description}</p>
 
-		<a
-			href={project.link}
-			target="_blank"
+		<div
 			class="hidden sm:flex gap-0.5 items-center opacity-50 transition-all text-sm group-hover:opacity-100"
 		>
 			<p class="font-light">{project.link.replace('https://', '')}</p>
 			<img src="/icons/outlink.svg" alt="External Link" class="w-4" />
-		</a>
+		</div>
 	</div>
 	<!-- Image -->
 	<div class="relative transition-all duration-300 group w-full sm:w-1/2">

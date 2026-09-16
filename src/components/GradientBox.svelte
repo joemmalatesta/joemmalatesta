@@ -26,18 +26,18 @@
 	<div
 		class="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-100 transition-opacity duration-500"
 		style="background-image: linear-gradient(to bottom right, {gradient.from}, {gradient.to})"
-	/>
+	></div>
 
 	<!-- Dark overlay for better text contrast -->
-	<div class="absolute inset-0 bg-black/25 z-10" />
+	<div class="absolute inset-0 bg-black/25 z-10"></div>
 
 	<!-- Multiple noise texture overlays for increased grain -->
 	<div
 		class="absolute inset-0 mix-blend-overlay opacity-100 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9IjEuNSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC40Ii8+PC9zdmc+')]"
-	/>
+	></div>
 	<div
 		class="absolute inset-0 mix-blend-overlay opacity-70 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9IjIuNSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PC9maWx0ZXI+PHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIzMDAiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4yIi8+PC9zdmc+')]"
-	/>
+	></div>
 
 	<!-- Content -->
 	<div class="relative h-full flex items-center justify-center">
@@ -45,5 +45,5 @@
 	</div>
 
 	<!-- Default state background -->
-	<div class="absolute inset-0 bg-light/10 group-hover:opacity-0 transition-opacity duration-500" />
+	<div class="absolute inset-0 bg-light/10 group-hover:opacity-0 transition-opacity duration-500"></div>
 </a>

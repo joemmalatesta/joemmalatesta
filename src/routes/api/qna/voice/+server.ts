@@ -1,49 +1,25 @@
-import { json } from '@sveltejs/kit';
-import type { RequestHandler } from '../$types';
-import { MongoClient } from 'mongodb';
-import { MONGO_QnA_PASSWORD } from '$env/static/private';
-
-const uri = `mongodb+srv://joemmalatesta:${MONGO_QnA_PASSWORD}@qa-cluster.ymmrk.mongodb.net/?retryWrites=true&w=majority&appName=qa-cluster`;
-const client = new MongoClient(uri);
+import { json, type RequestHandler } from '@sveltejs/kit';
+import { api } from '../../../../convex/_generated/api';
+import { getConvex } from '$lib/convex';
 
 export const POST: RequestHandler = async ({ request }) => {
 	const data = await request.json();
-	const { question } = data.args;
+	const question = data?.args?.question ?? data?.question;
 
 	if (!question) {
-		return json({
-			success: false,
-			message: 'Question not received'
-		});
+		return json({ success: false, message: 'Question not received' });
 	}
 
 	try {
-		await client.connect();
-		const database = client.db('qna');
-		const questions = database.collection('questions');
-
-		await questions.insertOne({
-			question,
-			answer: null,
-			dateAsked: new Date().toLocaleDateString('en-US', {
-				year: 'numeric',
-				month: 'long',
-				day: 'numeric'
-			}),
-			deleted: false,
-			likes: 0
-		});
-
+		await getConvex().mutation(api.questions.ask, { question: String(question) });
 		return json({
 			success: true,
 			message: 'Question sent. Check back soon for an answer.'
 		});
-	} catch (error) {
+	} catch {
 		return json({
 			success: false,
 			message: 'Failed to send question. Try again later.'
 		});
-	} finally {
-		await client.close();
 	}
 };

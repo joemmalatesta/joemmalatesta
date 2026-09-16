@@ -5,7 +5,8 @@
 	import FilmRoll from './FilmRoll.svelte';
 	import FilmHolder from './FilmHolder.svelte';
 	import FilmCanister from './FilmCanister.svelte';
-	import { filmImages, type FilmImage } from '$lib/film';
+	import { page } from '$app/stores';
+	import { filmImages, filmSlug, type FilmImage } from '$lib/film';
 	import MapPin from 'phosphor-svelte/lib/MapPin';
 	import FilmStackMobile from './FilmStackMobile.svelte';
 	import CaretLeft from 'phosphor-svelte/lib/CaretLeft';
@@ -17,6 +18,15 @@
 	let ready = false;
 	onMount(() => {
 		ready = true;
+		const roll = $page.url.searchParams.get('roll');
+		const img = $page.url.searchParams.get('img');
+		if (roll && img) {
+			const found = filmImages.find((f) => f.category === roll && filmSlug(f) === img);
+			if (found) {
+				activeCategory = roll;
+				openModal(found);
+			}
+		}
 	});
 
 	const filmCategories = ['Asia', '2022', '2024', '2025', 'Michigan', 'SF'];
